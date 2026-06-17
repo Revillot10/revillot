@@ -88,10 +88,10 @@ function SimuladorCredito() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0' }}>
+      <div className="simulador-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0' }}>
 
         {/* Columna izquierda — controles */}
-        <div style={{ padding: '32px 36px', borderRight: '1px solid #f0f0f0' }}>
+        <div className="simulador-col-left" style={{ padding: '32px 36px', borderRight: '1px solid #f0f0f0' }}>
           <SliderField
             label="Precio del vehículo"
             value={precio} min={3000000} max={80000000} step={500000}
@@ -288,14 +288,14 @@ export default function Buy() {
 
       {/* ══════ BARRA DE VALOR ════════════════════════════════ */}
       <div style={{ background:'#111', padding:'0 25px' }}>
-        <div style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(4,1fr)' }}>
+        <div className="value-bar-grid" style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(4,1fr)' }}>
           {[
             { icon:'🔒', label:'Compra segura',       desc:'Documentación verificada y proceso legal garantizado.' },
             { icon:'⚡', label:'Entrega rápida',       desc:'Tu vehículo listo en el menor tiempo posible.' },
             { icon:'💳', label:'Múltiples formas de pago', desc:'Contado, crédito o parte de pago. Tú decides.' },
             { icon:'🤝', label:'Asesoría personalizada', desc:'Te acompañamos en cada etapa de la compra.' },
           ].map((item, i) => (
-            <div key={i} style={{ padding:'32px 28px', borderRight: i<3 ? '1px solid rgba(255,255,255,0.07)' : 'none', display:'flex', gap:16, alignItems:'flex-start' }}>
+            <div key={i} className="value-bar-grid__item" style={{ padding:'32px 28px', borderRight: i<3 ? '1px solid rgba(255,255,255,0.07)' : 'none', display:'flex', gap:16, alignItems:'flex-start' }}>
               <span style={{ fontSize:20, flexShrink:0, marginTop:2 }}>{item.icon}</span>
               <div>
                 <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:10, fontWeight:600, letterSpacing:'2px', textTransform:'uppercase', color:'rgba(255,255,255,0.85)', marginBottom:8 }}>{item.label}</div>
@@ -315,7 +315,7 @@ export default function Buy() {
           subtitle="La forma más rápida y directa de comprar tu vehículo. Sin intereses, sin trámites bancarios, sin esperas." />
 
         {/* Imagen + texto */}
-        <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 25px 50px', display:'grid', gridTemplateColumns:'55% 1fr', gap:70, alignItems:'center' }}>
+        <div className="split-feature-grid" style={{ maxWidth:1200, margin:'0 auto', padding:'0 25px 50px', display:'grid', gridTemplateColumns:'55% 1fr', gap:70, alignItems:'center' }}>
           <div style={{ position:'relative', overflow:'hidden', aspectRatio:'16/9', borderRadius:4, boxShadow:'0 12px 40px rgba(0,0,0,0.18)' }}>
             <img src={CONTADO_IMG} alt="Pago al contado"
               style={{ width:'100%', height:'100%', objectFit:'cover', display:'block', transition:'transform 0.6s ease' }}
@@ -378,7 +378,7 @@ export default function Buy() {
           subtitle="Accede al vehículo que quieres hoy, con cuotas cómodas adaptadas a tu presupuesto. Trabajamos con las principales instituciones financieras de Chile." />
 
         {/* Imagen + texto */}
-        <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 25px 50px', display:'grid', gridTemplateColumns:'1fr 55%', gap:70, alignItems:'center' }}>
+        <div className="split-feature-grid" style={{ maxWidth:1200, margin:'0 auto', padding:'0 25px 50px', display:'grid', gridTemplateColumns:'1fr 55%', gap:70, alignItems:'center' }}>
           <div>
             <h3 style={{ fontFamily:'Montserrat,sans-serif', fontSize:13, fontWeight:600, letterSpacing:'3px', textTransform:'uppercase', color:'#000', marginBottom:24 }}>Financiamiento flexible para cada situación</h3>
             <p style={{ fontFamily:'Roboto,sans-serif', fontSize:15, fontWeight:300, color:'rgb(102,102,102)', lineHeight:1.9, marginBottom:28 }}>
@@ -396,7 +396,7 @@ export default function Buy() {
             </div>
 
             {/* Características */}
-            <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:16 }}>
+            <div className="form-grid-2" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:16 }}>
               {[
                 { label:'Plazo',         value:'12 a 72 meses' },
                 { label:'Pie mínimo',    value:'Desde 20%' },
@@ -427,9 +427,9 @@ export default function Buy() {
             <h3 style={{ fontFamily:'Montserrat,sans-serif', fontSize:13, fontWeight:600, letterSpacing:'4px', textTransform:'uppercase', color:'#000', marginBottom:14 }}>El proceso en 4 pasos</h3>
             <div style={{ width:40, height:1, background:'#000', margin:'0 auto' }} />
           </div>
-          <div style={{ maxWidth:1200, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:0 }}>
+          <div className="steps-grid-4-bordered" style={{ maxWidth:1200, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:0 }}>
             {CREDITO_STEPS.map((s, i) => (
-              <div key={i} style={{ padding:'0 30px', borderRight: i<3 ? '1px solid #e0e0e0' : 'none', textAlign:'center' }}>
+              <div key={i} className="steps-grid-4-bordered__item" style={{ padding:'0 30px', borderRight: i<3 ? '1px solid #e0e0e0' : 'none', textAlign:'center' }}>
                 <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:56, fontWeight:200, letterSpacing:'2px', color:'#e8e8e8', lineHeight:1, marginBottom:16 }}>{s.n}</div>
                 <h4 style={{ fontFamily:'Montserrat,sans-serif', fontSize:11, fontWeight:600, letterSpacing:'2px', textTransform:'uppercase', color:'#000', marginBottom:12 }}>{s.title}</h4>
                 <p style={{ fontFamily:'Roboto,sans-serif', fontSize:13, fontWeight:300, color:'rgb(102,102,102)', lineHeight:1.75 }}>{s.desc}</p>
@@ -478,7 +478,7 @@ export default function Buy() {
         </div>
 
         {/* Contenido */}
-        <div style={{ maxWidth:1200, margin:'0 auto', padding:'60px 25px 50px', display:'grid', gridTemplateColumns:'1fr 1fr', gap:70, alignItems:'start' }}>
+        <div className="split-feature-grid" style={{ maxWidth:1200, margin:'0 auto', padding:'60px 25px 50px', display:'grid', gridTemplateColumns:'1fr 1fr', gap:70, alignItems:'start' }}>
           <div>
             <h3 style={{ fontFamily:'Montserrat,sans-serif', fontSize:13, fontWeight:600, letterSpacing:'3px', textTransform:'uppercase', color:'#000', marginBottom:24 }}>Cómo funciona la parte de pago</h3>
             <p style={{ fontFamily:'Roboto,sans-serif', fontSize:15, fontWeight:300, color:'rgb(102,102,102)', lineHeight:1.9, marginBottom:32 }}>

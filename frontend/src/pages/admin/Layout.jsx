@@ -1,4 +1,5 @@
-import { Outlet, NavLink, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
 const LOGO = 'https://images.67degreescdn.co.uk/zy7y1N-3pfL5Q_-hT8x0dorFXEY=/100x/filters:no_upscale()/137/1/162513748360dda14b60068_romans-international-logo-whiteout.png';
@@ -12,16 +13,46 @@ const NAV = [
   { to:'/admin/videos',    icon:'play_circle',    label:'VIDEOS' },
   { section:'LEADS' },
   { to:'/admin/leads',     icon:'mail',           label:'LEADS' },
+  { section:'CUENTA' },
+  { to:'/admin/perfil',    icon:'lock',           label:'MI CUENTA' },
 ];
 
 export default function AdminLayout() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   const handleLogout = async () => { await logout(); navigate('/admin/login'); };
+
+  // Cierra el sidebar móvil cada vez que cambia de página
+  useEffect(() => { setSidebarOpen(false); }, [pathname]);
+
+  // Bloquea el scroll del fondo mientras el sidebar móvil está abierto
+  useEffect(() => {
+    document.body.style.overflow = sidebarOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [sidebarOpen]);
 
   return (
     <div className="admin-layout">
-      <aside className="admin-sidebar">
+      {/* ── Botón hamburguesa (solo móvil/tablet) ── */}
+      <button
+        className="admin-burger"
+        aria-label={sidebarOpen ? 'Cerrar menú' : 'Abrir menú'}
+        aria-expanded={sidebarOpen}
+        onClick={() => setSidebarOpen(o => !o)}
+      >
+        <span className="material-icons">{sidebarOpen ? 'close' : 'menu'}</span>
+      </button>
+
+      {/* ── Overlay para cerrar al tocar fuera ── */}
+      <div
+        className={`admin-sidebar-overlay${sidebarOpen ? ' is-open' : ''}`}
+        onClick={() => setSidebarOpen(false)}
+      />
+
+      <aside className={`admin-sidebar${sidebarOpen ? ' is-open' : ''}`}>
         <div className="admin-sidebar__logo">
           <div style={{ fontFamily:"'Playfair Display', serif", fontSize: 20, fontWeight: 400, letterSpacing: '4px', textTransform: 'uppercase', color: '#fff', lineHeight: 1, marginBottom: 6, textAlign: 'center' }}>
             REVILLOT

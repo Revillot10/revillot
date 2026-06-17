@@ -9,7 +9,11 @@
 
 /* ── RESET ────────────────────────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+/* Red de seguridad: evita scroll horizontal accidental si algún
+   elemento puntual se desborda del viewport en pantallas angostas. */
+body { overflow-x: hidden; }
 
 :root {
   --black:       #000;
@@ -79,6 +83,7 @@ input, textarea, select { font-family: inherit; }
   width: 100%;
   height: auto;
   min-height: 70vh;  /* un poco más alto para más impacto */
+  object-fit: cover;
 }
 
 .hero__slogan {
@@ -441,6 +446,7 @@ input, textarea, select { font-family: inherit; }
 /* Botón VER VEHÍCULO — transición elegante invertida */
 .vehicle-card__btn {
   width: 220px;
+  max-width: 100%;
   height: 50px;
   font-family: var(--f-head);
   font-size: 14px;
@@ -1164,6 +1170,14 @@ textarea.form-input { height: 100px; resize: vertical; }
 ══════════════════════════════════════════════════════════════ */
 
 .admin-layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+.admin-burger {
+  display: none; align-items: center; justify-content: center;
+  position: fixed; top: 14px; left: 16px; z-index: 10001;
+  width: 36px; height: 36px; border: none; border-radius: 4px;
+  background: #1a1a1a; color: #fff; cursor: pointer;
+}
+.admin-burger .material-icons { font-size: 20px; }
+.admin-sidebar-overlay { display: none; }
 .admin-sidebar { background: #1a1a1a; display: flex; flex-direction: column; }
 .admin-sidebar__logo { padding: 20px 20px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
 .admin-sidebar__logo img { height: 32px; width: auto; filter: brightness(0) invert(1); }
@@ -1248,7 +1262,23 @@ textarea.form-input { height: 100px; resize: vertical; }
   .vehicle-detail-content { grid-template-columns: 1fr; }
   .enquiry-box { position: static; }
   .admin-layout { grid-template-columns: 1fr; }
-  .admin-sidebar { display: none; }
+  .admin-burger { display: flex !important; }
+  .admin-sidebar {
+    position: fixed; top: 0; left: 0; bottom: 0;
+    width: 240px; z-index: 10000;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+  }
+  .admin-sidebar.is-open { transform: translateX(0); box-shadow: 4px 0 24px rgba(0,0,0,0.25); }
+  .admin-sidebar-overlay {
+    display: block;
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.4);
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+  .admin-sidebar-overlay.is-open { opacity: 1; visibility: visible; }
+  .admin-topbar { padding-left: 64px; }
   .insight-video__inner { flex-direction: column; }
   .insights-left, .video-right { flex: none; }
   .video-right { padding-top: 0; }
@@ -1278,6 +1308,169 @@ textarea.form-input { height: 100px; resize: vertical; }
   .mailing-list { padding: 30px 0; }
   .admin-form { padding: 20px; }
   .admin-content { padding: 16px; }
+}
+
+/* ── Evita el zoom automático de Safari/iOS al enfocar un campo.
+   iOS hace zoom cuando un input tiene font-size menor a 16px;
+   en escritorio se mantiene el tamaño original de diseño (13px). ── */
+@media (max-width: 768px) {
+  .form-input,
+  select.form-input,
+  textarea.form-input {
+    font-size: 16px;
+  }
+}
+
+/* ── HEADER RESPONSIVO (menú hamburguesa) ── */
+@media (max-width: 1024px) {
+  .header-nav-desktop { display: none !important; }
+  .header-burger { display: flex !important; }
+}
+
+@media (max-width: 480px) {
+  .header-logo-text { font-size: 20px !important; }
+}
+
+/* ── FOOTER RESPONSIVO ── */
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr !important; padding: 32px 24px 20px !important; }
+}
+@media (max-width: 600px) {
+  .footer-grid { grid-template-columns: 1fr !important; gap: 36px !important; padding: 40px 24px 24px !important; }
+  .footer-bottom { padding: 16px 24px !important; }
+  .footer-bottom > div { flex-direction: column; align-items: flex-start !important; gap: 14px !important; }
+}
+
+/* ── HERO RESPONSIVO ── */
+@media (max-width: 768px) {
+  .hero-title { font-size: 28px !important; letter-spacing: 6px !important; }
+  .hero-subtitle { font-size: 12px !important; letter-spacing: 2px !important; }
+}
+@media (max-width: 480px) {
+  .hero-title { font-size: 22px !important; letter-spacing: 4px !important; }
+  .hero-cta { flex-direction: column; width: 100%; padding: 0 24px; box-sizing: border-box; }
+  .hero-cta a { width: 100%; box-sizing: border-box; text-align: center; }
+}
+
+/* ── INVENTARIO: grilla y vista lista ── */
+@media (max-width: 1024px) {
+  .inventory-grid-view { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 640px) {
+  .inventory-grid-view { grid-template-columns: 1fr !important; }
+  .vehicle-list-item { flex-direction: column !important; }
+  .vehicle-list-item__img { width: 100% !important; }
+}
+
+/* ── FICHA DE VEHÍCULO ── */
+@media (max-width: 1024px) {
+  .vd-main-layout { grid-template-columns: 1fr !important; }
+  .related-vehicles-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 560px) {
+  .specs-grid-detail { grid-template-columns: 1fr !important; }
+  .related-vehicles-grid { grid-template-columns: 1fr !important; }
+  .enquiry-form-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── PÁGINA "VENDE TU VEHÍCULO" Y CONTACTO ── */
+@media (max-width: 768px) {
+  .split-feature-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
+  .steps-grid-4 { grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important; }
+  .steps-grid-3 { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .promises-grid { grid-template-columns: 1fr !important; }
+  .promises-grid__item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 24px !important; }
+  .promises-grid__item:last-child { border-bottom: none; }
+}
+@media (max-width: 600px) {
+  .form-grid-2 { grid-template-columns: 1fr !important; }
+  .steps-grid-4 { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 700px) {
+  /* La tabla comparativa mantiene sus 3 columnas pero permite scroll horizontal */
+  .compare-grid-3-wrap { overflow-x: auto; }
+  .compare-grid-3 { min-width: 560px; }
+}
+
+/* ── ADMIN: miniaturas de imágenes y tablas del dashboard ── */
+@media (max-width: 900px) {
+  .dashboard-tables-grid { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 640px) {
+  .image-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Buy, MeetTheTeam, WhyChooseUs, PreviouslySold, History
+══════════════════════════════════════════════════════════════ */
+
+/* Simulador de crédito (Buy.jsx): controles + resultado */
+@media (max-width: 768px) {
+  .simulador-grid { grid-template-columns: 1fr !important; }
+  .simulador-col-left { border-right: none !important; border-bottom: 1px solid #f0f0f0; }
+}
+
+/* Barra de "valor" / ventajas con 4 columnas y bordes (Buy.jsx, WhyChooseUs.jsx) */
+@media (max-width: 900px) {
+  .value-bar-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .value-bar-grid__item { border-right: none !important; }
+  .value-bar-grid__item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.07) !important; }
+}
+@media (max-width: 560px) {
+  .value-bar-grid { grid-template-columns: 1fr !important; }
+  .value-bar-grid__item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .value-bar-grid__item:last-child { border-bottom: none; }
+}
+
+/* Pasos del crédito, 4 columnas con bordes (Buy.jsx) */
+@media (max-width: 900px) {
+  .steps-grid-4-bordered { grid-template-columns: repeat(2, 1fr) !important; gap: 32px 0 !important; }
+  .steps-grid-4-bordered__item { border-right: none !important; }
+  .steps-grid-4-bordered__item:nth-child(odd) { border-right: 1px solid #e0e0e0 !important; }
+}
+@media (max-width: 560px) {
+  .steps-grid-4-bordered { grid-template-columns: 1fr !important; }
+  .steps-grid-4-bordered__item { border-right: none !important; padding: 0 !important; }
+}
+
+/* Estadísticas del equipo, 3 columnas con bordes (MeetTheTeam.jsx) */
+@media (max-width: 700px) {
+  .stats-bordered-grid-3 { grid-template-columns: 1fr !important; gap: 28px !important; padding: 36px 24px !important; }
+  .stats-bordered-grid-3__item { border-right: none !important; }
+}
+
+/* 6 razones, grid 3x2 con separadores (WhyChooseUs.jsx) */
+@media (max-width: 900px) {
+  .reasons-grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 560px) {
+  .reasons-grid-3 { grid-template-columns: 1fr !important; }
+}
+
+/* Testimonios, 2 columnas (WhyChooseUs.jsx) */
+@media (max-width: 700px) {
+  .testimonials-grid-2 { grid-template-columns: 1fr !important; }
+}
+
+/* Galería de vendidos, 4 columnas (PreviouslySold.jsx) */
+@media (max-width: 1024px) {
+  .sold-gallery-grid { grid-template-columns: repeat(3, 1fr) !important; }
+}
+@media (max-width: 768px) {
+  .sold-gallery-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 460px) {
+  .sold-gallery-grid { grid-template-columns: 1fr !important; }
+}
+
+/* Línea de tiempo con número de columnas dinámico (History.jsx) */
+@media (max-width: 768px) {
+  .history-timeline-grid { grid-template-columns: 1fr !important; }
+  .history-timeline-grid__item {
+    border-right: none !important;
+    border-bottom: 1px solid #e0e0e0;
+    padding-left: 0 !important;
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════

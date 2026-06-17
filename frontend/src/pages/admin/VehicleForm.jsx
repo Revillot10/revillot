@@ -196,7 +196,7 @@ export default function VehicleForm() {
                 Sin imágenes. Agrega URLs de imágenes.
               </div>
             ) : (
-              <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:12}}>
+              <div className="image-grid-4" style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:12}}>
                 {form.images.map((img, i) => (
                   <div key={i} style={{position:'relative',border:`2px solid ${img.isPrimary?'#000':'#e0e0e0'}`}}>
                     <img src={img.url} alt="" style={{width:'100%',height:120,objectFit:'cover',display:'block'}} loading="lazy" />

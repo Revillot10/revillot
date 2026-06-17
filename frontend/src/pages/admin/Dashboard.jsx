@@ -42,7 +42,7 @@ export default function Dashboard() {
           ))}
         </div>
 
-        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:24}}>
+        <div className="dashboard-tables-grid" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:24}}>
           <div>
             <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:16}}>
               <div style={{fontFamily:'Montserrat,sans-serif',fontSize:11,fontWeight:500,letterSpacing:'3px',textTransform:'uppercase',color:'#000'}}>LEADS RECIENTES</div>

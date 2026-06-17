@@ -130,7 +130,7 @@ export default function Home() {
           <div style={{ width: 40, height: 1, background: 'rgba(255,255,255,0.5)', marginBottom: 20 }} />
 
           {/* Tagline principal */}
-          <h2 style={{
+          <h2 className="hero-title" style={{
             fontFamily: "'Montserrat', sans-serif",
             fontSize: 42, fontWeight: 200,
             letterSpacing: '12px', textTransform: 'uppercase',
@@ -141,7 +141,7 @@ export default function Home() {
           </h2>
 
           {/* Subtexto */}
-          <p style={{
+          <p className="hero-subtitle" style={{
             fontFamily: "'Roboto', sans-serif",
             fontSize: 14, fontWeight: 300,
             letterSpacing: '3px', textTransform: 'uppercase',
@@ -152,7 +152,7 @@ export default function Home() {
           </p>
 
           {/* Botón CTA */}
-          <div style={{ display: 'flex', gap: 14 }}>
+          <div className="hero-cta" style={{ display: 'flex', gap: 14 }}>
             <a
               href="/inventory"
               style={{

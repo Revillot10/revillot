@@ -146,11 +146,11 @@ export default function Contact() {
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
-              <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:16 }}>
+              <div className="form-grid-2" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:16 }}>
                 <div><label style={labelStyle}>Nombre *</label><input className="form-input" required value={form.first_name} onChange={f('first_name')} /></div>
                 <div><label style={labelStyle}>Apellido *</label><input className="form-input" required value={form.last_name} onChange={f('last_name')} /></div>
               </div>
-              <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:16 }}>
+              <div className="form-grid-2" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:16 }}>
                 <div><label style={labelStyle}>Email *</label><input className="form-input" type="email" required value={form.email} onChange={f('email')} /></div>
                 <div><label style={labelStyle}>Teléfono</label><input className="form-input" type="tel" value={form.phone} onChange={f('phone')} /></div>
               </div>
@@ -168,7 +168,7 @@ export default function Contact() {
 
       {/* ── DIRECCIÓN + HORARIO ── */}
       <div style={{ background:'#fff', padding:'40px 25px 50px' }}>
-        <div style={{ maxWidth:1200, margin:'0 auto', display:'grid', gridTemplateColumns:'1fr 1fr', gap:60 }} data-reveal>
+        <div className="split-feature-grid" style={{ maxWidth:1200, margin:'0 auto', display:'grid', gridTemplateColumns:'1fr 1fr', gap:60 }} data-reveal>
 
           {/* ── DIRECCIÓN ── */}
           <div>

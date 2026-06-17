@@ -8,6 +8,7 @@ const { authMiddleware, requireAdmin } = require('../middleware/auth');
 router.post('/auth/login',  auth.login);
 router.get ('/auth/me',     authMiddleware, auth.me);
 router.post('/auth/logout', auth.logout);
+router.put ('/auth/change-password', authMiddleware, auth.changePassword);
 
 // ── Public ────────────────────────────────────────────────────
 router.get('/vehicles',          vehicles.getAll);

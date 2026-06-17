@@ -154,7 +154,7 @@ function ContactForm({ type }) {
       {/* Datos del vehículo */}
       <div style={{ marginBottom:24 }}>
         <div style={formGroupTitle}>Datos del vehículo</div>
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:14 }}>
+        <div className="form-grid-2" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:14 }}>
           <div><label style={labelSt}>Marca *</label><input className="form-input" required placeholder="Ej: Toyota" value={form.brand} onChange={f('brand')} /></div>
           <div><label style={labelSt}>Modelo *</label><input className="form-input" required placeholder="Ej: Hilux" value={form.model} onChange={f('model')} /></div>
           <div><label style={labelSt}>Año *</label><input className="form-input" required type="number" placeholder="Ej: 2020" value={form.year} onChange={f('year')} /></div>
@@ -164,7 +164,7 @@ function ContactForm({ type }) {
       {/* Datos de contacto */}
       <div style={{ marginBottom:24 }}>
         <div style={formGroupTitle}>Tus datos</div>
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:14 }}>
+        <div className="form-grid-2" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:14 }}>
           <div><label style={labelSt}>Nombre *</label><input className="form-input" required value={form.first_name} onChange={f('first_name')} /></div>
           <div><label style={labelSt}>Apellido *</label><input className="form-input" required value={form.last_name} onChange={f('last_name')} /></div>
           <div><label style={labelSt}>Email *</label><input className="form-input" type="email" required value={form.email} onChange={f('email')} /></div>
@@ -233,13 +233,13 @@ export default function Sell() {
 
       {/* ════ INTRO — 3 promesas clave ═══════════════════════ */}
       <div style={{ background:'#000', padding:'50px 25px' }}>
-        <div style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:0 }}>
+        <div className="promises-grid" style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:0 }}>
           {[
             { n:'100%', label:'Transparencia', desc:'Sin letra pequeña. Precios justos y condiciones claras desde el primer contacto.' },
             { n:'24h',  label:'Respuesta rápida', desc:'Oferta de compra en 24 horas hábiles. Sabemos que tu tiempo tiene valor.' },
             { n:'0$',   label:'Sin costo para ti', desc:'Inspección técnica, publicación y gestión de ventas completamente gratuitas.' },
           ].map((item, i) => (
-            <div key={i} style={{ textAlign:'center', padding:'30px 40px', borderRight: i < 2 ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
+            <div key={i} className="promises-grid__item" style={{ textAlign:'center', padding:'30px 40px', borderRight: i < 2 ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
               <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:42, fontWeight:200, letterSpacing:'4px', color:'#fff', marginBottom:8 }}>{item.n}</div>
               <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:10, fontWeight:600, letterSpacing:'4px', textTransform:'uppercase', color:'rgba(255,255,255,0.5)', marginBottom:14 }}>{item.label}</div>
               <p style={{ fontFamily:'Roboto,sans-serif', fontSize:13, fontWeight:300, color:'rgba(255,255,255,0.45)', lineHeight:1.7 }}>{item.desc}</p>
@@ -286,7 +286,7 @@ export default function Sell() {
             />
 
             {/* Imagen + texto intro */}
-            <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 25px 60px', display:'grid', gridTemplateColumns:'1fr 1fr', gap:60, alignItems:'center' }}>
+            <div className="split-feature-grid" style={{ maxWidth:1200, margin:'0 auto', padding:'0 25px 60px', display:'grid', gridTemplateColumns:'1fr 1fr', gap:60, alignItems:'center' }}>
               <div style={{
                 position:'relative', overflow:'hidden', aspectRatio:'16/9',
                 borderRadius:4,
@@ -323,7 +323,7 @@ export default function Sell() {
             {/* Proceso paso a paso */}
             <div style={{ background:'#f9f9f9', padding:'60px 0' }}>
               <SectionHeading sup="El proceso" title="4 pasos simples" />
-              <div style={{ maxWidth:1300, margin:'0 auto', padding:'0 25px', display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:0 }}>
+              <div className="steps-grid-4" style={{ maxWidth:1300, margin:'0 auto', padding:'0 25px', display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:0 }}>
                 {COMPRA_STEPS.map((step, i) => (
                   <div key={i} style={{ borderRight: i < 3 ? '1px solid #e0e0e0' : 'none', padding:'0 30px' }}>
                     {/* Imagen */}
@@ -366,7 +366,7 @@ export default function Sell() {
             />
 
             {/* Imagen + texto intro */}
-            <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 25px 60px', display:'grid', gridTemplateColumns:'1fr 1fr', gap:60, alignItems:'center' }}>
+            <div className="split-feature-grid" style={{ maxWidth:1200, margin:'0 auto', padding:'0 25px 60px', display:'grid', gridTemplateColumns:'1fr 1fr', gap:60, alignItems:'center' }}>
               <div>
                 <h3 style={{ fontFamily:'Montserrat,sans-serif', fontSize:13, fontWeight:600, letterSpacing:'3px', textTransform:'uppercase', color:'#000', marginBottom:20 }}>¿Por qué elegir la consignación?</h3>
                 <p style={{ fontFamily:'Roboto,sans-serif', fontSize:15, fontWeight:300, color:'rgb(102,102,102)', lineHeight:1.85, marginBottom:16 }}>
@@ -404,7 +404,7 @@ export default function Sell() {
             {/* Proceso de consignación — 6 tarjetas */}
             <div style={{ background:'#f9f9f9', padding:'60px 0' }}>
               <SectionHeading sup="El proceso" title="Cómo funciona" subtitle="Desde que nos entregas tu vehículo hasta que recibes el pago, nos encargamos de cada detalle." />
-              <div style={{ maxWidth:1300, margin:'0 auto', padding:'0 25px', display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:30 }}>
+              <div className="steps-grid-3" style={{ maxWidth:1300, margin:'0 auto', padding:'0 25px', display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:30 }}>
                 {CONSIGN_STEPS.map((step, i) => (
                   <div key={i} style={{ background:'#fff', border:'1px solid #e0e0e0', overflow:'hidden', transition:'box-shadow 0.2s' }}
                     onMouseOver={e=>e.currentTarget.style.boxShadow='0 8px 30px rgba(0,0,0,0.08)'}
@@ -433,7 +433,8 @@ export default function Sell() {
             {/* Comparativa */}
             <div style={{ maxWidth:800, margin:'0 auto', padding:'60px 25px 20px' }}>
               <SectionHeading sup="¿Cuál elegir?" title="Compara las opciones" />
-              <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', border:'1px solid #e0e0e0', overflow:'hidden' }}>
+            <div className="compare-grid-3-wrap">
+              <div className="compare-grid-3" style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', border:'1px solid #e0e0e0', overflow:'hidden' }}>
                 {/* Header */}
                 <div style={{ background:'#f9f9f9', padding:'16px 20px', borderRight:'1px solid #e0e0e0', borderBottom:'1px solid #e0e0e0' }} />
                 {['COMPRA\nDIRECTA','CONSIG-\nNACIÓN'].map((h,i) => (
@@ -463,6 +464,7 @@ export default function Sell() {
                   </>
                 ))}
               </div>
+            </div>
             </div>
 
             {/* Formulario */}

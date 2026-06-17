@@ -28,6 +28,7 @@ import ArticlesAdmin from './pages/admin/Articles';
 import ArticleForm   from './pages/admin/ArticleForm';
 import VideosAdmin   from './pages/admin/Videos';
 import LeadsAdmin    from './pages/admin/Leads';
+import AdminProfile  from './pages/admin/Profile';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -84,6 +85,7 @@ export default function App() {
             <Route path="articles/:id" element={<ArticleForm />} />
             <Route path="videos"       element={<VideosAdmin />} />
             <Route path="leads"        element={<LeadsAdmin />} />
+            <Route path="perfil"       element={<AdminProfile />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

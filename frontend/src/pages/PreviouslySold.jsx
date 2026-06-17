@@ -52,7 +52,7 @@ export default function PreviouslySold() {
             No hay vehículos vendidos aún
           </div>
         ) : (
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:30 }}>
+          <div className="sold-gallery-grid" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:30 }}>
             {vehicles.map(v => {
               const img = v.images?.find(i => i.isPrimary || i.is_primary) || v.images?.[0];
               const name = `${v.brand_name || ''} ${v.model || ''}`.trim();

@@ -57,9 +57,9 @@ export default function History() {
       <div style={{ maxWidth:1400, margin:'0 auto', padding:'60px 25px 80px' }}>
 
         {/* Años en el header de la timeline */}
-        <div style={{ display:'grid', gridTemplateColumns:`repeat(${TIMELINE.length}, 1fr)`, gap:0, marginBottom:0, borderBottom:'1px solid #e0e0e0' }}>
+        <div className="history-timeline-grid" style={{ display:'grid', gridTemplateColumns:`repeat(${TIMELINE.length}, 1fr)`, gap:0, marginBottom:0, borderBottom:'1px solid #e0e0e0' }}>
           {TIMELINE.map((item, i) => (
-            <div key={i} style={{ padding:'20px 0', borderRight: i < TIMELINE.length-1 ? '1px solid #e0e0e0' : 'none', paddingLeft: i===0 ? 0 : 20 }}>
+            <div key={i} className="history-timeline-grid__item" style={{ padding:'20px 0', borderRight: i < TIMELINE.length-1 ? '1px solid #e0e0e0' : 'none', paddingLeft: i===0 ? 0 : 20 }}>
               <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:32, fontWeight:200, letterSpacing:'4px', color:'#000', marginBottom:6 }}>{item.year}</div>
               <div style={{ width:40, height:2, background:'#000' }} />
             </div>
@@ -67,9 +67,9 @@ export default function History() {
         </div>
 
         {/* Imágenes */}
-        <div style={{ display:'grid', gridTemplateColumns:`repeat(${TIMELINE.length}, 1fr)`, gap:0 }}>
+        <div className="history-timeline-grid" style={{ display:'grid', gridTemplateColumns:`repeat(${TIMELINE.length}, 1fr)`, gap:0 }}>
           {TIMELINE.map((item, i) => (
-            <div key={i} style={{ borderRight: i < TIMELINE.length-1 ? '1px solid #e0e0e0' : 'none' }}>
+            <div key={i} className="history-timeline-grid__item" style={{ borderRight: i < TIMELINE.length-1 ? '1px solid #e0e0e0' : 'none' }}>
               <div style={{ height:300, overflow:'hidden', background:'#111' }}>
                 <img src={item.img} alt={item.title} style={{ width:'100%', height:'100%', objectFit:'cover', display:'block', transition:'transform 0.5s' }} loading="lazy"
                   onMouseOver={e=>e.target.style.transform='scale(1.04)'}
@@ -81,9 +81,9 @@ export default function History() {
         </div>
 
         {/* Textos */}
-        <div style={{ display:'grid', gridTemplateColumns:`repeat(${TIMELINE.length}, 1fr)`, gap:0 }}>
+        <div className="history-timeline-grid" style={{ display:'grid', gridTemplateColumns:`repeat(${TIMELINE.length}, 1fr)`, gap:0 }}>
           {TIMELINE.map((item, i) => (
-            <div key={i} style={{ padding:'24px 20px 40px', paddingLeft: i===0 ? 0 : 20, borderRight: i < TIMELINE.length-1 ? '1px solid #e0e0e0' : 'none' }}>
+            <div key={i} className="history-timeline-grid__item" style={{ padding:'24px 20px 40px', paddingLeft: i===0 ? 0 : 20, borderRight: i < TIMELINE.length-1 ? '1px solid #e0e0e0' : 'none' }}>
               <h3 style={{ fontFamily:'Montserrat,sans-serif', fontSize:11, fontWeight:600, letterSpacing:'3px', textTransform:'uppercase', color:'#000', marginBottom:14 }}>
                 {item.title}
               </h3>

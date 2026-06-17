@@ -448,7 +448,7 @@ export default function Inventory() {
                 </div>
               ) : (
                 /* Vista grilla — max-width centrado igual que el real */
-                <div style={{
+                <div className="inventory-grid-view" style={{
                   display:'grid',
                   gridTemplateColumns:'repeat(3, 1fr)',
                   gap:'30px',
@@ -732,6 +732,7 @@ function VehicleCardList({ vehicle, onClick }) {
       {/* Real: vehicle--teaser → display=flex, padding=0 0 30px,
           border=1px solid #ddd */}
       <div
+        className="vehicle-list-item"
         style={{
           display:'flex', flexDirection:'row',
           padding:'0 0 30px',
@@ -743,7 +744,7 @@ function VehicleCardList({ vehicle, onClick }) {
         onMouseOut={e => e.currentTarget.style.background='#fff'}
       >
         {/* Imagen — Real: 419×283px */}
-        <div style={{ width:419, flexShrink:0, overflow:'hidden', background:'#0a0a0a' }}>
+        <div className="vehicle-list-item__img" style={{ width:419, flexShrink:0, overflow:'hidden', background:'#0a0a0a' }}>
           {img
             ? <img src={img.url} alt={name}
                 style={{ width:'100%', height:283, objectFit:'cover', display:'block', transition:'transform 0.5s' }}

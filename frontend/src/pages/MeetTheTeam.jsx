@@ -83,7 +83,7 @@ export default function MeetTheTeam() {
         <GroupTitle>EL FUNDADOR</GroupTitle>
 
         {/* Foto 1 — presentación */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'center', marginBottom: 80 }}>
+        <div className="split-feature-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'center', marginBottom: 80 }}>
           <div style={{ aspectRatio: '4/5', overflow: 'hidden', background: '#f0f0f0' }}>
             <img
               src="/images/tomas1.jpg"
@@ -128,7 +128,7 @@ export default function MeetTheTeam() {
         </div>
 
         {/* Foto 2 — en acción */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'center', marginBottom: 80 }}>
+        <div className="split-feature-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'center', marginBottom: 80 }}>
           <div>
             <div style={{ fontFamily: 'Montserrat,sans-serif', fontSize: 11, fontWeight: 500, letterSpacing: '3px', textTransform: 'uppercase', color: '#999', marginBottom: 16 }}>
               La filosofía
@@ -167,13 +167,13 @@ export default function MeetTheTeam() {
         </div>
 
         {/* Estadísticas / logros */}
-        <div style={{ background: '#f8f8f8', padding: '48px 40px', marginBottom: 0, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, textAlign: 'center' }}>
+        <div className="stats-bordered-grid-3" style={{ background: '#f8f8f8', padding: '48px 40px', marginBottom: 0, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, textAlign: 'center' }}>
           {[
             { value: '2026', label: 'Año de fundación' },
             { value: '100%', label: 'Inspección técnica en cada vehículo' },
             { value: 'Curicó', label: 'Corazón del negocio, Chile' },
           ].map((s, i) => (
-            <div key={i} style={{ padding: '0 20px', borderRight: i < 2 ? '1px solid #ddd' : 'none' }}>
+            <div key={i} className="stats-bordered-grid-3__item" style={{ padding: '0 20px', borderRight: i < 2 ? '1px solid #ddd' : 'none' }}>
               <div style={{ fontFamily: 'Montserrat,sans-serif', fontSize: 36, fontWeight: 200, letterSpacing: '4px', color: '#000', marginBottom: 8 }}>{s.value}</div>
               <div style={{ fontFamily: 'Roboto,sans-serif', fontSize: 12, fontWeight: 300, color: 'rgb(120,120,120)', letterSpacing: '1px', textTransform: 'uppercase' }}>{s.label}</div>
             </div>

@@ -69,7 +69,7 @@ export default function Footer() {
     <footer style={{ background: '#0a0a0a', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
 
       {/* ── CUERPO PRINCIPAL — 4 columnas ── */}
-      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '32px 40px 24px', display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr 1.2fr', gap: 30 }}>
+      <div className="footer-grid" style={{ maxWidth: 1440, margin: '0 auto', padding: '32px 40px 24px', display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr 1.2fr', gap: 30 }}>
 
         {/* Col 1 — Marca + contacto */}
         <div>
@@ -219,7 +219,7 @@ export default function Footer() {
       </div>
 
       {/* ── BARRA INFERIOR ── */}
-      <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', padding: '12px 40px' }}>
+      <div className="footer-bottom" style={{ borderTop: '1px solid rgba(255,255,255,0.07)', padding: '12px 40px' }}>
         <div style={{
           maxWidth: 1440, margin: '0 auto',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',

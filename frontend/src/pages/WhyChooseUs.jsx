@@ -118,9 +118,9 @@ export default function WhyChooseUs() {
 
       {/* ── STATS ── */}
       <div style={{ background:'#000', padding:'0 25px' }}>
-        <div style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(4,1fr)' }}>
+        <div className="value-bar-grid" style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(4,1fr)' }}>
           {STATS.map((s, i) => (
-            <div key={i} style={{
+            <div key={i} className="value-bar-grid__item" style={{
               padding:'44px 32px', textAlign:'center',
               borderRight: i < 3 ? '1px solid rgba(255,255,255,0.08)' : 'none',
             }}>
@@ -151,7 +151,7 @@ export default function WhyChooseUs() {
             <div style={{ width:40, height:1, background:'#000', margin:'0 auto' }} />
           </div>
 
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:1, background:'#e8e8e8' }}>
+          <div className="reasons-grid-3" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:1, background:'#e8e8e8' }}>
             {REASONS.map((r, i) => (
               <div key={i} style={{
                 background:'#fff', padding:'44px 40px',
@@ -194,7 +194,7 @@ export default function WhyChooseUs() {
           <div style={{ width:40, height:1, background:'#000', margin:'0 auto' }} />
         </div>
 
-        <div style={{ maxWidth:1200, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(2,1fr)', gap:24 }}>
+        <div className="testimonials-grid-2" style={{ maxWidth:1200, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(2,1fr)', gap:24 }}>
           {CUSTOMER_QUOTES.map((q, i) => (
             <div key={i} style={{
               background:'#fff', border:'1px solid #e8e8e8',

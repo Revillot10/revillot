@@ -209,7 +209,7 @@ function EnquiryForm({ vehicleId }) {
 
   return (
     <form onSubmit={handle}>
-      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10 }}>
+      <div className="enquiry-form-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10 }}>
         <div>
           <label style={lblSt}>Nombre *</label>
           <input className="form-input" required value={form.first_name} onChange={e=>setForm({...form,first_name:e.target.value})} />
@@ -333,7 +333,7 @@ export default function VehicleDetail() {
       </div>
 
       {/* ── Layout principal ── */}
-      <div style={{
+      <div className="vd-main-layout" style={{
         maxWidth: 1440,
         margin: '0 auto',
         padding: '40px 30px',
@@ -362,7 +362,7 @@ export default function VehicleDetail() {
               }}>
                 INFORMACIÓN CLAVE
               </h2>
-              <div style={{
+              <div className="specs-grid-detail" style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(2, 1fr)',
                 gap: 0,
@@ -550,7 +550,7 @@ export default function VehicleDetail() {
               }}>TAMBIÉN TE PUEDE INTERESAR</h2>
               <div style={{ width:40, height:1, background:'#000', margin:'0 auto' }} />
             </div>
-            <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:30 }}>
+            <div className="related-vehicles-grid" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:30 }}>
               {related.map(v => <VehicleCard key={v.id} vehicle={v} />)}
             </div>
           </div>

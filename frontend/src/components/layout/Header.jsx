@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 const SOCIAL = {
   instagram: 'https://www.instagram.com/revillotgarage/',
   facebook:  'https://www.facebook.com/',
-  whatsapp:  'https://wa.me/56934580647',
+  whatsapp:  'https://wa.me/+56934580647',
 };
 
 function linkStyle(color, isActive) {
@@ -70,6 +70,8 @@ function SocialIcon({ href, icon, label, color }) {
 export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [scrolled,     setScrolled]     = useState(false);
+  const [mobileOpen,   setMobileOpen]   = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const { pathname } = useLocation();
   const isHome = pathname === '/';
 
@@ -81,7 +83,19 @@ export default function Header() {
     return () => window.removeEventListener('scroll', check);
   }, [isHome]);
 
-  const transparent = isHome && !scrolled;
+  // Cierra el menú móvil cada vez que cambia la ruta
+  useEffect(() => {
+    setMobileOpen(false);
+    setMobileAboutOpen(false);
+  }, [pathname]);
+
+  // Bloquea el scroll del body mientras el menú móvil está abierto
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
+  const transparent = isHome && !scrolled && !mobileOpen;
   const color = transparent ? 'rgba(255,255,255,0.9)' : '#000';
 
   return (
@@ -101,7 +115,7 @@ export default function Header() {
       }}>
 
         {/* ── NAV IZQUIERDA ── */}
-        <nav style={{ display:'flex', alignItems:'center', flex:1 }}>
+        <nav className="header-nav-desktop" style={{ display:'flex', alignItems:'center', flex:1 }}>
           <NavLink to="/" end style={({ isActive }) => linkStyle(color, isActive)}>HOME</NavLink>
           <NavLink to="/inventory" style={({ isActive }) => linkStyle(color, isActive)}>STOCK</NavLink>
           <NavLink to="/sell" style={({ isActive }) => linkStyle(color, isActive)}>VENDE TU VEHÍCULO</NavLink>
@@ -114,7 +128,7 @@ export default function Header() {
           top: 0, height: '113px', display: 'flex', alignItems: 'center', zIndex: 1,
         }}>
           <NavLink to="/" style={{ display:'block', textDecoration:'none', textAlign:'center' }}>
-            <div style={{
+            <div className="header-logo-text" style={{
               fontFamily: "'Playfair Display', serif",
               fontSize: 28, fontWeight: 400,
               letterSpacing: '4px', textTransform: 'uppercase',
@@ -155,7 +169,7 @@ export default function Header() {
         </div>
 
         {/* ── NAV DERECHA ── */}
-        <nav style={{ display:'flex', alignItems:'center', flex:1, justifyContent:'flex-end' }}>
+        <nav className="header-nav-desktop" style={{ display:'flex', alignItems:'center', flex:1, justifyContent:'flex-end' }}>
 
           <NavLink to="/insights" style={({ isActive }) => linkStyle(color, isActive)}>INSIGHTS</NavLink>
 
@@ -258,9 +272,182 @@ export default function Header() {
 
         </nav>
       </div>
+
+      {/* ── BOTÓN HAMBURGUESA (solo móvil) ── */}
+      <button
+        className="header-burger"
+        aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'}
+        aria-expanded={mobileOpen}
+        onClick={() => setMobileOpen(o => !o)}
+        style={{
+          position: 'absolute', top: '50%', right: '20px',
+          transform: 'translateY(-50%)',
+          width: 30, height: 22, background: 'none', border: 'none',
+          padding: 0, zIndex: 10001,
+          display: 'none', flexDirection: 'column', justifyContent: 'space-between',
+        }}
+      >
+        <span style={{
+          display: 'block', height: 2, width: '100%', background: mobileOpen ? '#000' : color,
+          transition: 'transform 0.25s ease, background 0.25s ease, opacity 0.25s ease',
+          transform: mobileOpen ? 'translateY(9.5px) rotate(45deg)' : 'none',
+        }} />
+        <span style={{
+          display: 'block', height: 2, width: '100%', background: mobileOpen ? '#000' : color,
+          transition: 'opacity 0.2s ease, background 0.25s ease',
+          opacity: mobileOpen ? 0 : 1,
+        }} />
+        <span style={{
+          display: 'block', height: 2, width: '100%', background: mobileOpen ? '#000' : color,
+          transition: 'transform 0.25s ease, background 0.25s ease',
+          transform: mobileOpen ? 'translateY(-9.5px) rotate(-45deg)' : 'none',
+        }} />
+      </button>
+
+      {/* ── OVERLAY + PANEL MENÚ MÓVIL ── */}
+      <div
+        className="header-mobile-overlay"
+        onClick={() => setMobileOpen(false)}
+        style={{
+          position: 'fixed', inset: 0, top: '113px',
+          background: 'rgba(0,0,0,0.4)',
+          opacity: mobileOpen ? 1 : 0,
+          visibility: mobileOpen ? 'visible' : 'hidden',
+          transition: 'opacity 0.25s ease, visibility 0.25s ease',
+          zIndex: 9999,
+        }}
+      />
+      <nav
+        className="header-mobile-panel"
+        style={{
+          position: 'fixed', top: '113px', right: 0, bottom: 0,
+          width: '82%', maxWidth: '340px',
+          background: '#fff',
+          boxShadow: '-4px 0 24px rgba(0,0,0,0.15)',
+          transform: mobileOpen ? 'translateX(0)' : 'translateX(100%)',
+          transition: 'transform 0.3s ease',
+          zIndex: 10000,
+          overflowY: 'auto',
+          display: 'flex', flexDirection: 'column',
+        }}
+      >
+        {[
+          ['/', 'HOME', true],
+          ['/inventory', 'STOCK'],
+          ['/sell', 'VENDE TU VEHÍCULO'],
+          ['/buy', 'COMPRA'],
+          ['/insights', 'INSIGHTS'],
+        ].map(([to, label, end]) => (
+          <NavLink
+            key={to}
+            to={to}
+            end={end}
+            style={({ isActive }) => ({
+              display: 'block', padding: '16px 24px',
+              fontFamily: "'Montserrat', sans-serif", fontSize: '12px',
+              fontWeight: 500, letterSpacing: '2px', textTransform: 'uppercase',
+              color: isActive ? '#000' : '#444',
+              background: isActive ? '#f7f7f7' : 'transparent',
+              borderBottom: '1px solid #eee', textDecoration: 'none',
+            })}
+          >
+            {label}
+          </NavLink>
+        ))}
+
+        {/* Sobre nosotros (acordeón) */}
+        <button
+          onClick={() => setMobileAboutOpen(o => !o)}
+          style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            padding: '16px 24px', width: '100%', textAlign: 'left',
+            fontFamily: "'Montserrat', sans-serif", fontSize: '12px',
+            fontWeight: 500, letterSpacing: '2px', textTransform: 'uppercase',
+            color: '#444', background: 'transparent', border: 'none',
+            borderBottom: '1px solid #eee',
+          }}
+        >
+          SOBRE NOSOTROS
+          <svg viewBox="0 0 10 6" width="10" height="6" style={{
+            fill: 'currentColor', flexShrink: 0,
+            transform: mobileAboutOpen ? 'rotate(180deg)' : 'none',
+            transition: 'transform 0.2s',
+          }}>
+            <path d="M5 6L0 0h10L5 6z"/>
+          </svg>
+        </button>
+        {mobileAboutOpen && [
+          ['/why-choose',      '¿Por qué escogernos?'],
+          ['/meet-the-team',   'Conoce al Equipo'],
+          ['/previously-sold', 'Vendidos'],
+          ['/buy',             'Financiamiento'],
+        ].map(([to, label]) => (
+          <NavLink
+            key={to}
+            to={to}
+            style={({ isActive }) => ({
+              display: 'block', padding: '14px 24px 14px 40px',
+              fontFamily: "'Montserrat', sans-serif", fontSize: '11px',
+              fontWeight: 500, letterSpacing: '1px', textTransform: 'uppercase',
+              color: isActive ? '#000' : '#777',
+              background: isActive ? '#f7f7f7' : '#fafafa',
+              borderBottom: '1px solid #eee', textDecoration: 'none',
+            })}
+          >
+            {label}
+          </NavLink>
+        ))}
+
+        <NavLink
+          to="/contact"
+          style={({ isActive }) => ({
+            display: 'block', padding: '16px 24px',
+            fontFamily: "'Montserrat', sans-serif", fontSize: '12px',
+            fontWeight: 500, letterSpacing: '2px', textTransform: 'uppercase',
+            color: isActive ? '#000' : '#444',
+            background: isActive ? '#f7f7f7' : 'transparent',
+            borderBottom: '1px solid #eee', textDecoration: 'none',
+          })}
+        >
+          CONTÁCTANOS
+        </NavLink>
+
+        <NavLink
+          to="/admin"
+          style={{
+            display: 'block', padding: '16px 24px',
+            fontFamily: "'Montserrat', sans-serif", fontSize: '11px',
+            fontWeight: 500, letterSpacing: '2px', textTransform: 'uppercase',
+            color: '#999', borderBottom: '1px solid #eee', textDecoration: 'none',
+          }}
+        >
+          ADMIN
+        </NavLink>
+
+        {/* Redes y teléfono */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '20px 24px' }}>
+          <SocialIcon href={SOCIAL.instagram} icon={<IgIcon />} label="Instagram" />
+          <SocialIcon href={SOCIAL.facebook}  icon={<FbIcon />} label="Facebook" />
+          <SocialIcon href={SOCIAL.whatsapp}  icon={<WaIcon />} label="WhatsApp" />
+        </div>
+        <a
+          href="tel:+56934580647"
+          style={{
+            display: 'flex', alignItems: 'center', gap: 10,
+            padding: '0 24px 24px',
+            fontFamily: "'Montserrat', sans-serif", fontSize: '13px',
+            fontWeight: 500, color: '#000', textDecoration: 'none',
+          }}
+        >
+          <PhoneIcon /> +56 9 3458 0647
+        </a>
+      </nav>
     </header>
   );
 }
+
+
+
 
 
 
