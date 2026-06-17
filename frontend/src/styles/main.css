@@ -1602,6 +1602,18 @@ textarea.form-input { height: 100px; resize: vertical; }
   .insights-featured-grid__side { flex: 1 1 100% !important; width: 100%; }
 }
 
+/* Secciones de videos y artículos de Insights.jsx: en escritorio no
+   necesitan padding lateral porque el max-width de 1600px ya deja
+   aire de sobra, pero en móvil el contenido llegaba hasta el borde
+   de la pantalla sin margen. Se agrega padding consistente con el
+   resto del sitio. */
+@media (max-width: 768px) {
+  .insights-section-wrap { padding-left: 25px !important; padding-right: 25px !important; }
+}
+@media (max-width: 480px) {
+  .insights-section-wrap { padding-left: 16px !important; padding-right: 16px !important; }
+}
+
 /* ══════════════════════════════════════════════════════════════
    POLICY PAGES (Privacy & Cookie)
    Mismo estilo que Romans International: page--disclaimer

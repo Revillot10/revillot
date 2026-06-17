@@ -364,7 +364,7 @@ export default function Insights() {
           Dots de navegación debajo.
           Botón "SEE ALL VIDEOS" con borde fino → link YouTube.
       ══════════════════════════════════════════════════════ */}
-      <div style={{ maxWidth: 1600, margin: '0 auto', padding: '0 0 20px' }}>
+      <div className="insights-section-wrap" style={{ maxWidth: 1600, margin: '0 auto', padding: '0 0 20px' }}>
 
         {/* Track contenedor */}
         <div style={{ overflow: 'hidden', position: 'relative' }}>
@@ -438,7 +438,7 @@ export default function Insights() {
           - Columna derecha (50%): 3 artículos PEQUEÑOS apilados (thumbnail 130px + texto)
           - Botón "SEE ALL ARTICLES" centrado
       ══════════════════════════════════════════════════════ */}
-      <div style={{ maxWidth: 1600, margin: '0 auto', padding: '0 0 80px' }}>
+      <div className="insights-section-wrap" style={{ maxWidth: 1600, margin: '0 auto', padding: '0 0 80px' }}>
 
         {/* Título sección */}
         <div style={{ textAlign: 'center', padding: '0 0 50px' }}>
