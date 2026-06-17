@@ -1,0 +1,28 @@
+# Dependencias
+node_modules/
+
+# Variables de entorno (NUNCA subir credenciales reales)
+.env
+.env.local
+.env.production
+backend/.env
+frontend/.env
+
+# Archivos subidos por usuarios (no deben versionarse)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Build de producción del frontend
+frontend/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
