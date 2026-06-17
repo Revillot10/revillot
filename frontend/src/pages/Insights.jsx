@@ -19,6 +19,10 @@ import { videosApi, articlesApi } from '../services/api';
 const HERO_IMG = '/images/insight.jpg';
 const YOUTUBE_CHANNEL = 'https://www.youtube.com/@RomansInternational';
 
+// Imagen del hero de Contáctanos — reutilizada como fondo del
+// placeholder "Próximamente" mientras no haya videos reales.
+const VIDEOS_PLACEHOLDER_IMG = '/images/contactanos.jpg';
+
 // ── Fallbacks ──────────────────────────────────────────────────
 const FALLBACK_ARTICLES = [
   {
@@ -401,8 +405,13 @@ export default function Insights() {
           </>
         ) : (
           /* Placeholder "Próximamente" — aún no se ha subido ningún
-             video propio al canal. */
-          <div className="insights-video-empty">
+             video propio al canal. Usa la misma imagen del hero de
+             Contáctanos como fondo. */
+          <div
+            className="insights-video-empty"
+            style={{ backgroundImage: `url(${VIDEOS_PLACEHOLDER_IMG})` }}
+          >
+            <div className="insights-video-empty__overlay" />
             <span className="material-icons insights-video-empty__icon">videocam</span>
             <div className="insights-video-empty__title">Próximamente</div>
             <div className="insights-video-empty__subtitle">

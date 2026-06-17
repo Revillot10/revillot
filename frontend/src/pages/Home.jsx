@@ -382,9 +382,14 @@ export default function Home() {
           {/* Video derecha — placeholder "Próximamente": el video real
               aún no ha sido grabado/subido. Se mantiene la misma
               estructura y proporciones para no romper el layout, solo
-              se reemplaza el contenido por un aviso profesional. */}
+              se reemplaza el contenido por un aviso profesional sobre
+              la misma imagen del hero de Home. */}
           <div className="video-right" data-reveal="right">
-            <div className="video-right__thumb video-right__thumb--placeholder">
+            <div
+              className="video-right__thumb video-right__thumb--placeholder"
+              style={{ backgroundImage: `url(${HERO_IMG})` }}
+            >
+              <div className="video-right__placeholder-overlay" />
               <span className="material-icons video-right__placeholder-icon">videocam</span>
               <div className="video-right__placeholder-text">Próximamente</div>
               <div className="video-right__placeholder-subtext">Estamos preparando contenido en video para ti</div>
