@@ -253,7 +253,7 @@ export default function Buy() {
           <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:10, fontWeight:500, letterSpacing:'6px', textTransform:'uppercase', color:'rgba(255,255,255,0.5)', marginBottom:22 }}>
             REVILLOT GARAGE
           </div>
-          <h1 style={{ fontFamily:'Montserrat,sans-serif', fontSize:60, fontWeight:200, letterSpacing:'8px', textTransform:'uppercase', color:'#fff', marginBottom:0, lineHeight:1.05 }}>
+          <h1 className="buy-hero-title" style={{ fontFamily:'Montserrat,sans-serif', fontSize:60, fontWeight:200, letterSpacing:'8px', textTransform:'uppercase', color:'#fff', marginBottom:0, lineHeight:1.05 }}>
             COMPRA<br /><span style={{ fontWeight:500 }}>& FINANCIAMIENTO</span>
           </h1>
           <div style={{ width:70, height:1, background:'rgba(255,255,255,0.5)', margin:'28px 0' }} />

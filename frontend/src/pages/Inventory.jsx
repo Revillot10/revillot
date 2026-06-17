@@ -30,6 +30,12 @@ export default function Inventory() {
     typeof window === 'undefined' || window.innerWidth > 1024
   );
   const [viewMode,      setViewMode]      = useState('grid'); // 'grid' | 'list'
+
+  // En móvil solo existe la vista de cuadrícula (igual a Romans).
+  // Si por algún motivo quedó en 'list', se fuerza a 'grid'.
+  useEffect(() => {
+    if (window.innerWidth <= 768 && viewMode === 'list') setViewMode('grid');
+  }, []);
   const [params,        setParams]        = useSearchParams();
   const navigate = useNavigate();
   const page      = Number(params.get('page'))     || 1;
@@ -378,7 +384,7 @@ export default function Inventory() {
           </button>
 
           {/* ── Controles: ORDER BY + PER PAGE + vistas ── */}
-          <div style={{
+          <div className="inventory-controls-bar" style={{
             display:'flex', alignItems:'center', justifyContent:'flex-end',
             padding:'12px 30px', gap:16,
             borderBottom:'1px solid #e0e0e0',
@@ -387,6 +393,7 @@ export default function Inventory() {
             <div style={{ display:'flex', alignItems:'center', gap:8 }}>
               <span style={controlLabelStyle}>ORDER BY</span>
               <select
+                className="inventory-select"
                 value={sort}
                 onChange={e => setFilter('sort', e.target.value)}
                 style={selectStyle}
@@ -401,6 +408,7 @@ export default function Inventory() {
             <div style={{ display:'flex', alignItems:'center', gap:8 }}>
               <span style={controlLabelStyle}>PER PAGE</span>
               <select
+                className="inventory-select"
                 value={limit}
                 onChange={e => setFilter('limit', e.target.value)}
                 style={selectStyle}
@@ -412,9 +420,10 @@ export default function Inventory() {
             </div>
 
             {/* ── Íconos vista lista / grilla ── */}
-            <div style={{ display:'flex', gap:4, marginLeft:8 }}>
-              {/* Vista lista (1 columna) */}
+            <div className="inventory-view-toggle" style={{ display:'flex', gap:4, marginLeft:8 }}>
+              {/* Vista lista (1 columna) — oculta en móvil, solo se usa cuadrícula */}
               <button
+                className="inventory-view-toggle__list-btn"
                 onClick={() => setViewMode('list')}
                 title="Vista lista"
                 style={{
@@ -805,11 +814,11 @@ function VehicleCardList({ vehicle, onClick }) {
             {[
               ['AÑO',          vehicle.year],
               ['COLOR',        vehicle.colour],
-              ['KILOMETRAJE',  vehicle.mileage != null ? `${Number(vehicle.mileage).toLocaleString('es-CL')} km` : null],
+              ['KM',           vehicle.mileage != null ? `${Number(vehicle.mileage).toLocaleString('es-CL')} km` : null],
               ['MOTOR',        vehicle.engine_description],
             ].filter(([, val]) => val).map(([label, val]) => (
               <div key={label} style={{ display:'flex', alignItems:'baseline', height:29 }}>
-                <span style={{
+                <span className="vehicle-list-item__spec-label" style={{
                   fontFamily:'Montserrat,sans-serif',
                   fontSize:16, fontWeight:500,
                   letterSpacing:'2.28px', textTransform:'uppercase', color:'#000',

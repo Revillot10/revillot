@@ -88,15 +88,16 @@ function PlayIcon() {
 }
 
 // ── Video Card ─────────────────────────────────────────────────
-function VideoCard({ video }) {
+function VideoCard({ video, visibleCards }) {
   const [hovered, setHovered] = useState(false);
   const open = () => window.open(`https://www.youtube.com/watch?v=${video.youtube_id}`, '_blank');
+  const gaps = visibleCards - 1;
 
   return (
     <div
       style={{
         flexShrink: 0,
-        width: 'calc((100% - 48px) / 3)',  /* 3 visibles, 2 gaps de 24px */
+        width: `calc((100% - ${gaps * 24}px) / ${visibleCards})`,
         cursor: 'pointer',
         position: 'relative',
         background: '#111',
@@ -226,6 +227,17 @@ export default function Insights() {
   const trackRef                        = useRef(null);
   const autoRef                         = useRef(null);
 
+  // Cuántas tarjetas se ven a la vez: 1 en móvil, 3 en escritorio/tablet.
+  // Se recalcula si el usuario rota el celular o cambia el tamaño de ventana.
+  const [visibleCards, setVisibleCards] = useState(
+    () => (typeof window !== 'undefined' && window.innerWidth <= 768) ? 1 : 3
+  );
+  useEffect(() => {
+    const onResize = () => setVisibleCards(window.innerWidth <= 768 ? 1 : 3);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   useEffect(() => {
     videosApi.getAll()
       .then(r => setVideos(Array.isArray(r.data) ? r.data : []))
@@ -239,21 +251,22 @@ export default function Insights() {
   const displayArticles = articles.length >= 1 ? articles : FALLBACK_ARTICLES;
 
   // ── Carrusel de videos ──────────────────────────────────────
-  // Se muestran 3 tarjetas. Cada "slide" avanza de 1 en 1.
-  // Total de slides = max(0, total - 2)  (último slide muestra los 3 últimos)
-  const totalSlides = Math.max(0, displayVideos.length - 2);
+  // Se muestran "visibleCards" tarjetas a la vez (3 en escritorio, 1 en móvil).
+  // Cada "slide" avanza de 1 en 1.
+  // Total de slides = max(0, total - (visibleCards - 1))
+  const totalSlides = Math.max(0, displayVideos.length - (visibleCards - 1));
 
   const goTo = useCallback((idx) => {
     const clamped = Math.max(0, Math.min(idx, totalSlides - 1));
     setCurrentDot(clamped);
     if (trackRef.current) {
-      // Cada tarjeta ocupa 1/3 del contenedor + gap 24px
-      // Desplazamos: idx * (width/3 + gap)  →  en CSS usamos translate
+      // Cada tarjeta ocupa 1/visibleCards del contenedor + gap 24px
       const containerW = trackRef.current.parentElement?.clientWidth || 0;
-      const cardW = (containerW - 48) / 3; // 2 gaps de 24px
+      const gaps = visibleCards - 1;
+      const cardW = (containerW - gaps * 24) / visibleCards;
       trackRef.current.style.transform = `translateX(-${clamped * (cardW + 24)}px)`;
     }
-  }, [totalSlides]);
+  }, [totalSlides, visibleCards]);
 
   // Auto-advance cada 4s
   useEffect(() => {
@@ -263,14 +276,15 @@ export default function Insights() {
         const next = prev >= totalSlides - 1 ? 0 : prev + 1;
         if (trackRef.current) {
           const containerW = trackRef.current.parentElement?.clientWidth || 0;
-          const cardW = (containerW - 48) / 3;
+          const gaps = visibleCards - 1;
+          const cardW = (containerW - gaps * 24) / visibleCards;
           trackRef.current.style.transform = `translateX(-${next * (cardW + 24)}px)`;
         }
         return next;
       });
     }, 4000);
     return () => clearInterval(autoRef.current);
-  }, [totalSlides]);
+  }, [totalSlides, visibleCards]);
 
   // ── Artículos ───────────────────────────────────────────────
   const featuredArticle = displayArticles[0] || null;
@@ -365,7 +379,7 @@ export default function Insights() {
             }}
           >
             {displayVideos.map(v => (
-              <VideoCard key={v.id} video={v} />
+              <VideoCard key={v.id} video={v} visibleCards={visibleCards} />
             ))}
           </div>
         </div>
@@ -444,10 +458,11 @@ export default function Insights() {
 
         {/* Grid artículos */}
         {featuredArticle && (
-          <div style={{ display: 'flex', gap: 50, alignItems: 'flex-start' }}>
+          <div className="insights-featured-grid" style={{ display: 'flex', gap: 50, alignItems: 'flex-start' }}>
 
             {/* ── Artículo grande (izquierda) ── */}
             <div
+              className="insights-featured-grid__main"
               style={{ flex: '0 0 calc(50% - 25px)', cursor: 'pointer' }}
               onClick={() => navigate(`/insights/${featuredArticle.slug}`)}
             >
@@ -492,7 +507,7 @@ export default function Insights() {
             </div>
 
             {/* ── Artículos pequeños (derecha) ── */}
-            <div style={{ flex: '0 0 calc(50% - 25px)' }}>
+            <div className="insights-featured-grid__side" style={{ flex: '0 0 calc(50% - 25px)' }}>
               {sideArticles.map(a => (
                 <ArticleCardSmall
                   key={a.id}

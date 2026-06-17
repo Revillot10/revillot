@@ -291,6 +291,7 @@ input, textarea, select { font-family: inherit; }
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  justify-content: center;  /* centra el conjunto cuando hay menos de 4 vehículos */
   gap: 30px;             /* Real: 30px entre cards */
   padding-bottom: 60px;
 }
@@ -303,7 +304,10 @@ input, textarea, select { font-family: inherit; }
 
 /* ── Contenedor de la tarjeta ────────────────────────────── */
 .vehicle-card {
-  flex: 1;
+  flex: 1 0 0;
+  max-width: 377px;  /* ancho de referencia con 4 tarjetas en 1600px;
+                        evita que una tarjeta se estire de forma
+                        desproporcionada cuando hay pocos vehículos */
   display: flex;
   flex-direction: column;
   background: var(--white);
@@ -1265,7 +1269,7 @@ textarea.form-input { height: 100px; resize: vertical; }
 
 @media (max-width: 1400px) {
   .vehicles-grid { flex-wrap: wrap; }
-  .vehicle-card { flex: 0 0 calc(50% - 15px); }
+  .vehicle-card { flex: 0 0 calc(50% - 15px); max-width: calc(50% - 15px); }
 }
 
 @media (max-width: 1100px) {
@@ -1316,6 +1320,18 @@ textarea.form-input { height: 100px; resize: vertical; }
     letter-spacing: 2.5px;
     text-transform: uppercase;
   }
+
+  /* Barra ORDER BY / PER PAGE / vistas: en pantallas angostas permite
+     que los controles pasen a una segunda línea en vez de cortarse,
+     y el botón de "vista lista" se oculta — en móvil solo existe
+     la vista de cuadrícula, igual a Romans. */
+  .inventory-controls-bar {
+    flex-wrap: wrap;
+    justify-content: flex-start !important;
+    row-gap: 10px !important;
+  }
+  .inventory-select { min-width: 0 !important; }
+  .inventory-view-toggle__list-btn { display: none !important; }
 
   .vehicle-detail-layout { grid-template-columns: 1fr; }
   .vehicle-detail-content { grid-template-columns: 1fr; }
@@ -1402,6 +1418,7 @@ textarea.form-input { height: 100px; resize: vertical; }
   .mailing-list { padding: 30px 0; }
   .admin-form { padding: 20px; }
   .admin-content { padding: 16px; }
+  .inventory-controls-bar { padding: 12px 16px !important; }
 }
 
 /* ── Evita el zoom automático de Safari/iOS al enfocar un campo.
@@ -1565,6 +1582,24 @@ textarea.form-input { height: 100px; resize: vertical; }
     border-bottom: 1px solid #e0e0e0;
     padding-left: 0 !important;
   }
+}
+
+/* Título "COMPRA & FINANCIAMIENTO" del hero de Buy.jsx — se reduce
+   progresivamente para que "FINANCIAMIENTO" no se corte en pantallas
+   angostas. */
+@media (max-width: 768px) {
+  .buy-hero-title { font-size: 38px !important; letter-spacing: 4px !important; }
+}
+@media (max-width: 480px) {
+  .buy-hero-title { font-size: 28px !important; letter-spacing: 2px !important; }
+}
+
+/* Artículos destacados de Insights.jsx: 1 grande + 3 pequeños en
+   columnas → se apilan en una sola columna en móvil, igual a Romans. */
+@media (max-width: 768px) {
+  .insights-featured-grid { flex-direction: column !important; gap: 36px !important; }
+  .insights-featured-grid__main,
+  .insights-featured-grid__side { flex: 1 1 100% !important; width: 100%; }
 }
 
 /* ══════════════════════════════════════════════════════════════
