@@ -1411,6 +1411,7 @@ textarea.form-input { height: 100px; resize: vertical; }
   .vehicles-carousel-arrow--right { right: 0; }
   .block-item { flex: 0 0 100%; }
   .block-item__images { height: 280px; }
+  .blocks-listing { padding-left: 25px !important; padding-right: 25px !important; }
   .specs-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .gallery-thumbs { grid-template-columns: repeat(4, 1fr); }
@@ -1426,6 +1427,7 @@ textarea.form-input { height: 100px; resize: vertical; }
   .admin-form { padding: 20px; }
   .admin-content { padding: 16px; }
   .inventory-controls-bar { padding: 12px 16px !important; }
+  .blocks-listing { padding-left: 16px !important; padding-right: 16px !important; }
 }
 
 /* ── Evita el zoom automático de Safari/iOS al enfocar un campo.
