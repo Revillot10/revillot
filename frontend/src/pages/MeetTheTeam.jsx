@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 
@@ -54,6 +55,7 @@ function Pill({ children }) {
 
 export default function MeetTheTeam() {
   useEffect(() => { document.title = 'Nuestro Equipo — Revillot Garage'; }, []);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -190,6 +192,7 @@ export default function MeetTheTeam() {
           </h3>
           <a
             href="/contact"
+            onClick={e => { e.preventDefault(); navigate('/contact'); }}
             style={{
               display: 'inline-block',
               fontFamily: 'Montserrat,sans-serif',

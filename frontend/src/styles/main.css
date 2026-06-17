@@ -275,6 +275,18 @@ input, textarea, select { font-family: inherit; }
 /* Vehicles grid — Real: display=block con float, o flex sin gap */
 /* Usamos flex sin gap para replicar los 4 en fila sin separación */
 /* Vehicles grid — 30px gap entre cards (medido del sitio real) */
+
+/* Carrusel de "Últimas Incorporaciones" — en escritorio se ve igual
+   que siempre (fila estática); en móvil se vuelve un carrusel con
+   scroll horizontal y flechas, igual al comportamiento de Romans. */
+.vehicles-carousel-wrap {
+  position: relative;
+}
+
+.vehicles-carousel-arrow {
+  display: none; /* se activan solo en móvil, ver media query abajo */
+}
+
 .vehicles-grid {
   display: flex;
   flex-direction: row;
@@ -892,6 +904,13 @@ input, textarea, select { font-family: inherit; }
 
 .sidebar-btn-all:hover { background: #333; }
 
+/* ── Inventory (componente real, JS): botón de filtros móvil,
+   overlay y comportamiento de panel deslizante del sidebar.
+   En escritorio el sidebar siempre se ve fijo a la izquierda;
+   en móvil se oculta por defecto y aparece como panel superpuesto. ── */
+.inventory-mobile-filters-btn { display: none; }
+.inventory-sidebar-overlay { display: none; }
+
 .sidebar-section-title {
   font-family: var(--f-head);
   font-size: 9px;
@@ -1258,6 +1277,46 @@ textarea.form-input { height: 100px; resize: vertical; }
 @media (max-width: 1024px) {
   .inventory-layout { grid-template-columns: 1fr; }
   .inventory-sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--gray-border); }
+
+  /* Inventory real: el sidebar se convierte en panel superpuesto,
+     el hero queda siempre visible primero, y aparece el botón
+     "FILTRAR STOCK" para abrirlo — igual al patrón de Romans. */
+  .inventory-flex-layout { flex-direction: column; }
+  .inventory-flex-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0;
+    bottom: 0;
+    width: 85% !important;
+    max-width: 340px;
+    height: 100vh !important;
+    z-index: 10000 !important;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.25) !important;
+  }
+  .inventory-sidebar-overlay {
+    display: block;
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.45);
+  }
+  .inventory-mobile-filters-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: calc(100% - 50px);
+    margin: 24px 25px;
+    padding: 14px;
+    background: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: var(--f-head);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+
   .vehicle-detail-layout { grid-template-columns: 1fr; }
   .vehicle-detail-content { grid-template-columns: 1fr; }
   .enquiry-box { position: static; }
@@ -1282,6 +1341,7 @@ textarea.form-input { height: 100px; resize: vertical; }
   .insight-video__inner { flex-direction: column; }
   .insights-left, .video-right { flex: none; }
   .video-right { padding-top: 0; }
+  .video-right__thumb { flex: none; min-height: 0; aspect-ratio: 16/9; }
 }
 
 @media (max-width: 900px) {
@@ -1291,8 +1351,42 @@ textarea.form-input { height: 100px; resize: vertical; }
 }
 
 @media (max-width: 768px) {
-  .vehicles-grid { flex-wrap: wrap; }
-  .vehicle-card { flex: 0 0 100%; border: none; }
+  .vehicles-carousel-wrap { padding: 0 36px; }
+  .vehicles-grid {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 24px;
+    /* Oculta la barra de scroll visual sin quitar la funcionalidad */
+    scrollbar-width: none;
+  }
+  .vehicles-grid::-webkit-scrollbar { display: none; }
+  .vehicle-card {
+    flex: 0 0 78%;
+    max-width: 320px;
+    border: none;
+    scroll-snap-align: start;
+  }
+  .vehicles-carousel-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 35%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--gray-border);
+    background: #fff;
+    color: #000;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 5;
+  }
+  .vehicles-carousel-arrow--left  { left: 0; }
+  .vehicles-carousel-arrow--right { right: 0; }
   .block-item { flex: 0 0 100%; }
   .specs-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }

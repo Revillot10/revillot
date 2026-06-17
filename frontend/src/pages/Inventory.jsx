@@ -26,7 +26,9 @@ export default function Inventory() {
   const [brands,        setBrands]        = useState([]);
   const [pagination,    setPagination]    = useState({});
   const [loading,       setLoading]       = useState(true);
-  const [sidebarOpen,   setSidebarOpen]   = useState(true);
+  const [sidebarOpen,   setSidebarOpen]   = useState(() =>
+    typeof window === 'undefined' || window.innerWidth > 1024
+  );
   const [viewMode,      setViewMode]      = useState('grid'); // 'grid' | 'list'
   const [params,        setParams]        = useSearchParams();
   const navigate = useNavigate();
@@ -72,7 +74,7 @@ export default function Inventory() {
     <>
       <Header />
 
-      <div style={{ display:'flex', minHeight:'calc(100vh - 113px)' }}>
+      <div className="inventory-flex-layout" style={{ display:'flex', minHeight:'calc(100vh - 113px)' }}>
 
         {/* ════════════════════════════════════════════
             SIDEBAR — idéntico a Romans International
@@ -81,7 +83,13 @@ export default function Inventory() {
             box-shadow=rgba(0,0,0,0.2) 4px 4px 10px
         ════════════════════════════════════════════ */}
         {sidebarOpen && (
-          <aside style={{
+          <div
+            className="inventory-sidebar-overlay"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
+        {sidebarOpen && (
+          <aside className="inventory-flex-sidebar" style={{
             width: 370,
             flexShrink: 0,
             background: '#fff',
@@ -311,7 +319,7 @@ export default function Inventory() {
         {/* ════════════════════════════════════════════
             ÁREA PRINCIPAL
         ════════════════════════════════════════════ */}
-        <main style={{ flex:1, minWidth:0 }}>
+        <main className="inventory-flex-main" style={{ flex:1, minWidth:0 }}>
 
           {/* ── HERO con imagen y título superpuesto ── */}
           <div style={{ width:'100%', height:380, overflow:'hidden', background:'#111', position:'relative' }}>
@@ -357,6 +365,17 @@ export default function Inventory() {
               </button>
             </div>
           </div>
+
+          {/* Botón de filtros — visible solo en móvil/tablet, debajo del hero.
+              Reemplaza al sidebar lateral fijo cuando no hay espacio en pantalla. */}
+          <button
+            type="button"
+            className="inventory-mobile-filters-btn"
+            onClick={() => setSidebarOpen(true)}
+          >
+            <span className="material-icons" style={{ fontSize:16 }}>tune</span>
+            FILTRAR STOCK
+          </button>
 
           {/* ── Controles: ORDER BY + PER PAGE + vistas ── */}
           <div style={{

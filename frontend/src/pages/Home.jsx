@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
@@ -58,40 +58,28 @@ const ABOUT_LINKS = [
 ];
 
 // ── Fallback vehicles mientras carga BD ────────────────────────
-const FALLBACK_VEHICLES = [
-  {
-    id: 'f1', brand_name: 'McLaren', model: '620R', variant: '',
-    year: 2021, colour: 'Onyx Black', mileage: 5258, price: null,
-    images: [{ url: 'https://images.67degreescdn.co.uk/B5pqMK_vCE9s9dzuCYqI9nyoDC0=/370x250/smart/137/3/635248/a15a68a2075ebe9135d1_lf21eom-01.jpg', isPrimary: true }],
-  },
-  {
-    id: 'f2', brand_name: 'Ferrari', model: '458 Speciale', variant: 'Aperta',
-    year: 2015, colour: 'Bianco Italia', mileage: 146, price: null,
-    images: [{ url: 'https://images.67degreescdn.co.uk/psh4u1hrnc4Ao8YUIyCuYqrni_k=/370x250/smart/137/3/634178/18808d4eea863fa511cd_sk65ado-01.jpg', isPrimary: true }],
-  },
-  {
-    id: 'f3', brand_name: 'Porsche', model: '911 GT3', variant: '(992)',
-    year: 2023, colour: 'Arctic Grey', mileage: 2854, price: 169950,
-    images: [{ url: 'https://images.67degreescdn.co.uk/-YalMrlLwEeiMD7gnaHcegluo_U=/370x250/smart/137/3/634168/85940197e570c1a3c3ca_la73mby-01.jpg', isPrimary: true }],
-  },
-  {
-    id: 'f4', brand_name: 'Land Rover', model: 'Range Rover', variant: 'P550e AUTOBIOGRAPHY',
-    year: 2024, colour: 'Constellation Blue', mileage: 7390, price: 107950,
-    images: [{ url: 'https://images.67degreescdn.co.uk/fqVDLQ-5Hg2T4EG-XKfp6i-5XWs=/370x250/smart/137/3/634080/80078b9d56ed0f5de6c4_kp24cpf-01.jpg', isPrimary: true }],
-  },
-];
-
 export default function Home() {
   useEffect(() => { document.title = 'Revillot Garage — Vehículos Premium en Curicó'; }, []);
   const [vehicles, setVehicles] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    vehiclesApi.getAll({ status: 'available', limit: 4, sort: 'newest', featured: 'true' })
+    vehiclesApi.getAll({ status: 'available', limit: 4, sort: 'newest' })
       .then(res => setVehicles(res.data.vehicles))
       .catch(() => {});
   }, []);
 
-  const displayVehicles = vehicles.length > 0 ? vehicles : FALLBACK_VEHICLES;
+  const displayVehicles = vehicles;
+
+  // Carrusel de "Últimas Incorporaciones" en móvil — desplaza una tarjeta
+  // a la vez al usar las flechas, igual que el comportamiento de Romans.
+  const carouselRef = useRef(null);
+  const scrollCarousel = (dir) => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const card = el.querySelector('.vehicle-card');
+    const step = card ? card.getBoundingClientRect().width + 16 : el.clientWidth * 0.85;
+    el.scrollBy({ left: dir * step, behavior: 'smooth' });
+  };
 
   return (
     <>
@@ -155,6 +143,7 @@ export default function Home() {
           <div className="hero-cta" style={{ display: 'flex', gap: 14 }}>
             <a
               href="/inventory"
+              onClick={e => { e.preventDefault(); navigate('/inventory'); }}
               style={{
                 fontFamily: "'Montserrat', sans-serif",
                 fontSize: 10, fontWeight: 500,
@@ -171,6 +160,7 @@ export default function Home() {
             </a>
             <a
               href="/contact"
+              onClick={e => { e.preventDefault(); navigate('/contact'); }}
               style={{
                 fontFamily: "'Montserrat', sans-serif",
                 fontSize: 10, fontWeight: 500,
@@ -300,11 +290,31 @@ export default function Home() {
             {/* Línea decorativa exacta del sitio real */}
             <div className="listing-heading__deco" />
           </div>
-          <div className="vehicles-grid">
-            {displayVehicles.map(v => (
-              <VehicleCard key={v.id} vehicle={v} />
-            ))}
-          </div>
+          {displayVehicles.length > 0 ? (
+            <div className="vehicles-carousel-wrap">
+              <button
+                type="button"
+                className="vehicles-carousel-arrow vehicles-carousel-arrow--left"
+                aria-label="Anterior"
+                onClick={() => scrollCarousel(-1)}
+              >‹</button>
+              <div className="vehicles-grid" ref={carouselRef}>
+                {displayVehicles.map(v => (
+                  <VehicleCard key={v.id} vehicle={v} />
+                ))}
+              </div>
+              <button
+                type="button"
+                className="vehicles-carousel-arrow vehicles-carousel-arrow--right"
+                aria-label="Siguiente"
+                onClick={() => scrollCarousel(1)}
+              >›</button>
+            </div>
+          ) : (
+            <div style={{ textAlign: 'center', padding: '20px 0 60px', fontFamily: 'Montserrat,sans-serif', fontSize: 11, letterSpacing: '2px', textTransform: 'uppercase', color: '#999' }}>
+              Próximamente nuevas incorporaciones
+            </div>
+          )}
         </div>
       </div>
 
