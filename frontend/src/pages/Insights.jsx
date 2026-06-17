@@ -20,39 +20,6 @@ const HERO_IMG = '/images/insight.jpg';
 const YOUTUBE_CHANNEL = 'https://www.youtube.com/@RomansInternational';
 
 // ── Fallbacks ──────────────────────────────────────────────────
-const FALLBACK_VIDEOS = [
-  {
-    id: 'v1',
-    title: 'Revillot Garage — Showroom Tour 2025',
-    youtube_id: 'RUCF5qeoljA',
-    thumbnail_url: 'https://i.ytimg.com/vi_webp/RUCF5qeoljA/maxresdefault.webp',
-  },
-  {
-    id: 'v2',
-    title: 'Porsche 911 Turbo S — Guía de Compra',
-    youtube_id: 'TurboS2025',
-    thumbnail_url: 'https://images.67degreescdn.co.uk/431_Jd17-PJQmQJIh6F66PtxNxs=/409x230/smart/137/6/174207981767d60749decfe_turbo-s-buying-guide.jpg',
-  },
-  {
-    id: 'v3',
-    title: 'Ferrari 812 Superfast — Todo lo que debes saber',
-    youtube_id: 'Ferrari812BG',
-    thumbnail_url: 'https://images.67degreescdn.co.uk/DMElrx-OUXA31wA-Vzi-I0eqXzk=/409x230/smart/137/6/174211551167d692b7acd15_812-buying-guide.jpg',
-  },
-  {
-    id: 'v4',
-    title: 'McLaren P1 vs Porsche 918 — Comparativa',
-    youtube_id: 'P1vs918comp',
-    thumbnail_url: 'https://images.67degreescdn.co.uk/xbu1d-RXVKS-WSgsfrl_k3B-tCY=/409x230/smart/137/6/172406150366c3173f6ab91_img-7939.png',
-  },
-  {
-    id: 'v5',
-    title: 'Lamborghini Huracán STO — Análisis completo',
-    youtube_id: 'HuracanSTO',
-    thumbnail_url: 'https://images.67degreescdn.co.uk/eXYiCx4AFo1x6vhPajTk-P5_UFs=/370x600/smart/137/6/1680710816642d9ca0a8ba1_news-events.jpg',
-  },
-];
-
 const FALLBACK_ARTICLES = [
   {
     id: 'a1',
@@ -247,7 +214,7 @@ export default function Insights() {
       .catch(() => {});
   }, []);
 
-  const displayVideos   = videos.length   >= 1 ? videos   : FALLBACK_VIDEOS;
+  const displayVideos   = videos;
   const displayArticles = articles.length >= 1 ? articles : FALLBACK_ARTICLES;
 
   // ── Carrusel de videos ──────────────────────────────────────
@@ -366,69 +333,83 @@ export default function Insights() {
       ══════════════════════════════════════════════════════ */}
       <div className="insights-section-wrap" style={{ maxWidth: 1600, margin: '0 auto', padding: '0 0 20px' }}>
 
-        {/* Track contenedor */}
-        <div style={{ overflow: 'hidden', position: 'relative' }}>
-          <div
-            ref={trackRef}
-            style={{
-              display: 'flex',
-              gap: 24,
-              transition: 'transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94)',
-              willChange: 'transform',
-              padding: '0 0 8px',
-            }}
-          >
-            {displayVideos.map(v => (
-              <VideoCard key={v.id} video={v} visibleCards={visibleCards} />
-            ))}
-          </div>
-        </div>
-
-        {/* Dots */}
-        {totalSlides > 1 && (
-          <div style={{
-            display: 'flex', justifyContent: 'center', alignItems: 'center',
-            gap: 10, padding: '20px 0 0',
-          }}>
-            {Array.from({ length: totalSlides }).map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
+        {displayVideos.length > 0 ? (
+          <>
+            {/* Track contenedor */}
+            <div style={{ overflow: 'hidden', position: 'relative' }}>
+              <div
+                ref={trackRef}
                 style={{
-                  width: i === currentDot ? 20 : 8,
-                  height: 8,
-                  borderRadius: 4,
-                  background: i === currentDot ? '#000' : '#ccc',
-                  border: 'none', cursor: 'pointer', padding: 0,
-                  transition: 'width 0.3s ease, background 0.3s ease',
+                  display: 'flex',
+                  gap: 24,
+                  transition: 'transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94)',
+                  willChange: 'transform',
+                  padding: '0 0 8px',
                 }}
-              />
-            ))}
+              >
+                {displayVideos.map(v => (
+                  <VideoCard key={v.id} video={v} visibleCards={visibleCards} />
+                ))}
+              </div>
+            </div>
+
+            {/* Dots */}
+            {totalSlides > 1 && (
+              <div style={{
+                display: 'flex', justifyContent: 'center', alignItems: 'center',
+                gap: 10, padding: '20px 0 0',
+              }}>
+                {Array.from({ length: totalSlides }).map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => goTo(i)}
+                    style={{
+                      width: i === currentDot ? 20 : 8,
+                      height: 8,
+                      borderRadius: 4,
+                      background: i === currentDot ? '#000' : '#ccc',
+                      border: 'none', cursor: 'pointer', padding: 0,
+                      transition: 'width 0.3s ease, background 0.3s ease',
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+
+            {/* Botón VER TODOS */}
+            <div style={{ display: 'flex', justifyContent: 'center', padding: '32px 0 60px' }}>
+              <a
+                href={YOUTUBE_CHANNEL}
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  display: 'inline-block',
+                  padding: '14px 40px',
+                  border: '1px solid #000',
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: 11, fontWeight: 500,
+                  letterSpacing: '3px', textTransform: 'uppercase',
+                  color: '#000', textDecoration: 'none',
+                  transition: 'background 0.2s, color 0.2s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.background = '#000'; e.currentTarget.style.color = '#fff'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#000'; }}
+              >
+                VER TODOS LOS VIDEOS
+              </a>
+            </div>
+          </>
+        ) : (
+          /* Placeholder "Próximamente" — aún no se ha subido ningún
+             video propio al canal. */
+          <div className="insights-video-empty">
+            <span className="material-icons insights-video-empty__icon">videocam</span>
+            <div className="insights-video-empty__title">Próximamente</div>
+            <div className="insights-video-empty__subtitle">
+              Estamos preparando nuestro primer contenido en video. Vuelve pronto.
+            </div>
           </div>
         )}
-
-        {/* Botón VER TODOS */}
-        <div style={{ display: 'flex', justifyContent: 'center', padding: '32px 0 60px' }}>
-          <a
-            href={YOUTUBE_CHANNEL}
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              display: 'inline-block',
-              padding: '14px 40px',
-              border: '1px solid #000',
-              fontFamily: "'Montserrat', sans-serif",
-              fontSize: 11, fontWeight: 500,
-              letterSpacing: '3px', textTransform: 'uppercase',
-              color: '#000', textDecoration: 'none',
-              transition: 'background 0.2s, color 0.2s',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#000'; e.currentTarget.style.color = '#fff'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#000'; }}
-          >
-            VER TODOS LOS VIDEOS
-          </a>
-        </div>
       </div>
 
       {/* ══ 4. FEATURED ARTICLES ═════════════════════════════

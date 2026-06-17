@@ -15,10 +15,6 @@ const HERO_IMG = '/images/home.webp';
 // Insight (greyscale image del lado izquierdo)
 const INSIGHT_IMG = 'https://images.67degreescdn.co.uk/ydyiHXDqolkGpRvaLuxGAtQRNxg=/137/6/1695044275650852b31703e_insights-greyscale.png';
 
-// Video thumbnail YouTube
-const VIDEO_THUMB = 'https://i.ytimg.com/vi_webp/RUCF5qeoljA/maxresdefault.webp';
-const VIDEO_URL   = 'https://youtu.be/RUCF5qeoljA';
-
 // ── Bloques-1 (Quick Links) — imágenes exactas del sitio real ──
 const QUICK_LINKS = [
   {
@@ -383,30 +379,20 @@ export default function Home() {
             </a>
           </div>
 
-          {/* Video derecha */}
+          {/* Video derecha — placeholder "Próximamente": el video real
+              aún no ha sido grabado/subido. Se mantiene la misma
+              estructura y proporciones para no romper el layout, solo
+              se reemplaza el contenido por un aviso profesional. */}
           <div className="video-right" data-reveal="right">
-            <div className="video-right__thumb">
-              <img
-                src={VIDEO_THUMB}
-                alt="Revillot Garage"
-                loading="lazy"
-              />
-              <div
-                className="video-right__overlay"
-                onClick={() => window.open(VIDEO_URL, '_blank')}
-              >
-                <div className="play-btn">
-                  {/* Botón play estilo YouTube */}
-                  <svg width="24" height="17" viewBox="0 0 24 17">
-                    <path d="M23.5 2.7c-.3-1-1.1-1.8-2.1-2.1C19.5.1 12 .1 12 .1S4.5.1 2.6.6c-1 .3-1.8 1.1-2.1 2.1C0 4.6 0 8.5 0 8.5s0 3.9.5 5.8c.3 1 1.1 1.8 2.1 2.1C4.5 16.9 12 16.9 12 16.9s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 12.1V5l6.3 3.5-6.3 3.6z"/>
-                  </svg>
-                </div>
-              </div>
+            <div className="video-right__thumb video-right__thumb--placeholder">
+              <span className="material-icons video-right__placeholder-icon">videocam</span>
+              <div className="video-right__placeholder-text">Próximamente</div>
+              <div className="video-right__placeholder-subtext">Estamos preparando contenido en video para ti</div>
             </div>
             <div className="video-right__info">
               <div className="video-right__label">Video Destacado:</div>
               <div className="video-right__title">
-                Revillot Garage — Tu mejor opción en vehículos premium en Chile
+                Nuevo video muy pronto
               </div>
             </div>
           </div>

@@ -609,6 +609,79 @@ input, textarea, select { font-family: inherit; }
   min-height: 300px;
 }
 
+/* Placeholder "Próximamente" — reemplaza temporalmente al video real
+   mientras no se haya grabado/subido contenido propio. */
+.video-right__thumb--placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: #0a0a0a;
+  text-align: center;
+  padding: 30px;
+}
+
+.video-right__placeholder-icon {
+  font-size: 40px !important;
+  color: rgba(255,255,255,0.35);
+}
+
+.video-right__placeholder-text {
+  font-family: var(--f-head);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+}
+
+.video-right__placeholder-subtext {
+  font-family: var(--f-body);
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.4);
+  max-width: 280px;
+}
+
+/* Placeholder "Próximamente" del carrusel de videos en Insights.jsx
+   — mismo propósito que el de Home, pero sobre fondo blanco ya que
+   esta sección no vive dentro de una tarjeta oscura. */
+.insights-video-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 70px 30px;
+  background: #fafafa;
+  border: 1px solid #ececec;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.insights-video-empty__icon {
+  font-size: 40px !important;
+  color: #bbb;
+}
+
+.insights-video-empty__title {
+  font-family: var(--f-head);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #444;
+}
+
+.insights-video-empty__subtitle {
+  font-family: var(--f-body);
+  font-size: 14px;
+  font-weight: 300;
+  color: #999;
+  max-width: 360px;
+}
+
 .video-right__thumb img {
   width: 100%;
   height: 100%;
