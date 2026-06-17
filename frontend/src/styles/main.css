@@ -9,11 +9,17 @@
 
 /* ── RESET ────────────────────────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html { scroll-behavior: smooth; }
 
 /* Red de seguridad: evita scroll horizontal accidental si algún
-   elemento puntual se desborda del viewport en pantallas angostas. */
-body { overflow-x: hidden; }
+   elemento puntual se desborda del viewport en pantallas angostas.
+   Se usa "clip" en vez de "hidden": "hidden" convierte a html/body
+   en un contenedor con overflow no-visible, lo que rompe el
+   position:sticky de cualquier elemento descendiente (como el
+   Header en las páginas que no son Home). "clip" recorta el
+   desborde visual igual que "hidden", pero no participa en el
+   cálculo de "contenedor de scroll" que sticky necesita evitar. */
+body { overflow-x: clip; }
 
 :root {
   --black:       #000;
@@ -1404,6 +1410,7 @@ textarea.form-input { height: 100px; resize: vertical; }
   .vehicles-carousel-arrow--left  { left: 0; }
   .vehicles-carousel-arrow--right { right: 0; }
   .block-item { flex: 0 0 100%; }
+  .block-item__images { height: 280px; }
   .specs-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .gallery-thumbs { grid-template-columns: repeat(4, 1fr); }
