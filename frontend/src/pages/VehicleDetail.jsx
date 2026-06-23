@@ -250,14 +250,6 @@ export default function VehicleDetail() {
   const navigate  = useNavigate();
   const [data,    setData]    = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' && window.innerWidth <= 1024);
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 1024);
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
-
   useEffect(() => {
     setLoading(true);
     vehiclesApi.getOne(id)
@@ -348,8 +340,8 @@ export default function VehicleDetail() {
         margin: '0 auto',
         padding: 'clamp(20px, 4vw, 40px) clamp(16px, 3vw, 30px)',
         display: 'grid',
-        gridTemplateColumns: isMobile ? '1fr' : '1fr 380px',
-        gap: isMobile ? 24 : 48,
+        gridTemplateColumns: '1fr 380px',
+        gap: 48,
         alignItems: 'start',
       }}>
 
@@ -374,20 +366,17 @@ export default function VehicleDetail() {
               </h2>
               <div className="specs-grid-detail" style={{
                 display: 'grid',
-                gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+                gridTemplateColumns: 'repeat(2, 1fr)',
                 gap: 0,
               }}>
                 {specs.map(([label, val], i) => (
-                  <div key={label} style={{
+                  <div key={label} className={i % 2 === 0 ? 'spec-row spec-row--left' : 'spec-row spec-row--right'} style={{
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'flex-start',
                     gap: 12,
                     padding: '12px 0',
                     borderBottom: '1px solid #f2f2f2',
-                    paddingRight: (!isMobile && i % 2 === 0) ? 30 : 0,
-                    paddingLeft:  (!isMobile && i % 2 === 1) ? 30 : 0,
-                    borderLeft:   (!isMobile && i % 2 === 1) ? '1px solid #f2f2f2' : 'none',
                     minWidth: 0,
                   }}>
                     <span style={{
@@ -431,7 +420,7 @@ export default function VehicleDetail() {
         </div>
 
         {/* ════ COLUMNA DERECHA — sticky ═════════════════════ */}
-        <div style={{ position: isMobile ? 'static' : 'sticky', top: 130 }}>
+        <div className="vd-right-col" style={{ position: 'sticky', top: 130 }}>
 
           {/* Nombre + precio */}
           <div style={{ marginBottom: 28, paddingBottom: 24, borderBottom: '1px solid #e8e8e8' }}>

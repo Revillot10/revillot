@@ -1607,22 +1607,36 @@ html, body, #root {
 }
 
 /* ── FICHA DE VEHÍCULO ── */
+
+/* Desktop: spec rows con separador central */
+.spec-row--left  { padding-right: 30px; }
+.spec-row--right { padding-left: 30px; border-left: 1px solid #f2f2f2; }
+
 @media (max-width: 1024px) {
-  .vd-main-layout { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .vd-main-layout {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+  /* Columna derecha deja de ser sticky en tablet/móvil */
+  .vd-right-col {
+    position: static !important;
+  }
   .related-vehicles-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
+
 @media (max-width: 768px) {
-  .vd-main-layout { padding: 20px 16px !important; }
-  .specs-grid-detail {
-    grid-template-columns: 1fr !important;
-  }
-  /* En móvil, cada spec ocupa ancho completo sin padding lateral ni borde izquierdo */
-  .specs-grid-detail > div {
+  .vd-main-layout { padding: 16px !important; }
+
+  /* Specs: una columna */
+  .specs-grid-detail { grid-template-columns: 1fr !important; }
+  .spec-row--left,
+  .spec-row--right {
     padding-right: 0 !important;
     padding-left: 0 !important;
     border-left: none !important;
   }
 }
+
 @media (max-width: 560px) {
   .specs-grid-detail { grid-template-columns: 1fr !important; }
   .related-vehicles-grid { grid-template-columns: 1fr !important; }
