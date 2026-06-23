@@ -328,7 +328,9 @@ export default function Header() {
           transition: 'transform 0.3s ease',
           zIndex: 10000,
           overflowY: 'auto',
+          overflowX: 'hidden',
           display: 'flex', flexDirection: 'column',
+          visibility: mobileOpen ? 'visible' : 'hidden',
         }}
       >
         {[

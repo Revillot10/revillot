@@ -1575,6 +1575,11 @@ html, body, #root {
   max-width: 100%;
 }
 
+/* Panel móvil: asegurar que no cause scroll horizontal cuando está cerrado */
+.header-mobile-panel {
+  contain: layout style;
+}
+
 /* ── FOOTER RESPONSIVO ── */
 @media (max-width: 900px) {
   .footer-grid { grid-template-columns: 1fr 1fr !important; padding: 32px 24px 20px !important; }
