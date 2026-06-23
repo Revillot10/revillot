@@ -250,6 +250,13 @@ export default function VehicleDetail() {
   const navigate  = useNavigate();
   const [data,    setData]    = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' && window.innerWidth <= 1024);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 1024);
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -287,12 +294,6 @@ export default function VehicleDetail() {
   if (!data) return null;
 
   const { vehicle, related } = data;
-  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' && window.innerWidth <= 1024);
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 1024);
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
 
   const specs = [
     ['Precio',       fmtPrice(vehicle.price)],
