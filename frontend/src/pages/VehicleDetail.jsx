@@ -137,14 +137,14 @@ function Gallery({ images }) {
           onClick={() => setZoomed(false)}
           style={{
             position: 'fixed', inset: 0, zIndex: 9999,
-            background: 'rgba(0,0,0,0.93)',
+            background: 'rgba(0,0,0,0.96)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            cursor: 'zoom-out',
+            cursor: 'zoom-out', padding: '16px',
           }}
         >
           <img
             src={images[current]?.url} alt=""
-            style={{ maxWidth: '92vw', maxHeight: '90vh', objectFit: 'contain', display: 'block' }}
+            style={{ maxWidth: '95vw', maxHeight: '95vh', width: 'auto', height: 'auto', objectFit: 'contain', display: 'block' }}
           />
           {total > 1 && (
             <>
@@ -311,7 +311,7 @@ export default function VehicleDetail() {
 
       {/* ── Breadcrumb ── */}
       <div style={{
-        padding: '12px 30px',
+        padding: '12px 16px',
         borderBottom: '1px solid #f0f0f0',
         fontFamily: 'Montserrat,sans-serif', fontSize: 10,
         fontWeight: 400, letterSpacing: '1px', color: '#999',
@@ -336,7 +336,7 @@ export default function VehicleDetail() {
       <div className="vd-main-layout" style={{
         maxWidth: 1440,
         margin: '0 auto',
-        padding: '40px 30px',
+        padding: 'clamp(20px, 4vw, 40px) clamp(16px, 3vw, 30px)',
         display: 'grid',
         gridTemplateColumns: '1fr 380px',
         gap: 48,
@@ -374,8 +374,8 @@ export default function VehicleDetail() {
                     alignItems: 'baseline',
                     padding: '12px 0',
                     borderBottom: '1px solid #f2f2f2',
-                    paddingRight: i % 2 === 0 ? 30 : 0,
-                    paddingLeft:  i % 2 === 1 ? 30 : 0,
+                    paddingRight: i % 2 === 0 ? 'clamp(10px, 2vw, 30px)' : 0,
+                    paddingLeft:  i % 2 === 1 ? 'clamp(10px, 2vw, 30px)' : 0,
                     borderLeft:   i % 2 === 1 ? '1px solid #f2f2f2' : 'none',
                   }}>
                     <span style={{
@@ -503,11 +503,11 @@ export default function VehicleDetail() {
               <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:9, fontWeight:500, letterSpacing:'2px', textTransform:'uppercase', color:'#aaa', marginBottom:4 }}>
                 O llámanos
               </div>
-              <a href="tel:+56912345678" style={{
+              <a href="tel:+56934580647" style={{
                 fontFamily: 'Montserrat,sans-serif', fontSize: 18,
                 fontWeight: 400, letterSpacing: '2px', color: '#000',
                 textDecoration: 'none',
-              }}>+56 9 1234 5678</a>
+              }}>+56 9 3458 0647</a>
             </div>
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.8">
               <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12 19.79 19.79 0 011.61 3.41 2 2 0 013.6 1.23h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.82a16 16 0 006 6l.92-.92a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
@@ -516,7 +516,7 @@ export default function VehicleDetail() {
 
           {/* Botón WhatsApp */}
           <a
-            href={`https://wa.me/56912345678?text=Hola, me interesa el ${vehicle.brand_name} ${vehicle.model} ${vehicle.year}`}
+            href={`https://wa.me/56934580647?text=Hola, me interesa el ${vehicle.brand_name} ${vehicle.model} ${vehicle.year}`}
             target="_blank" rel="noreferrer"
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
