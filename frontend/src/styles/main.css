@@ -1608,27 +1608,30 @@ html, body, #root {
 
 /* ── FICHA DE VEHÍCULO ── */
 
+/* Base (desktop) */
+.vd-main-layout {
+  grid-template-columns: 1fr 380px;
+  gap: 48px;
+}
+.specs-grid-detail { grid-template-columns: repeat(2, 1fr); }
+.related-vehicles-grid { grid-template-columns: repeat(4, 1fr); }
+
 /* Desktop: spec rows con separador central */
 .spec-row--left  { padding-right: 30px; }
 .spec-row--right { padding-left: 30px; border-left: 1px solid #f2f2f2; }
 
 @media (max-width: 1024px) {
   .vd-main-layout {
-    grid-template-columns: 1fr !important;
-    gap: 28px !important;
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
-  /* Columna derecha deja de ser sticky en tablet/móvil */
-  .vd-right-col {
-    position: static !important;
-  }
-  .related-vehicles-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .vd-right-col { position: static !important; }
+  .related-vehicles-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
   .vd-main-layout { padding: 16px !important; }
-
-  /* Specs: una columna */
-  .specs-grid-detail { grid-template-columns: 1fr !important; }
+  .specs-grid-detail { grid-template-columns: 1fr; }
   .spec-row--left,
   .spec-row--right {
     padding-right: 0 !important;
@@ -1638,8 +1641,8 @@ html, body, #root {
 }
 
 @media (max-width: 560px) {
-  .specs-grid-detail { grid-template-columns: 1fr !important; }
-  .related-vehicles-grid { grid-template-columns: 1fr !important; }
+  .specs-grid-detail { grid-template-columns: 1fr; }
+  .related-vehicles-grid { grid-template-columns: 1fr; }
   .enquiry-form-grid { grid-template-columns: 1fr !important; }
 }
 

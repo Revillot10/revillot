@@ -340,8 +340,6 @@ export default function VehicleDetail() {
         margin: '0 auto',
         padding: 'clamp(20px, 4vw, 40px) clamp(16px, 3vw, 30px)',
         display: 'grid',
-        gridTemplateColumns: '1fr 380px',
-        gap: 48,
         alignItems: 'start',
       }}>
 
@@ -364,11 +362,7 @@ export default function VehicleDetail() {
               }}>
                 INFORMACIÓN CLAVE
               </h2>
-              <div className="specs-grid-detail" style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(2, 1fr)',
-                gap: 0,
-              }}>
+              <div className="specs-grid-detail" style={{ display: 'grid', gap: 0 }}>
                 {specs.map(([label, val], i) => (
                   <div key={label} className={i % 2 === 0 ? 'spec-row spec-row--left' : 'spec-row spec-row--right'} style={{
                     display: 'flex',
@@ -553,7 +547,7 @@ export default function VehicleDetail() {
               }}>TAMBIÉN TE PUEDE INTERESAR</h2>
               <div style={{ width:40, height:1, background:'#000', margin:'0 auto' }} />
             </div>
-            <div className="related-vehicles-grid" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:30 }}>
+            <div className="related-vehicles-grid" style={{ display:'grid', gap:30 }}>
               {related.map(v => <VehicleCard key={v.id} vehicle={v} />)}
             </div>
           </div>
