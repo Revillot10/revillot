@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { vehiclesApi, miscApi } from '../../services/api';
+import { vehiclesApi, miscApi, uploadImages } from '../../services/api';
 
 const BODY_STYLES   = ['Coupe','Convertible','SUV','Saloon','Estate','Hatchback','Pickup','Supercar'];
 const FUEL_TYPES    = ['Gasolina','Diesel','Híbrido','Eléctrico'];
@@ -194,33 +194,31 @@ export default function VehicleForm() {
     }));
   };
 
-  const handleFileUpload = (files) => {
+  const handleFileUpload = async (files) => {
     if (!files?.length) return;
+    // Validar tipo antes de subir
+    const valid = Array.from(files).filter(f => f.type.startsWith('image/'));
+    if (!valid.length) { showToast('Solo se permiten imágenes', 'error'); return; }
     setUploadingImg(true);
-    const readers = Array.from(files).map(file => new Promise((resolve) => {
-      if (!file.type.startsWith('image/')) { resolve(null); return; }
-      if (file.size > 5 * 1024 * 1024) {
-        showToast(`${file.name} supera 5 MB`, 'error');
-        resolve(null); return;
-      }
-      const reader = new FileReader();
-      reader.onload = (e) => resolve(e.target.result);
-      reader.readAsDataURL(file);
-    }));
-    Promise.all(readers).then(results => {
-      const valid = results.filter(Boolean);
-      if (valid.length) {
-        setForm(prev => {
-          const newImgs = valid.map((url, i) => ({
-            url,
-            isPrimary: prev.images.length === 0 && i === 0,
-          }));
-          return {...prev, images: [...prev.images, ...newImgs]};
-        });
-        showToast(`${valid.length} imagen${valid.length > 1 ? 'es' : ''} agregada${valid.length > 1 ? 's' : ''}`);
-      }
+    try {
+      const res = await uploadImages(valid, (pct) => {
+        // pct disponible si quieres mostrar progreso
+      });
+      const uploaded = res.data.urls; // [{ url, alt }]
+      setForm(prev => {
+        const newImgs = uploaded.map((img, i) => ({
+          url: img.url,
+          alt: img.alt || '',
+          isPrimary: prev.images.length === 0 && i === 0,
+        }));
+        return {...prev, images: [...prev.images, ...newImgs]};
+      });
+      showToast(`${uploaded.length} imagen${uploaded.length > 1 ? 'es' : ''} subida${uploaded.length > 1 ? 's' : ''}`);
+    } catch (err) {
+      showToast(err.response?.data?.error || 'Error al subir imágenes', 'error');
+    } finally {
       setUploadingImg(false);
-    });
+    }
   };
 
   const handleDrop = (e) => { e.preventDefault(); handleFileUpload(e.dataTransfer.files); };

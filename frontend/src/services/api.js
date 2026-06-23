@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || '/api',
-  timeout: 15000,
+  timeout: 30000,
   headers: { 'Content-Type': 'application/json' },
 });
 
@@ -71,6 +71,19 @@ export const miscApi = {
   adminGetBrands:   ()     => api.get('/admin/brands'),
   adminCreateBrand: (name) => api.post('/admin/brands', { name }),
   getDashboard:     ()     => api.get('/admin/dashboard'),
+};
+
+// Subida de archivos — usa multipart/form-data, devuelve array de URLs
+export const uploadImages = (files, onProgress) => {
+  const formData = new FormData();
+  Array.from(files).forEach(f => formData.append('images', f));
+  return api.post('/admin/upload', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+    onUploadProgress: onProgress
+      ? e => onProgress(Math.round((e.loaded * 100) / e.total))
+      : undefined,
+    timeout: 60000,
+  });
 };
 
 export default api;

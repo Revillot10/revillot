@@ -2,6 +2,7 @@ const router   = require('express').Router();
 const auth     = require('../controllers/auth.controller');
 const vehicles = require('../controllers/vehicles.controller');
 const misc     = require('../controllers/misc.controller');
+const upload   = require('../controllers/upload.controller');
 const { authMiddleware, requireAdmin } = require('../middleware/auth');
 
 // ── Auth ───────────────────────────────────────────────────────
@@ -25,7 +26,10 @@ router.use('/admin', authMiddleware);
 
 router.get('/admin/dashboard',         misc.getDashboard);
 
-// Brands (admin — devuelve TODAS las marcas, incluso sin stock)
+// Upload de imágenes
+router.post('/admin/upload', upload.uploadMiddleware, upload.uploadImages);
+
+// Brands
 router.get ('/admin/brands',           vehicles.adminGetBrands);
 router.post('/admin/brands',           vehicles.createBrand);
 
