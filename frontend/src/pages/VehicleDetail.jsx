@@ -287,6 +287,12 @@ export default function VehicleDetail() {
   if (!data) return null;
 
   const { vehicle, related } = data;
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' && window.innerWidth <= 1024);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 1024);
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   const specs = [
     ['Precio',       fmtPrice(vehicle.price)],
@@ -338,8 +344,8 @@ export default function VehicleDetail() {
         margin: '0 auto',
         padding: 'clamp(20px, 4vw, 40px) clamp(16px, 3vw, 30px)',
         display: 'grid',
-        gridTemplateColumns: '1fr 380px',
-        gap: 48,
+        gridTemplateColumns: isMobile ? '1fr' : '1fr 380px',
+        gap: isMobile ? 24 : 48,
         alignItems: 'start',
       }}>
 
@@ -364,7 +370,7 @@ export default function VehicleDetail() {
               </h2>
               <div className="specs-grid-detail" style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(2, 1fr)',
+                gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
                 gap: 0,
               }}>
                 {specs.map(([label, val], i) => (
@@ -374,9 +380,9 @@ export default function VehicleDetail() {
                     alignItems: 'baseline',
                     padding: '12px 0',
                     borderBottom: '1px solid #f2f2f2',
-                    paddingRight: i % 2 === 0 ? 'clamp(10px, 2vw, 30px)' : 0,
-                    paddingLeft:  i % 2 === 1 ? 'clamp(10px, 2vw, 30px)' : 0,
-                    borderLeft:   i % 2 === 1 ? '1px solid #f2f2f2' : 'none',
+                    paddingRight: (!isMobile && i % 2 === 0) ? 30 : 0,
+                    paddingLeft:  (!isMobile && i % 2 === 1) ? 30 : 0,
+                    borderLeft:   (!isMobile && i % 2 === 1) ? '1px solid #f2f2f2' : 'none',
                   }}>
                     <span style={{
                       fontFamily: 'Montserrat,sans-serif', fontSize: 11,
@@ -417,7 +423,7 @@ export default function VehicleDetail() {
         </div>
 
         {/* ════ COLUMNA DERECHA — sticky ═════════════════════ */}
-        <div style={{ position: 'sticky', top: 130 }}>
+        <div style={{ position: isMobile ? 'static' : 'sticky', top: 130 }}>
 
           {/* Nombre + precio */}
           <div style={{ marginBottom: 28, paddingBottom: 24, borderBottom: '1px solid #e8e8e8' }}>
