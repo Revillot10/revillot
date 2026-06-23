@@ -34,6 +34,7 @@ function Gallery({ images }) {
       <div style={{
         position: 'relative',
         width: '100%',
+        maxWidth: '100%',
         background: '#0a0a0a',
         overflow: 'hidden',
         cursor: 'zoom-in',
@@ -45,6 +46,7 @@ function Gallery({ images }) {
           alt=""
           style={{
             width: '100%',
+            maxWidth: '100%',
             aspectRatio: '16/10',
             objectFit: 'cover',
             display: 'block',
@@ -344,7 +346,7 @@ export default function VehicleDetail() {
       }}>
 
         {/* ════ COLUMNA IZQUIERDA ════════════════════════════ */}
-        <div>
+        <div style={{ minWidth: 0, overflow: 'hidden' }}>
 
           {/* Galería */}
           <Gallery images={images} />
@@ -414,7 +416,7 @@ export default function VehicleDetail() {
         </div>
 
         {/* ════ COLUMNA DERECHA — sticky ═════════════════════ */}
-        <div className="vd-right-col" style={{ position: 'sticky', top: 130 }}>
+        <div className="vd-right-col" style={{ position: 'sticky', top: 130, minWidth: 0 }}>
 
           {/* Nombre + precio */}
           <div style={{ marginBottom: 28, paddingBottom: 24, borderBottom: '1px solid #e8e8e8' }}>
