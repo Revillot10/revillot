@@ -25,6 +25,10 @@ router.use('/admin', authMiddleware);
 
 router.get('/admin/dashboard',         misc.getDashboard);
 
+// Brands (admin — devuelve TODAS las marcas, incluso sin stock)
+router.get ('/admin/brands',           vehicles.adminGetBrands);
+router.post('/admin/brands',           vehicles.createBrand);
+
 // Vehicles
 router.get   ('/admin/vehicles',        vehicles.adminGetAll);
 router.post  ('/admin/vehicles',        vehicles.create);

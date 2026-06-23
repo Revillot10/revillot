@@ -130,6 +130,37 @@ exports.getBrands = async (_req, res) => {
   res.json(rows);
 };
 
+// ── ADMIN: GET /api/admin/brands — todas las marcas ────────────
+exports.adminGetBrands = async (_req, res) => {
+  const { rows } = await pool.query(
+    `SELECT b.id, b.name, b.slug, b.logo_url,
+            COUNT(v.id) AS vehicle_count
+     FROM brands b
+     LEFT JOIN vehicles v ON v.brand_id = b.id
+     GROUP BY b.id
+     ORDER BY b.name`
+  );
+  res.json(rows);
+};
+
+// ── ADMIN: POST /api/admin/brands — crear marca nueva ──────────
+exports.createBrand = async (req, res) => {
+  const { name } = req.body;
+  if (!name?.trim()) return res.status(400).json({ error: 'Nombre requerido' });
+  const slug = name.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+  try {
+    const { rows } = await pool.query(
+      `INSERT INTO brands (name, slug) VALUES ($1, $2)
+       ON CONFLICT (slug) DO UPDATE SET name = EXCLUDED.name
+       RETURNING id, name, slug`,
+      [name.trim(), slug]
+    );
+    res.status(201).json(rows[0]);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 // ── ADMIN: GET /api/admin/vehicles ─────────────────────────────
 exports.adminGetAll = async (req, res) => {
   const { page=1, limit=20, status, brand, sort='newest' } = req.query;

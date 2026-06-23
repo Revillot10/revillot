@@ -67,8 +67,10 @@ export const authApi = {
 };
 
 export const miscApi = {
-  getBrands:    () => api.get('/brands'),
-  getDashboard: () => api.get('/admin/dashboard'),
+  getBrands:        ()     => api.get('/brands'),
+  adminGetBrands:   ()     => api.get('/admin/brands'),
+  adminCreateBrand: (name) => api.post('/admin/brands', { name }),
+  getDashboard:     ()     => api.get('/admin/dashboard'),
 };
 
 export default api;
