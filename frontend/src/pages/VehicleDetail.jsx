@@ -316,6 +316,9 @@ export default function VehicleDetail() {
     <>
       <Header />
 
+      {/* Wrapper con overflow hidden para prevenir scroll horizontal */}
+      <div style={{ overflowX: 'hidden', width: '100%', boxSizing: 'border-box' }}>
+
       {/* ── Breadcrumb ── */}
       <div style={{
         padding: '12px 16px',
@@ -378,21 +381,24 @@ export default function VehicleDetail() {
                   <div key={label} style={{
                     display: 'flex',
                     justifyContent: 'space-between',
-                    alignItems: 'baseline',
+                    alignItems: 'flex-start',
+                    gap: 12,
                     padding: '12px 0',
                     borderBottom: '1px solid #f2f2f2',
                     paddingRight: (!isMobile && i % 2 === 0) ? 30 : 0,
                     paddingLeft:  (!isMobile && i % 2 === 1) ? 30 : 0,
                     borderLeft:   (!isMobile && i % 2 === 1) ? '1px solid #f2f2f2' : 'none',
+                    minWidth: 0,
                   }}>
                     <span style={{
                       fontFamily: 'Montserrat,sans-serif', fontSize: 11,
                       fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase',
-                      color: '#000',
+                      color: '#000', flexShrink: 0,
                     }}>{label}</span>
                     <span style={{
                       fontFamily: 'Montserrat,sans-serif', fontSize: 15,
                       fontWeight: 400, letterSpacing: '0.5px', color: '#000',
+                      textAlign: 'right', wordBreak: 'break-word',
                     }}>{val}</span>
                   </div>
                 ))}
@@ -413,6 +419,7 @@ export default function VehicleDetail() {
                 <div style={{
                   fontFamily: 'Roboto,sans-serif', fontSize: 15,
                   fontWeight: 300, color: 'rgb(90,90,90)', lineHeight: 1.9,
+                  wordBreak: 'break-word', overflowWrap: 'break-word',
                 }}>
                   {vehicle.description.split('\n\n').map((p, i) => (
                     <p key={i} style={{ marginBottom: 16 }}>{p}</p>
@@ -476,11 +483,11 @@ export default function VehicleDetail() {
               ['Transmisión', vehicle.transmission],
             ].filter(([,v])=>v).map(([label, val]) => (
               <div key={label} style={{
-                display: 'flex', justifyContent: 'space-between',
-                padding: '10px 0', borderBottom: '1px solid #f2f2f2',
+                display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
+                gap: 12, padding: '10px 0', borderBottom: '1px solid #f2f2f2', minWidth: 0,
               }}>
-                <span style={{ fontFamily:'Montserrat,sans-serif', fontSize:11, fontWeight:600, letterSpacing:'2px', textTransform:'uppercase', color:'#000' }}>{label}</span>
-                <span style={{ fontFamily:'Montserrat,sans-serif', fontSize:15, fontWeight:400, color:'#000' }}>{val}</span>
+                <span style={{ fontFamily:'Montserrat,sans-serif', fontSize:11, fontWeight:600, letterSpacing:'2px', textTransform:'uppercase', color:'#000', flexShrink:0 }}>{label}</span>
+                <span style={{ fontFamily:'Montserrat,sans-serif', fontSize:15, fontWeight:400, color:'#000', textAlign:'right', wordBreak:'break-word' }}>{val}</span>
               </div>
             ))}
           </div>
@@ -563,6 +570,8 @@ export default function VehicleDetail() {
           </div>
         </div>
       )}
+
+      </div>{/* end overflow wrapper */}
 
       <Footer />
     </>

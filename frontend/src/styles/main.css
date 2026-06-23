@@ -1566,8 +1566,13 @@ textarea.form-input { height: 100px; resize: vertical; }
     box-sizing: border-box !important;
     max-width: 100vw !important;
   }
-  /* Prevenir overflow horizontal global */
-  body, #root { overflow-x: hidden; max-width: 100vw; }
+}
+
+/* Prevenir overflow horizontal global en TODOS los tamaños */
+*, *::before, *::after { box-sizing: border-box; }
+html, body, #root {
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 /* ── FOOTER RESPONSIVO ── */
