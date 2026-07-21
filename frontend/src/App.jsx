@@ -18,6 +18,9 @@ import MeetTheTeam     from './pages/MeetTheTeam';
 import PreviouslySold  from './pages/PreviouslySold';
 import Finance         from './pages/Finance';
 import Buy             from './pages/Buy';
+import Lavado          from './pages/Lavado';
+import Tapiz                from './pages/Tapiz';
+import InspeccionPreCompra  from './pages/InspeccionPreCompra';
 
 import AdminLogin    from './pages/admin/Login';
 import AdminLayout   from './pages/admin/Layout';
@@ -36,8 +39,6 @@ function ScrollToTop() {
   return null;
 }
 
-// Componente separado para las animaciones de scroll
-// Se monta dentro de BrowserRouter para acceder a useLocation
 function ScrollReveal() {
   useScrollReveal();
   return null;
@@ -73,6 +74,10 @@ export default function App() {
           <Route path="/previously-sold" element={<PreviouslySold />} />
           <Route path="/finance"         element={<Finance />} />
           <Route path="/buy"             element={<Buy />} />
+          {/* Estética Automotriz */}
+          <Route path="/lavado"          element={<Lavado />} />
+          <Route path="/tapiz"              element={<Tapiz />} />
+          <Route path="/inspeccion"         element={<InspeccionPreCompra />} />
           <Route path="/admin/login"     element={<AdminLogin />} />
           <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
             <Route index               element={<Navigate to="/admin/dashboard" replace />} />

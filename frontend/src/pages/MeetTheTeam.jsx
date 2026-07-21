@@ -97,7 +97,7 @@ export default function MeetTheTeam() {
 
           <div>
             <div style={{ fontFamily: 'Montserrat,sans-serif', fontSize: 11, fontWeight: 500, letterSpacing: '3px', textTransform: 'uppercase', color: '#999', marginBottom: 12 }}>
-              Fundador & Director General
+              Fundador
             </div>
             <h2 style={{ fontFamily: 'Montserrat,sans-serif', fontSize: 32, fontWeight: 200, letterSpacing: '4px', textTransform: 'uppercase', color: '#000', marginBottom: 24, lineHeight: 1.2 }}>
               Tomás Urzúa<br />Revillot
@@ -173,7 +173,7 @@ export default function MeetTheTeam() {
           {[
             { value: '2026', label: 'Año de fundación' },
             { value: '100%', label: 'Inspección técnica en cada vehículo' },
-            { value: 'Curicó', label: 'Corazón del negocio, Chile' },
+            { value: 'Curicó', label: 'Corazón del negocio' },
           ].map((s, i) => (
             <div key={i} className="stats-bordered-grid-3__item" style={{ padding: '0 20px', borderRight: i < 2 ? '1px solid #ddd' : 'none' }}>
               <div style={{ fontFamily: 'Montserrat,sans-serif', fontSize: 36, fontWeight: 200, letterSpacing: '4px', color: '#000', marginBottom: 8 }}>{s.value}</div>

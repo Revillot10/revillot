@@ -69,7 +69,7 @@ export default function Footer() {
     <footer style={{ background: '#0a0a0a', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
 
       {/* ── CUERPO PRINCIPAL — 4 columnas ── */}
-      <div className="footer-grid" style={{ maxWidth: 1440, margin: '0 auto', padding: '32px 40px 24px', display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr 1.2fr', gap: 30 }}>
+      <div className="footer-grid" style={{ maxWidth: 1440, margin: '0 auto', padding: '32px 40px 24px', display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr 1fr 1.2fr', gap: 30 }}>
 
         {/* Col 1 — Marca + contacto */}
         <div>
@@ -101,14 +101,14 @@ export default function Footer() {
               </svg>
               +56 9 3458 0647
             </a>
-            <a href="mailto:contacto@revillotgarage.cl" style={{ fontFamily: 'Roboto, sans-serif', fontSize: 13, fontWeight: 300, color: 'rgba(255,255,255,0.55)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10, transition: 'color 0.2s' }}
+            <a href="mailto:turzuarevillot@gmail.com" style={{ fontFamily: 'Roboto, sans-serif', fontSize: 13, fontWeight: 300, color: 'rgba(255,255,255,0.55)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10, transition: 'color 0.2s' }}
               onMouseEnter={e => e.currentTarget.style.color = '#fff'}
               onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.55)'}
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ flexShrink: 0 }}>
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
               </svg>
-              contacto@revillotgarage.cl
+              turzuarevillot@gmail.com
             </a>
             <div style={{ fontFamily: 'Roboto, sans-serif', fontSize: 13, fontWeight: 300, color: 'rgba(255,255,255,0.45)', display: 'flex', alignItems: 'center', gap: 10 }}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ flexShrink: 0 }}>
@@ -130,7 +130,17 @@ export default function Footer() {
           <a href="/buy" onClick={e=>{e.preventDefault();navigate('/buy')}} style={lnkSt} onMouseEnter={hoverOn} onMouseLeave={hoverOff}>Compra y financiamiento</a>
         </div>
 
-        {/* Col 3 — Empresa */}
+        {/* Col 3 — Servicios */}
+        <div>
+          <div style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 10, fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', marginBottom: 10 }}>
+            SERVICIOS
+          </div>
+          <a href="/lavado" onClick={e=>{e.preventDefault();navigate('/lavado')}} style={lnkSt} onMouseEnter={hoverOn} onMouseLeave={hoverOff}>Lavado Automotriz</a>
+          <a href="/tapiz" onClick={e=>{e.preventDefault();navigate('/tapiz')}} style={lnkSt} onMouseEnter={hoverOn} onMouseLeave={hoverOff}>Restauración de Tapiz</a>
+          <a href="/inspeccion" onClick={e=>{e.preventDefault();navigate('/inspeccion')}} style={lnkSt} onMouseEnter={hoverOn} onMouseLeave={hoverOff}>Inspección Pre-Compra</a>
+        </div>
+
+        {/* Col 4 — Empresa */}
         <div>
           <div style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 10, fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', marginBottom: 10 }}>
             EMPRESA

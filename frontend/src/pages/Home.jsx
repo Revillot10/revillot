@@ -121,7 +121,7 @@ export default function Home() {
             color: '#fff', margin: '0 0 14px', lineHeight: 1.1,
             textShadow: '0 2px 20px rgba(0,0,0,0.4)',
           }}>
-            BUILD YOUR PASSION
+            COMPROMISO EN CADA DETALLE
           </h2>
 
           {/* Subtexto */}
@@ -132,7 +132,7 @@ export default function Home() {
             color: 'rgba(255,255,255,0.9)',
             margin: '0 0 28px',
           }}>
-            Vehículos premium & semi-premium en Curicó, Chile
+            Vehículos premium & semi-premium en Curicó
           </p>
 
           {/* Botón CTA */}
@@ -230,7 +230,7 @@ export default function Home() {
           marginBottom: 18,
         }}>
           Somos una empresa familiar, concesionario independiente de vehículos premium
-          y semi-premium en Curicó, Chile. Cada auto de nuestro stock es elegido con criterio:
+          y semi-premium en Curicó. Cada auto de nuestro stock es elegido con criterio:
           calidad, equipamiento y estado impecable.
         </p>
         <p style={{

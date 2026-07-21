@@ -209,7 +209,7 @@ export default function Contact() {
                 </div>
               </a>
 
-              <a href="mailto:contacto@revillotgarage.cl" style={{ display:'flex', alignItems:'center', gap:14, textDecoration:'none', transition:'opacity 0.2s' }}
+              <a href="mailto:turzuarevillot@gmail.com" style={{ display:'flex', alignItems:'center', gap:14, textDecoration:'none', transition:'opacity 0.2s' }}
                 onMouseEnter={e => e.currentTarget.style.opacity='0.65'}
                 onMouseLeave={e => e.currentTarget.style.opacity='1'}
               >
@@ -220,7 +220,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div style={{ fontFamily:'Montserrat, sans-serif', fontSize:9, fontWeight:600, letterSpacing:'2.5px', textTransform:'uppercase', color:'#aaa', marginBottom:2 }}>Email</div>
-                  <div style={{ fontFamily:'Roboto, sans-serif', fontSize:15, fontWeight:400, color:'#000' }}>contacto@revillotgarage.cl</div>
+                  <div style={{ fontFamily:'Roboto, sans-serif', fontSize:15, fontWeight:400, color:'#000' }}>turzuarevillot@gmail.com</div>
                 </div>
               </a>
             </div>
