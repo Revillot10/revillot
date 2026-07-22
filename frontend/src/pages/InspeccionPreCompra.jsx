@@ -110,7 +110,7 @@ export default function InspeccionPreCompra() {
       <Header />
 
       {/* ── HERO ── */}
-      <div style={{
+      <div className="servicio-hero-outer" style={{
         position: 'relative', width: '100%', height: 560,
         overflow: 'hidden', background: '#080808',
       }}>
@@ -123,7 +123,7 @@ export default function InspeccionPreCompra() {
           position: 'absolute', inset: 0,
           background: 'linear-gradient(135deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.4) 100%)',
         }} />
-        <div style={{
+        <div className="servicio-hero-content" style={{
           position: 'absolute', inset: 0,
           display: 'flex', flexDirection: 'column',
           alignItems: 'flex-start', justifyContent: 'center',
@@ -135,7 +135,7 @@ export default function InspeccionPreCompra() {
             color: 'rgba(255,255,255,0.4)', marginBottom: 18,
           }}>Revillot Garage — Servicios</div>
 
-          <h1 style={{
+          <h1 className="servicio-hero-h1" style={{
             fontFamily: 'Montserrat,sans-serif', fontSize: 52, fontWeight: 200,
             letterSpacing: '8px', textTransform: 'uppercase', color: '#fff',
             lineHeight: 1.05, marginBottom: 0,
@@ -146,7 +146,7 @@ export default function InspeccionPreCompra() {
           <div style={{ width: 60, height: 1, background: 'rgba(255,255,255,0.35)', margin: '26px 0' }} />
 
           {/* 3 pilares */}
-          <div style={{ display: 'flex', gap: 32, marginBottom: 36, flexWrap: 'wrap' }}>
+          <div className="insp-hero-pillars" style={{ display: 'flex', gap: 32, marginBottom: 36, flexWrap: 'wrap' }}>
             {['Servicio a domicilio', 'Informe en menos de 1 hora', 'Sin necesidad de estar presente'].map((p, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <div style={{ width: 6, height: 6, background: '#fff', borderRadius: '50%', flexShrink: 0 }} />
@@ -188,7 +188,7 @@ export default function InspeccionPreCompra() {
       {/* ── STAT DESTACADA ── */}
       <div style={{ background: '#f0f0f0', padding: '70px 25px', textAlign: 'center' }}>
         <div style={{ maxWidth: 760, margin: '0 auto' }}>
-          <div style={{
+          <div className="insp-stat-num" style={{
             fontFamily: 'Montserrat,sans-serif', fontSize: 80, fontWeight: 200,
             letterSpacing: '4px', color: '#000', lineHeight: 1, marginBottom: 20,
           }}>60%</div>
@@ -221,7 +221,7 @@ export default function InspeccionPreCompra() {
             }}>¿Por qué nuestra inspección?</h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 1, background: '#e8e8e8' }}>
+          <div className="insp-por-que-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 1, background: '#e8e8e8' }}>
             {POR_QUE.map((p, i) => (
               <div key={i} style={{ background: '#fff', padding: '36px 28px' }}>
                 <span style={{ fontSize: 28, display: 'block', marginBottom: 16 }}>{p.icon}</span>
@@ -254,7 +254,7 @@ export default function InspeccionPreCompra() {
             }}>¿Cómo funciona?</h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: '#e8e8e8' }}>
+          <div className="insp-steps-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: '#e8e8e8' }}>
             {COMO_FUNCIONA.map((p, i) => (
               <div key={i} style={{ background: '#fff', padding: '40px 32px' }}>
                 <div style={{
@@ -290,7 +290,7 @@ export default function InspeccionPreCompra() {
             }}>¿Qué incluye el informe?</h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: '#e8e8e8' }}>
+          <div className="insp-incluye-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: '#e8e8e8' }}>
             {INCLUYE.map((bloque, i) => (
               <div key={i} style={{ background: '#fff', padding: '28px 30px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>

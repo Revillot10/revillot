@@ -140,7 +140,7 @@ export default function Tapiz() {
       <Header />
 
       {/* ── HERO ── */}
-      <div style={{
+      <div className="servicio-hero-outer" style={{
         position: 'relative', width: '100%', height: 520,
         overflow: 'hidden', background: '#080808',
       }}>
@@ -153,7 +153,7 @@ export default function Tapiz() {
           position: 'absolute', inset: 0,
           background: 'linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 100%)',
         }} />
-        <div style={{
+        <div className="servicio-hero-content" style={{
           position: 'absolute', inset: 0,
           display: 'flex', flexDirection: 'column',
           alignItems: 'flex-start', justifyContent: 'center',
@@ -165,7 +165,7 @@ export default function Tapiz() {
             color: 'rgba(255,255,255,0.4)', marginBottom: 18,
           }}>Estética Automotriz</div>
 
-          <h1 style={{
+          <h1 className="servicio-hero-h1" style={{
             fontFamily: 'Montserrat,sans-serif', fontSize: 56, fontWeight: 200,
             letterSpacing: '8px', textTransform: 'uppercase', color: '#fff',
             lineHeight: 1.05, marginBottom: 0,
@@ -228,7 +228,7 @@ export default function Tapiz() {
           </p>
 
           {/* Tres productos en badges */}
-          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+          <div className="tapiz-vsc-badges" style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             {[
               { n: 'VSC1', nombre: 'Extractus', rol: 'Limpieza profunda' },
               { n: 'VSC2', nombre: 'Bactran',   rol: 'Eliminación bacteriana' },
@@ -260,7 +260,7 @@ export default function Tapiz() {
 
       {/* ── PROCESO + BENEFICIOS ── */}
       <section ref={procesoRef} style={{ padding: '70px 25px 80px' }}>
-        <div style={{
+        <div className="servicio-proceso-grid" style={{
           maxWidth: 1100, margin: '0 auto',
           display: 'grid', gridTemplateColumns: '1fr 1fr',
           gap: 80, alignItems: 'start',
@@ -278,7 +278,7 @@ export default function Tapiz() {
           </div>
 
           {/* Beneficios */}
-          <div style={{ position: 'sticky', top: 120 }}>
+          <div className="servicio-beneficios-col" style={{ position: 'sticky', top: 120 }}>
             <div style={{
               fontFamily: 'Montserrat,sans-serif', fontSize: 9, fontWeight: 600,
               letterSpacing: '4px', textTransform: 'uppercase', color: '#aaa', marginBottom: 12,
@@ -304,7 +304,7 @@ export default function Tapiz() {
             }}>Qué tapices tratamos</h2>
           </div>
 
-          <div style={{
+          <div className="tapiz-tejidos-grid" style={{
             display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 1,
             background: '#e8e8e8',
           }}>

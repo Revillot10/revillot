@@ -259,8 +259,8 @@ export default function Header() {
       <nav className="header-mobile-panel"
         style={{ position:'fixed', top:'113px', right:0, bottom:0, width:'82%', maxWidth:'340px', background:'#fff', boxShadow:'-4px 0 24px rgba(0,0,0,0.15)', transform: mobileOpen ? 'translateX(0)' : 'translateX(100%)', transition:'transform 0.3s ease', zIndex:10000, overflowY:'auto', overflowX:'hidden', display:'flex', flexDirection:'column', visibility: mobileOpen ? 'visible' : 'hidden' }}
       >
-        {[['/', 'HOME', true], ['/inventory', 'STOCK'], ['/sell', 'VENDE TU VEHÍCULO'], ['/buy', 'COMPRA'], ['/inspeccion', 'INSPECCIÓN'], ['/insights', 'INSIGHTS']].map(([to, label, end]) => (
-          <NavLink key={to} to={to} end={end}
+        {[['/inventory', 'STOCK'], ['/sell', 'VENDE TU VEHÍCULO'], ['/buy', 'COMPRA'], ['/inspeccion', 'INSPECCIÓN AUTOMOTRIZ']].map(([to, label]) => (
+          <NavLink key={to} to={to}
             style={({ isActive }) => ({ display:'block', padding:'16px 24px', fontFamily:"'Montserrat', sans-serif", fontSize:'12px', fontWeight:500, letterSpacing:'2px', textTransform:'uppercase', color: isActive ? '#000' : '#444', background: isActive ? '#f7f7f7' : 'transparent', borderBottom:'1px solid #eee', textDecoration:'none' })}
           >{label}</NavLink>
         ))}
@@ -280,6 +280,10 @@ export default function Header() {
             style={({ isActive }) => ({ display:'block', padding:'14px 24px 14px 40px', fontFamily:"'Montserrat', sans-serif", fontSize:'11px', fontWeight:500, letterSpacing:'1px', textTransform:'uppercase', color: isActive ? '#000' : '#777', background: isActive ? '#f7f7f7' : '#fafafa', borderBottom:'1px solid #eee', textDecoration:'none' })}
           >{label}</NavLink>
         ))}
+
+        <NavLink to="/insights"
+          style={({ isActive }) => ({ display:'block', padding:'16px 24px', fontFamily:"'Montserrat', sans-serif", fontSize:'12px', fontWeight:500, letterSpacing:'2px', textTransform:'uppercase', color: isActive ? '#000' : '#444', background: isActive ? '#f7f7f7' : 'transparent', borderBottom:'1px solid #eee', textDecoration:'none' })}
+        >INSIGHTS</NavLink>
 
         {/* Sobre Nosotros (acordeón móvil) */}
         <button onClick={() => setMobileAboutOpen(o => !o)}

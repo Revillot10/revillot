@@ -1962,3 +1962,111 @@ img { max-width: 100%; height: auto; }
     transition: none !important;
   }
 }
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE — LAVADO / TAPIZ / INSPECCIÓN
+══════════════════════════════════════════════════════ */
+
+/* Hero outer: altura fija → auto en móvil */
+@media (max-width: 768px) {
+  .servicio-hero-outer {
+    height: auto !important;
+    min-height: 420px;
+  }
+  .servicio-hero-outer img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Hero content: menos padding lateral */
+  .servicio-hero-content {
+    padding: 120px 24px 48px !important;
+    justify-content: flex-start !important;
+  }
+  /* H1 del hero */
+  .servicio-hero-h1 {
+    font-size: 34px !important;
+    letter-spacing: 4px !important;
+  }
+  /* Sección negra de cabecera de servicio */
+  .servicio-header-black {
+    padding: 36px 20px !important;
+  }
+  .servicio-header-h2 {
+    font-size: 26px !important;
+    letter-spacing: 3px !important;
+  }
+  /* Grid proceso+beneficios: 2 col → 1 col */
+  .servicio-proceso-grid {
+    grid-template-columns: 1fr !important;
+    gap: 48px !important;
+  }
+  /* Quitar sticky en beneficios */
+  .servicio-beneficios-col {
+    position: static !important;
+  }
+  /* Tabla comparativa: columnas más compactas */
+  .lavado-tabla-header,
+  .lavado-tabla-row {
+    grid-template-columns: 1fr 72px 72px !important;
+  }
+  .lavado-tabla-label {
+    padding: 12px 14px !important;
+    font-size: 11px !important;
+  }
+  /* VSC badges: en columna */
+  .tapiz-vsc-badges {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  /* Grid tapices 2 col → 1 col */
+  .tapiz-tejidos-grid {
+    grid-template-columns: 1fr !important;
+  }
+  /* Por qué elegirnos 4 col → 2 col */
+  .insp-por-que-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* Cómo funciona 3 col → 1 col */
+  .insp-steps-grid {
+    grid-template-columns: 1fr !important;
+  }
+  /* Qué incluye 3 col → 2 col */
+  .insp-incluye-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* Pilares hero inspección */
+  .insp-hero-pillars {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .servicio-hero-h1 {
+    font-size: 28px !important;
+    letter-spacing: 2px !important;
+  }
+  /* Por qué 2 col → 1 col */
+  .insp-por-que-grid {
+    grid-template-columns: 1fr !important;
+  }
+  /* Qué incluye 2 col → 1 col */
+  .insp-incluye-grid {
+    grid-template-columns: 1fr !important;
+  }
+  /* Stat 60% */
+  .insp-stat-num {
+    font-size: 60px !important;
+  }
+  /* Tabla comparativa aún más compacta */
+  .lavado-tabla-label {
+    font-size: 10px !important;
+    padding: 10px 10px !important;
+  }
+  .lavado-tabla-header,
+  .lavado-tabla-row {
+    grid-template-columns: 1fr 60px 60px !important;
+  }
+}

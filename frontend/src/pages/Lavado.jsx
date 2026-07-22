@@ -203,14 +203,14 @@ function ServicioSection({ data, refEl }) {
   return (
     <section ref={refEl} style={{ padding: '0 0 80px' }}>
       {/* Header del servicio */}
-      <div style={{ background: '#000', padding: '48px 25px' }}>
+      <div className="servicio-header-black" style={{ background: '#000', padding: '48px 25px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div style={{
             fontFamily: 'Montserrat,sans-serif', fontSize: 9, fontWeight: 600,
             letterSpacing: '5px', textTransform: 'uppercase',
             color: 'rgba(255,255,255,0.3)', marginBottom: 12,
           }}>{data.servicio}</div>
-          <h2 style={{
+          <h2 className="servicio-header-h2" style={{
             fontFamily: 'Montserrat,sans-serif', fontSize: 36, fontWeight: 200,
             letterSpacing: '6px', textTransform: 'uppercase', color: '#fff',
             marginBottom: 14, lineHeight: 1,
@@ -238,7 +238,7 @@ function ServicioSection({ data, refEl }) {
 
       {/* Proceso + Beneficios */}
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '60px 25px 0' }}>
-        <div style={{
+        <div className="servicio-proceso-grid" style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
           gap: 80,
@@ -256,7 +256,7 @@ function ServicioSection({ data, refEl }) {
           </div>
 
           {/* Beneficios */}
-          <div style={{ position: 'sticky', top: 120 }}>
+          <div className="servicio-beneficios-col" style={{ position: 'sticky', top: 120 }}>
             <div style={{
               fontFamily: 'Montserrat,sans-serif', fontSize: 9, fontWeight: 600,
               letterSpacing: '4px', textTransform: 'uppercase', color: '#aaa', marginBottom: 12,
@@ -293,7 +293,7 @@ export default function Lavado() {
       <Header />
 
       {/* ── HERO ── */}
-      <div style={{
+      <div className="servicio-hero-outer" style={{
         position: 'relative', width: '100%', height: 520,
         overflow: 'hidden', background: '#080808',
       }}>
@@ -306,7 +306,7 @@ export default function Lavado() {
           position: 'absolute', inset: 0,
           background: 'linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 100%)',
         }} />
-        <div style={{
+        <div className="servicio-hero-content" style={{
           position: 'absolute', inset: 0,
           display: 'flex', flexDirection: 'column',
           alignItems: 'flex-start', justifyContent: 'center',
@@ -318,7 +318,7 @@ export default function Lavado() {
             color: 'rgba(255,255,255,0.4)', marginBottom: 18,
           }}>Estética Automotriz</div>
 
-          <h1 style={{
+          <h1 className="servicio-hero-h1" style={{
             fontFamily: 'Montserrat,sans-serif', fontSize: 56, fontWeight: 200,
             letterSpacing: '8px', textTransform: 'uppercase', color: '#fff',
             lineHeight: 1.05, marginBottom: 0,
@@ -389,7 +389,7 @@ export default function Lavado() {
           </div>
 
           {/* Cabecera */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 130px 130px', background: '#000' }}>
+          <div className="lavado-tabla-header" style={{ display: 'grid', gridTemplateColumns: '1fr 130px 130px', background: '#000' }}>
             <div style={{ padding: '16px 24px' }} />
             <div style={{
               padding: '16px 12px', textAlign: 'center',
@@ -408,12 +408,12 @@ export default function Lavado() {
 
           {/* Filas */}
           {TABLA.map((row, i) => (
-            <div key={i} style={{
+            <div key={i} className="lavado-tabla-row" style={{
               display: 'grid', gridTemplateColumns: '1fr 130px 130px',
               borderBottom: '1px solid #ebebeb',
               background: i % 2 === 0 ? '#fff' : '#fafafa',
             }}>
-              <div style={{
+              <div className="lavado-tabla-label" style={{
                 padding: '14px 24px',
                 fontFamily: 'Roboto,sans-serif', fontSize: 13, fontWeight: 300, color: '#555',
               }}>{row.item}</div>
