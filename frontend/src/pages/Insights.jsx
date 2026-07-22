@@ -269,7 +269,7 @@ export default function Insights() {
           Romans: imagen full-width, ~450px alto, sin overlay de texto.
           La imagen se extiende BAJO el header (que es sticky en páginas internas).
       ══════════════════════════════════════════════════════ */}
-      <div style={{ width: '100%', height: 520, overflow: 'hidden', position: 'relative', background: '#000' }}>
+      <div className="hero-standard" style={{ width: '100%', height: 520, overflow: 'hidden', position: 'relative', background: '#000' }}>
         <img
           src={HERO_IMG}
           alt="Revillot Insights"
@@ -536,3 +536,4 @@ export default function Insights() {
     </>
   );
 }
+                                   

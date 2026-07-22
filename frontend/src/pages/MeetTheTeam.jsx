@@ -62,7 +62,7 @@ export default function MeetTheTeam() {
       <Header />
 
       {/* Hero */}
-      <div style={{ position: 'relative', width: '100%', height: 500, overflow: 'hidden', background: '#111' }}>
+      <div className="hero-standard" style={{ position: 'relative', width: '100%', height: 500, overflow: 'hidden', background: '#111' }}>
         <img
           src={HERO_IMG}
           alt="Conoce al equipo"
@@ -209,11 +209,4 @@ export default function MeetTheTeam() {
           >
             Contáctanos
           </a>
-        </div>
-
-      </div>
-
-      <Footer />
-    </>
-  );
-}
+     

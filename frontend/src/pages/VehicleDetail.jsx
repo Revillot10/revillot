@@ -48,7 +48,7 @@ function Gallery({ images }) {
             width: '100%',
             maxWidth: '100%',
             aspectRatio: '16/10',
-            objectFit: 'cover',
+            objectFit: 'contain',
             display: 'block',
             transition: 'opacity 0.25s ease',
           }}
@@ -127,7 +127,7 @@ function Gallery({ images }) {
               }}
             >
               <img src={img.url} alt="" loading="lazy"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
             </div>
           ))}
         </div>
@@ -559,6 +559,3 @@ export default function VehicleDetail() {
       </div>{/* end overflow wrapper */}
 
       <Footer />
-    </>
-  );
-}

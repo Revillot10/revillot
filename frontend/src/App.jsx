@@ -88,13 +88,4 @@ export default function App() {
             <Route path="articles"     element={<ArticlesAdmin />} />
             <Route path="articles/new" element={<ArticleForm />} />
             <Route path="articles/:id" element={<ArticleForm />} />
-            <Route path="videos"       element={<VideosAdmin />} />
-            <Route path="leads"        element={<LeadsAdmin />} />
-            <Route path="perfil"       element={<AdminProfile />} />
-          </Route>
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </AuthProvider>
-    </BrowserRouter>
-  );
-}
+            <Route path="videos"       element={<VideosAdmin />

@@ -725,7 +725,7 @@ function SidebarVehicleCard({ vehicle, onClick }) {
       onMouseOut={e => e.currentTarget.style.background='transparent'}
     >
       <div style={{ width:80, height:55, flexShrink:0, overflow:'hidden', background:'#eee' }}>
-        {img && <img src={img.url} alt={name} style={{ width:'100%', height:'100%', objectFit:'cover' }} loading="lazy" />}
+        {img && <img src={img.url} alt={name} style={{ width:'100%', height:'100%', objectFit:'contain' }} loading="lazy" />}
       </div>
       <div style={{ padding:'8px 12px', flex:1 }}>
         <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:9, fontWeight:500, letterSpacing:'1.5px', textTransform:'uppercase', color:'#000', marginBottom:3, lineHeight:1.3 }}>{name}</div>
@@ -872,3 +872,4 @@ const selectStyle = {
   backgroundImage:'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'10\' height=\'6\' viewBox=\'0 0 10 6\'%3E%3Cpath d=\'M5 6L0 0h10L5 6z\' fill=\'%23333\'/%3E%3C/svg%3E")',
   backgroundRepeat:'no-repeat', backgroundPosition:'right 12px center',
 };
+                    

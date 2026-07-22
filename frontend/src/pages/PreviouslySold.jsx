@@ -23,7 +23,7 @@ export default function PreviouslySold() {
       <Header />
 
       {/* Hero */}
-      <div style={{ position:'relative', width:'100%', height:400, overflow:'hidden', background:'#111' }}>
+      <div className="hero-standard" style={{ position:'relative', width:'100%', height:400, overflow:'hidden', background:'#111' }}>
         <img src={HERO_IMG} alt="Vehículos Vendidos" style={{ width:'100%', height:'100%', objectFit:'cover', display:'block' }} />
         <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.82) 100%)' }} />
         <div style={{ position:'absolute', inset:0, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', textAlign:'center' }}>
@@ -91,6 +91,3 @@ export default function PreviouslySold() {
       </div>
 
       <Footer />
-    </>
-  );
-}

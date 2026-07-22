@@ -195,7 +195,7 @@ export default function Sell() {
       <Header />
 
       {/* ════ HERO ════════════════════════════════════════════ */}
-      <div style={{ position:'relative', width:'100%', height:560, overflow:'hidden', background:'#0a0a0a' }}>
+      <div className="hero-standard" style={{ position:'relative', width:'100%', height:560, overflow:'hidden', background:'#0a0a0a' }}>
         <img
           src={HERO_IMG}
           alt="Vende tu vehículo con Revillot Garage"
@@ -498,8 +498,4 @@ export default function Sell() {
           onMouseOver={e=>e.currentTarget.style.background='#f0f0f0'}
           onMouseOut={e=>e.currentTarget.style.background='#fff'}
         >CONTÁCTANOS</button>
-      </div>
-      <Footer />
-    </>
-  );
-}
+  

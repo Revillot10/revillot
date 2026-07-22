@@ -118,7 +118,7 @@ export default function Contact() {
       <Header />
 
       {/* ── HERO ── */}
-      <div style={{ position:'relative', width:'100%', height:320, overflow:'hidden', background:'rgb(38,38,38)' }}>
+      <div className="hero-standard" style={{ position:'relative', width:'100%', height:320, overflow:'hidden', background:'rgb(38,38,38)' }}>
         <img
           src="/images/contactanos.jpg"  
           alt="Revillot Garage"
@@ -315,5 +315,4 @@ const labelStyle = {
   fontFamily: 'Montserrat, sans-serif',
   fontSize: 9, fontWeight: 500,
   letterSpacing: '2px', textTransform: 'uppercase',
-  color: '#999', marginBottom: 6,
-};
+  color: '#999', marg
