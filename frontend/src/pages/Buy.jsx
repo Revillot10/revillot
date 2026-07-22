@@ -613,3 +613,7 @@ export default function Buy() {
         </div>
       </div>
 
+      <Footer />
+    </>
+  );
+}

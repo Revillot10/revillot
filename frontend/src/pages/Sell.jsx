@@ -498,4 +498,8 @@ export default function Sell() {
           onMouseOver={e=>e.currentTarget.style.background='#f0f0f0'}
           onMouseOut={e=>e.currentTarget.style.background='#fff'}
         >CONTÁCTANOS</button>
-  
+      </div>
+      <Footer />
+    </>
+  );
+}

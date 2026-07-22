@@ -872,4 +872,3 @@ const selectStyle = {
   backgroundImage:'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'10\' height=\'6\' viewBox=\'0 0 10 6\'%3E%3Cpath d=\'M5 6L0 0h10L5 6z\' fill=\'%23333\'/%3E%3C/svg%3E")',
   backgroundRepeat:'no-repeat', backgroundPosition:'right 12px center',
 };
-                    

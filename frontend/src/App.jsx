@@ -67,17 +67,15 @@ export default function App() {
           <Route path="/contact"         element={<Contact />} />
           <Route path="/privacy-policy"  element={<PrivacyPolicy />} />
           <Route path="/cookie-policy"   element={<CookiePolicy />} />
-          {/* About Us pages */}
           <Route path="/why-choose"      element={<WhyChooseUs />} />
           <Route path="/meet-the-team"   element={<MeetTheTeam />} />
           <Route path="/history"         element={<Navigate to="/" replace />} />
           <Route path="/previously-sold" element={<PreviouslySold />} />
           <Route path="/finance"         element={<Finance />} />
           <Route path="/buy"             element={<Buy />} />
-          {/* Estética Automotriz */}
           <Route path="/lavado"          element={<Lavado />} />
-          <Route path="/tapiz"              element={<Tapiz />} />
-          <Route path="/inspeccion"         element={<InspeccionPreCompra />} />
+          <Route path="/tapiz"           element={<Tapiz />} />
+          <Route path="/inspeccion"      element={<InspeccionPreCompra />} />
           <Route path="/admin/login"     element={<AdminLogin />} />
           <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
             <Route index               element={<Navigate to="/admin/dashboard" replace />} />
@@ -88,4 +86,13 @@ export default function App() {
             <Route path="articles"     element={<ArticlesAdmin />} />
             <Route path="articles/new" element={<ArticleForm />} />
             <Route path="articles/:id" element={<ArticleForm />} />
-            <Route path="videos"       element={<VideosAdmin />
+            <Route path="videos"       element={<VideosAdmin />} />
+            <Route path="leads"        element={<LeadsAdmin />} />
+            <Route path="perfil"       element={<AdminProfile />} />
+          </Route>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
+  );
+}

@@ -559,3 +559,6 @@ export default function VehicleDetail() {
       </div>{/* end overflow wrapper */}
 
       <Footer />
+    </>
+  );
+}
