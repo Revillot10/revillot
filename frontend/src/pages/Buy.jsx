@@ -613,4 +613,19 @@ export default function Buy() {
         </p>
         <div style={{ display:'flex', gap:14 }}>
           <button onClick={() => navigate('/contact')}
-            style={{ fontFamily:'Montser
+            style={{ fontFamily:'Montserrat,sans-serif', fontSize:11, fontWeight:500, letterSpacing:'3px', textTransform:'uppercase', background:'#fff', color:'#000', border:'none', padding:'16px 36px', cursor:'pointer', transition:'background 0.2s' }}
+            onMouseOver={e=>e.currentTarget.style.background='#f0f0f0'}
+            onMouseOut={e=>e.currentTarget.style.background='#fff'}
+          >CONTÁCTANOS</button>
+          <button onClick={() => navigate('/inventory')}
+            style={{ fontFamily:'Montserrat,sans-serif', fontSize:11, fontWeight:500, letterSpacing:'3px', textTransform:'uppercase', background:'none', color:'rgba(255,255,255,0.8)', border:'1px solid rgba(255,255,255,0.35)', padding:'16px 36px', cursor:'pointer', transition:'all 0.2s' }}
+            onMouseOver={e=>{ e.currentTarget.style.borderColor='rgba(255,255,255,0.7)'; e.currentTarget.style.color='#fff'; }}
+            onMouseOut={e=>{ e.currentTarget.style.borderColor='rgba(255,255,255,0.35)'; e.currentTarget.style.color='rgba(255,255,255,0.8)'; }}
+          >VER STOCK</button>
+        </div>
+      </div>
+
+      <Footer />
+    </>
+  );
+}

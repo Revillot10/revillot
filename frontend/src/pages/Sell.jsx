@@ -498,4 +498,10 @@ export default function Sell() {
         <button onClick={() => navigate('/contact')}
           style={{ fontFamily:'Montserrat,sans-serif', fontSize:11, fontWeight:500, letterSpacing:'3px', textTransform:'uppercase', background:'#fff', color:'#000', border:'none', padding:'16px 40px', cursor:'pointer', transition:'background 0.2s' }}
           onMouseOver={e=>e.currentTarget.style.background='#f0f0f0'}
-          onMouseOut={e=>e.currentTarget.style.background='#
+          onMouseOut={e=>e.currentTarget.style.background='#fff'}
+        >CONTÁCTANOS</button>
+      </div>
+      <Footer />
+    </>
+  );
+}
