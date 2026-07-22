@@ -24,10 +24,10 @@ export default function PreviouslySold() {
 
       {/* Hero */}
       <div style={{ position:'relative', width:'100%', height:400, overflow:'hidden', background:'#111' }}>
-        <img src={HERO_IMG} alt="Vehículos Vendidos" style={{ width:'100%', height:'100%', objectFit:'cover', opacity:0.40, display:'block' }} />
-        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.60) 100%)' }} />
+        <img src={HERO_IMG} alt="Vehículos Vendidos" style={{ width:'100%', height:'100%', objectFit:'cover', display:'block' }} />
+        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.82) 100%)' }} />
         <div style={{ position:'absolute', inset:0, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', textAlign:'center' }}>
-          <h1 style={{ fontFamily:'Montserrat,sans-serif', fontSize:42, fontWeight:200, letterSpacing:'10px', textTransform:'uppercase', color:'#fff', marginBottom:16, textShadow:'0 2px 20px rgba(0,0,0,0.4)' }}>VENDIDOS</h1>
+          <h1 className="servicio-hero-h1" style={{ fontFamily:'Montserrat,sans-serif', fontSize:56, fontWeight:200, letterSpacing:'8px', textTransform:'uppercase', color:'#fff', marginBottom:16, lineHeight:1.05 }}>VENDIDOS</h1>
           <div style={{ width:60, height:1, background:'rgba(255,255,255,0.6)', marginBottom:20 }} />
           <p style={{ fontFamily:'Roboto,sans-serif', fontSize:14, fontWeight:300, color:'rgba(255,255,255,0.85)', letterSpacing:'1px' }}>
             Galería de vehículos que han pasado por Revillot Garage

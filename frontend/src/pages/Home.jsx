@@ -10,7 +10,7 @@ import { vehiclesApi } from '../services/api';
 
 
    
-const HERO_IMG = '/images/home.webp';
+const HERO_IMG = '/images/contactanos.jpg';
 
 // Insight (greyscale image del lado izquierdo)
 const INSIGHT_IMG = 'https://images.67degreescdn.co.uk/ydyiHXDqolkGpRvaLuxGAtQRNxg=/137/6/1695044275650852b31703e_insights-greyscale.png';
@@ -26,6 +26,11 @@ const QUICK_LINKS = [
     title: 'VENDE TU VEHÍCULO',
     href: '/sell',
     img: 'https://images.67degreescdn.co.uk/CnxOnoKfze_pnsgDV5Liq5_0zbQ=/370x600/smart/137/6/16950737596508c5dfe1628_dsc02833-enhanced-nr.jpg',
+  },
+  {
+    title: 'FINANCIAMIENTO',
+    href: '/buy',
+    img: '/images/finance.jpg',
   },
   {
     title: 'VENDIDOS',
@@ -92,7 +97,7 @@ export default function Home() {
         {/* Overlay idéntico al de Sell/Buy — sutil arriba, más denso abajo */}
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.72) 100%)',
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.82) 100%)',
           zIndex: 1,
         }} />
 
@@ -109,12 +114,11 @@ export default function Home() {
           <div style={{ width: 40, height: 1, background: 'rgba(255,255,255,0.5)', marginBottom: 20 }} />
 
           {/* Tagline principal */}
-          <h2 className="hero-title" style={{
+          <h2 className="hero-title servicio-hero-h1" style={{
             fontFamily: "'Montserrat', sans-serif",
-            fontSize: 42, fontWeight: 200,
-            letterSpacing: '12px', textTransform: 'uppercase',
-            color: '#fff', margin: '0 0 14px', lineHeight: 1.1,
-            textShadow: '0 2px 20px rgba(0,0,0,0.4)',
+            fontSize: 56, fontWeight: 200,
+            letterSpacing: '8px', textTransform: 'uppercase',
+            color: '#fff', margin: '0 0 14px', lineHeight: 1.05,
           }}>
             COMPROMISO EN CADA DETALLE
           </h2>
@@ -200,9 +204,9 @@ export default function Home() {
         </div>
 
         {/* Nombre principal — gran jerarquía */}
-        <h1 style={{
+        <h1 className="servicio-hero-h1" style={{
           fontFamily: "'Montserrat', sans-serif",
-          fontSize: 46, fontWeight: 400,
+          fontSize: 56, fontWeight: 200,
           letterSpacing: '8px', textTransform: 'uppercase',
           color: '#000', lineHeight: 1.1,
           margin: '0 0 24px',

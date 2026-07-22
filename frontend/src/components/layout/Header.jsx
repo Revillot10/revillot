@@ -131,8 +131,8 @@ export default function Header() {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
-  const transparent = isHome && !scrolled && !mobileOpen;
-  const color = transparent ? 'rgba(255,255,255,0.9)' : '#000';
+  const transparent = false;
+  const color = '#000';
 
   return (
     <>
@@ -239,9 +239,6 @@ export default function Header() {
           </a>
         </nav>
       </div>
-      {/* Espaciador para que el contenido no quede bajo el header fijo */}
-      {!isHome && <div className="header-spacer" style={{ height: '113px' }} />}
-
       {/* ── BOTÓN HAMBURGUESA (solo móvil) ── */}
       <button className="header-burger" aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={mobileOpen}
         onClick={() => setMobileOpen(o => !o)}
@@ -322,6 +319,8 @@ export default function Header() {
         ><PhoneIcon /> +56 9 3458 0647</a>
       </nav>
     </header>
+    {/* Espaciador para que el contenido no quede bajo el header fijo */}
+    {!isHome && <div className="header-spacer" style={{ height: '113px' }} />}
     </>
   );
 }

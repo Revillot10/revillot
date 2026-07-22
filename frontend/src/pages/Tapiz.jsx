@@ -149,11 +149,11 @@ export default function Tapiz() {
         <img
           src="/images/contactanos.jpg"
           alt="Restauración de tapiz Revillot Garage"
-          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.40 }}
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
         />
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(135deg, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.20) 100%)',
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.82) 100%)',
         }} />
         <div className="servicio-hero-content" style={{
           position: 'relative', zIndex: 1,

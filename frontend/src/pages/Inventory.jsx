@@ -344,12 +344,11 @@ export default function Inventory() {
               alignItems:'center', justifyContent:'center',
               textAlign:'center', padding:'0 25px',
             }}>
-              <h1 style={{
+              <h1 className="servicio-hero-h1" style={{
                 fontFamily:'Montserrat,sans-serif',
-                fontSize:42, fontWeight:200,
-                letterSpacing:'10px', textTransform:'uppercase',
-                color:'#fff', margin:'0 0 20px', lineHeight:1.1,
-                textShadow:'0 2px 24px rgba(0,0,0,0.6)',
+                fontSize:56, fontWeight:200,
+                letterSpacing:'8px', textTransform:'uppercase',
+                color:'#fff', margin:'0 0 20px', lineHeight:1.05,
               }}>
                 {activeBrand ? activeBrand.name.toUpperCase()+' EN VENTA' : 'EN VENTA ACTUALMENTE'}
               </h1>

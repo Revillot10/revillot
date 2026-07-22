@@ -246,11 +246,11 @@ export default function Buy() {
       {/* ══════ HERO ══════════════════════════════════════════ */}
       <div style={{ position:'relative', width:'100%', height:620, overflow:'hidden', background:'#050505' }}>
         <img src={HERO_IMG} alt="Compra y Financiamiento Revillot Garage"
-          style={{ width:'100%', height:'100%', objectFit:'cover', opacity:0.40, display:'block' }} />
-        <div style={{ position:'absolute', inset:0, background:'linear-gradient(135deg, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.20) 100%)' }} />
+          style={{ width:'100%', height:'100%', objectFit:'cover', display:'block' }} />
+        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.82) 100%)' }} />
 
         <div style={{ position:'absolute', top:'50%', left:0, right:0, transform:'translateY(-50%)', display:'flex', flexDirection:'column', alignItems:'center', textAlign:'center', padding:'0 10%' }}>
-          <h1 className="buy-hero-title" style={{ fontFamily:'Montserrat,sans-serif', fontSize:60, fontWeight:200, letterSpacing:'8px', textTransform:'uppercase', color:'#fff', marginBottom:0, lineHeight:1.05 }}>
+          <h1 className="buy-hero-title servicio-hero-h1" style={{ fontFamily:'Montserrat,sans-serif', fontSize:56, fontWeight:200, letterSpacing:'8px', textTransform:'uppercase', color:'#fff', marginBottom:0, lineHeight:1.05 }}>
             COMPRA<br /><span style={{ fontWeight:500 }}>& FINANCIAMIENTO</span>
           </h1>
           <div style={{ width:70, height:1, background:'rgba(255,255,255,0.5)', margin:'28px 0' }} />

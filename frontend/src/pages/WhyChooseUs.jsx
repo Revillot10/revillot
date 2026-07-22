@@ -87,13 +87,13 @@ export default function WhyChooseUs() {
       {/* ── HERO ── */}
       <div style={{ position:'relative', width:'100%', height:500, overflow:'hidden', background:'#111' }}>
         <img src={HERO_IMG} alt="Por qué escogernos"
-          style={{ width:'100%', height:'100%', objectFit:'cover', opacity:0.40, display:'block' }} />
-        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.60) 100%)' }} />
+          style={{ width:'100%', height:'100%', objectFit:'cover', display:'block' }} />
+        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.82) 100%)' }} />
         <div style={{ position:'absolute', inset:0, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', textAlign:'center', padding:'0 25px' }}>
           <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:11, fontWeight:500, letterSpacing:'6px', textTransform:'uppercase', color:'rgba(255,255,255,0.55)', marginBottom:18 }}>
             REVILLOT GARAGE
           </div>
-          <h1 style={{ fontFamily:'Montserrat,sans-serif', fontSize:42, fontWeight:200, letterSpacing:'10px', textTransform:'uppercase', color:'#fff', marginBottom:20, lineHeight:1.1, textShadow:'0 2px 24px rgba(0,0,0,0.4)' }}>
+          <h1 className="servicio-hero-h1" style={{ fontFamily:'Montserrat,sans-serif', fontSize:56, fontWeight:200, letterSpacing:'8px', textTransform:'uppercase', color:'#fff', marginBottom:20, lineHeight:1.05 }}>
             ¿POR QUÉ ELEGIRNOS?
           </h1>
           <div style={{ width:50, height:1, background:'rgba(255,255,255,0.5)' }} />

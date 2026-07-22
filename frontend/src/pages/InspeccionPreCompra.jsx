@@ -117,11 +117,11 @@ export default function InspeccionPreCompra() {
         <img
           src="/images/contactanos.jpg"
           alt="Inspección pre-compra Revillot Garage"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.40, display: 'block' }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
         />
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(135deg, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.20) 100%)',
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.82) 100%)',
         }} />
         <div className="servicio-hero-content" style={{
           position: 'absolute', top: '50%', left: 0, right: 0,
@@ -131,7 +131,7 @@ export default function InspeccionPreCompra() {
           textAlign: 'center', padding: '0 10%',
         }}>
           <h1 className="servicio-hero-h1" style={{
-            fontFamily: 'Montserrat,sans-serif', fontSize: 52, fontWeight: 200,
+            fontFamily: 'Montserrat,sans-serif', fontSize: 56, fontWeight: 200,
             letterSpacing: '8px', textTransform: 'uppercase', color: '#fff',
             lineHeight: 1.05, marginBottom: 0,
           }}>

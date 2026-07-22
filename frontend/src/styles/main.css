@@ -84,11 +84,16 @@ input, textarea, select { font-family: inherit; }
   overflow: hidden;
 }
 
+.hero {
+  height: 85vh;
+  max-height: 750px;
+  min-height: 480px;
+}
+
 .hero img {
   display: block;
   width: 100%;
-  height: auto;
-  min-height: 70vh;  /* un poco más alto para más impacto */
+  height: 100%;
   object-fit: cover;
 }
 
@@ -1610,11 +1615,11 @@ img { max-width: 100%; height: auto; }
 
 /* ── HERO RESPONSIVO ── */
 @media (max-width: 768px) {
-  .hero-title { font-size: 28px !important; letter-spacing: 6px !important; }
+  .hero-title { font-size: 34px !important; letter-spacing: 4px !important; }
   .hero-subtitle { font-size: 12px !important; letter-spacing: 2px !important; }
 }
-@media (max-width: 480px) {
-  .hero-title { font-size: 22px !important; letter-spacing: 4px !important; }
+@media (max-width: 520px) {
+  .hero-title { font-size: 28px !important; letter-spacing: 2px !important; }
   .hero-cta { flex-direction: column; width: 100%; padding: 0 24px; box-sizing: border-box; }
   .hero-cta a { width: 100%; box-sizing: border-box; text-align: center; }
 }
@@ -1776,9 +1781,9 @@ img { max-width: 100%; height: auto; }
    progresivamente para que "FINANCIAMIENTO" no se corte en pantallas
    angostas. */
 @media (max-width: 768px) {
-  .buy-hero-title { font-size: 38px !important; letter-spacing: 4px !important; }
+  .buy-hero-title { font-size: 34px !important; letter-spacing: 4px !important; }
 }
-@media (max-width: 480px) {
+@media (max-width: 520px) {
   .buy-hero-title { font-size: 28px !important; letter-spacing: 2px !important; }
 }
 
@@ -1978,11 +1983,11 @@ img { max-width: 100%; height: auto; }
    RESPONSIVE — LAVADO / TAPIZ / INSPECCIÓN
 ══════════════════════════════════════════════════════ */
 
-/* Hero outer: altura fija → auto en móvil */
+/* Hero outer: altura fija en móvil también (flex centering requiere altura definida) */
 @media (max-width: 768px) {
   .servicio-hero-outer {
-    height: auto !important;
-    min-height: 500px;
+    height: 520px !important;
+    min-height: unset;
   }
   .servicio-hero-outer img {
     position: absolute;
@@ -1990,11 +1995,11 @@ img { max-width: 100%; height: auto; }
     height: 100%;
     object-fit: cover;
   }
-  /* Hero content: centrado verticalmente con respiración */
+  /* Hero content: el outer div maneja el centrado vertical */
   .servicio-hero-content {
-    padding: 100px 24px 60px !important;
+    padding: 0 24px !important;
     justify-content: center !important;
-    align-items: flex-start !important;
+    align-items: center !important;
   }
   /* H1 del hero */
   .servicio-hero-h1 {

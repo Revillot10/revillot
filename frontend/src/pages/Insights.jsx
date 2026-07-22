@@ -274,20 +274,20 @@ export default function Insights() {
           src={HERO_IMG}
           alt="Revillot Insights"
           loading="eager"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', opacity: 0.45, filter: 'blur(2px)', transform: 'scale(1.05)' }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%' }}
         />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.72) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.82) 100%)' }} />
         <div style={{
           position: 'absolute', inset: 0,
           display: 'flex', flexDirection: 'column',
           alignItems: 'center', justifyContent: 'center',
           textAlign: 'center', padding: '0 40px',
         }}>
-          <h1 style={{
+          <h1 className="servicio-hero-h1" style={{
             fontFamily: "'Montserrat', sans-serif",
-            fontSize: 42, fontWeight: 300,
-            letterSpacing: '12px', textTransform: 'uppercase',
-            color: '#fff', margin: '0 0 18px',
+            fontSize: 56, fontWeight: 200,
+            letterSpacing: '8px', textTransform: 'uppercase',
+            color: '#fff', margin: '0 0 18px', lineHeight: 1.05,
           }}>
             INSIGHTS
           </h1>
