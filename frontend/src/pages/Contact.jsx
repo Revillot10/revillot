@@ -315,4 +315,5 @@ const labelStyle = {
   fontFamily: 'Montserrat, sans-serif',
   fontSize: 9, fontWeight: 500,
   letterSpacing: '2px', textTransform: 'uppercase',
-  color: '#999', marg
+  color: '#999', marginBottom: 6,
+};
