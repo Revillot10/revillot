@@ -336,7 +336,7 @@ export default function Lavado() {
             Dos servicios según lo que tu auto necesita.
           </p>
 
-          <div style={{ display: 'flex', gap: 10 }}>
+          <div className="lavado-hero-btns" style={{ display: 'flex', gap: 10 }}>
             {[
               { label: 'Lavado Clásico',  ref: clasicoRef },
               { label: 'Lavado Premium',  ref: premiumRef },
