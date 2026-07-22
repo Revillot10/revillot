@@ -244,7 +244,7 @@ export default function Buy() {
       <Header />
 
       {/* ══════ HERO ══════════════════════════════════════════ */}
-      <div className="hero-standard" style={{ position:'relative', width:'100%', height:620, overflow:'hidden', background:'#050505' }}>
+      <div className="hero-standard" style={{ position:'relative', width:'100%', height:560, overflow:'hidden', background:'#050505' }}>
         <img src={HERO_IMG} alt="Compra y Financiamiento Revillot Garage"
           style={{ width:'100%', height:'100%', objectFit:'cover', display:'block' }} />
         <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.82) 100%)' }} />

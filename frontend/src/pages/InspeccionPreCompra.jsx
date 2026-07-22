@@ -180,23 +180,47 @@ export default function InspeccionPreCompra() {
         </div>
       </div>
 
+      {/* ── BARRA DE VALOR ── */}
+      <div style={{ background: '#fff', padding: '0 25px', borderBottom: '1px solid #e8e8e8' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
+          {[
+            { icon: '📍', label: 'Vamos donde el auto',      desc: 'Nos desplazamos a la automotora o domicilio del vendedor. Sin traslados ni coordinaciones de tu parte.' },
+            { icon: '💰', label: 'Precio fijo sin sorpresas', desc: 'Sabes exactamente cuánto pagas antes de agendar. Sin cobros adicionales por desplazamiento ni extras.' },
+            { icon: '🛡️', label: 'Independientes del vendedor', desc: 'No tenemos ningún vínculo con quien vende. Nuestro único cliente eres tú — sin conflicto de interés.' },
+          ].map((item, i) => (
+            <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'flex-start', padding: '32px 28px', borderRight: i < 2 ? '1px solid #e8e8e8' : 'none' }}>
+              <span style={{ fontSize: 20, flexShrink: 0, marginTop: 2 }}>{item.icon}</span>
+              <div>
+                <div style={{ fontFamily: 'Montserrat,sans-serif', fontSize: 10, fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase', color: '#000', marginBottom: 8 }}>{item.label}</div>
+                <div style={{ fontFamily: 'Roboto,sans-serif', fontSize: 12, fontWeight: 300, color: 'rgb(102,102,102)', lineHeight: 1.6 }}>{item.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* ── STAT DESTACADA ── */}
-      <div style={{ background: '#f0f0f0', padding: '70px 25px', textAlign: 'center' }}>
+      <div style={{ background: 'rgb(38,38,38)', padding: '70px 25px', textAlign: 'center' }}>
         <div style={{ maxWidth: 760, margin: '0 auto' }}>
+          <div style={{
+            fontFamily: 'Montserrat,sans-serif', fontSize: 18, fontWeight: 700,
+            letterSpacing: '3px', textTransform: 'uppercase',
+            color: '#fff', marginBottom: 28,
+          }}>¿Sabías que...?</div>
           <div className="insp-stat-num" style={{
-            fontFamily: 'Montserrat,sans-serif', fontSize: 80, fontWeight: 200,
-            letterSpacing: '4px', color: '#000', lineHeight: 1, marginBottom: 20,
+            fontFamily: 'Montserrat,sans-serif', fontSize: 96, fontWeight: 200,
+            letterSpacing: '4px', color: '#fff', lineHeight: 1, marginBottom: 16,
           }}>60%</div>
           <h2 style={{
-            fontFamily: 'Montserrat,sans-serif', fontSize: 18, fontWeight: 500,
-            letterSpacing: '4px', textTransform: 'uppercase', color: '#000', marginBottom: 16,
+            fontFamily: 'Montserrat,sans-serif', fontSize: 18, fontWeight: 400,
+            letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', marginBottom: 24,
           }}>de los autos usados en venta tienen problemas ocultos</h2>
-          <div style={{ width: 40, height: 1, background: 'rgba(0,0,0,0.2)', margin: '0 auto 20px' }} />
+          <div style={{ width: 40, height: 1, background: 'rgba(255,255,255,0.25)', margin: '0 auto 24px' }} />
           <p style={{
             fontFamily: 'Roboto,sans-serif', fontSize: 15, fontWeight: 300,
-            color: 'rgb(102,102,102)', lineHeight: 1.85, marginBottom: 0,
+            color: 'rgba(255,255,255,0.82)', lineHeight: 1.9, marginBottom: 0, maxWidth: 580, margin: '0 auto',
           }}>
-            Conocer el estado real del vehículo antes de comprar te permite negociar el precio con fundamento,
+            Conocer el estado real del vehículo antes de comprar te permite negociar con fundamento,
             evitar reparaciones inesperadas y tomar la decisión correcta — sin depender de la palabra del vendedor.
           </p>
         </div>
@@ -358,38 +382,4 @@ export default function InspeccionPreCompra() {
           <h2 style={{
             fontFamily: 'Montserrat,sans-serif', fontSize: 30, fontWeight: 200,
             letterSpacing: '6px', textTransform: 'uppercase', color: '#000', marginBottom: 16,
-          }}>AGENDA TU INSPECCIÓN</h2>
-          <div style={{ width: 40, height: 1, background: 'rgba(0,0,0,0.2)', margin: '0 auto 20px' }} />
-          <p style={{
-            fontFamily: 'Roboto,sans-serif', fontSize: 15, fontWeight: 300,
-            color: 'rgb(102,102,102)', lineHeight: 1.85, marginBottom: 36,
-          }}>
-            Cuéntanos el auto que estás evaluando y coordinamos todo. Vamos donde esté el vehículo.
-          </p>
-          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-              style={{
-                fontFamily: 'Montserrat,sans-serif', fontSize: 10, fontWeight: 600,
-                letterSpacing: '3px', textTransform: 'uppercase',
-                background: '#000', color: '#fff',
-                padding: '16px 32px', textDecoration: 'none', transition: 'background 0.2s',
-              }}
-              onMouseEnter={e => e.currentTarget.style.background = '#333'}
-              onMouseLeave={e => e.currentTarget.style.background = '#000'}
-            >Solicitar por WhatsApp</a>
-            <button onClick={() => navigate('/contact')}
-              style={{
-                fontFamily: 'Montserrat,sans-serif', fontSize: 10, fontWeight: 500,
-                letterSpacing: '3px', textTransform: 'uppercase',
-                background: 'none', color: '#000', border: '1px solid #000',
-                padding: '16px 32px', cursor: 'pointer', transition: 'all 0.2s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#000'; e.currentTarget.style.color = '#fff'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = '#000'; }}
-            >Formulario de contacto</button>
-          </div>
-        </div>
-      </div>
-
-      <Footer />
- 
+          }}>AGENDA TU INSPECCI�

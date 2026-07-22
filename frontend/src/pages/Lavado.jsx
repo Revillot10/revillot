@@ -361,6 +361,25 @@ export default function Lavado() {
         </div>
       </div>
 
+      {/* ── BARRA DE VALOR ── */}
+      <div style={{ background: '#fff', padding: '0 25px', borderBottom: '1px solid #e8e8e8' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
+          {[
+            { icon: '⏱️', label: 'Listo el mismo día',        desc: 'El proceso completo no supera las 3 horas. Tu vehículo disponible el mismo día sin esperas.' },
+            { icon: '💰', label: 'Cotización sin compromiso', desc: 'Te informamos el costo exacto antes de confirmar. Sin letras pequeñas ni cobros sorpresa.' },
+            { icon: '🏅', label: 'Solo microfibra en pintura', desc: 'Cero esponjas abrasivas en contacto con la carrocería. Garantizamos un proceso sin micro-arañazos.' },
+          ].map((item, i) => (
+            <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'flex-start', padding: '32px 28px', borderRight: i < 2 ? '1px solid #e8e8e8' : 'none' }}>
+              <span style={{ fontSize: 20, flexShrink: 0, marginTop: 2 }}>{item.icon}</span>
+              <div>
+                <div style={{ fontFamily: 'Montserrat,sans-serif', fontSize: 10, fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase', color: '#000', marginBottom: 8 }}>{item.label}</div>
+                <div style={{ fontFamily: 'Roboto,sans-serif', fontSize: 12, fontWeight: 300, color: 'rgb(102,102,102)', lineHeight: 1.6 }}>{item.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* ── SERVICIOS ── */}
       <ServicioSection data={CLASICO} refEl={clasicoRef} />
 
@@ -452,36 +471,4 @@ export default function Lavado() {
           }}>
             Contáctanos y coordinamos una fecha. Trabajamos en nuestras instalaciones o podemos ir donde tú estás.
           </p>
-          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a
-              href="https://wa.me/56934580647?text=Hola%2C%20me%20interesa%20un%20lavado%20profesional"
-              target="_blank" rel="noopener noreferrer"
-              style={{
-                fontFamily: 'Montserrat,sans-serif', fontSize: 10, fontWeight: 600,
-                letterSpacing: '3px', textTransform: 'uppercase',
-                background: '#000', color: '#fff',
-                padding: '16px 32px', textDecoration: 'none', transition: 'background 0.2s',
-              }}
-              onMouseEnter={e => e.currentTarget.style.background = '#333'}
-              onMouseLeave={e => e.currentTarget.style.background = '#000'}
-            >Solicitar por WhatsApp</a>
-            <button
-              onClick={() => navigate('/contact')}
-              style={{
-                fontFamily: 'Montserrat,sans-serif', fontSize: 10, fontWeight: 500,
-                letterSpacing: '3px', textTransform: 'uppercase',
-                background: 'none', color: '#000', border: '1px solid #000',
-                padding: '16px 32px', cursor: 'pointer', transition: 'all 0.2s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#000'; e.currentTarget.style.color = '#fff'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = '#000'; }}
-            >Formulario de contacto</button>
-          </div>
-        </div>
-      </div>
-
-      <Footer />
-    </>
-  );
-}
-            
+          <div style={{ display: 'flex', gap: 12, justifyC
