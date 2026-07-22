@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 
-const HERO_IMG = '/images/meet.webp';
+const HERO_IMG = 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920&q=90&fm=jpg';
 
 function GroupTitle({ children }) {
   return (
     <div style={{ padding: '56px 0 24px' }}>
       <h3 style={{ fontFamily: 'Montserrat,sans-serif', fontSize: 11, fontWeight: 500, letterSpacing: '4px', textTransform: 'uppercase', color: '#000', marginBottom: 10 }}>{children}</h3>
-      <div style={{ width: 30, height: 1, background: '#000' }} />
+      <div style={{ width: 30, height: 1, background: 'rgba(0,0,0,0.2)' }} />
     </div>
   );
 }
@@ -66,8 +66,9 @@ export default function MeetTheTeam() {
         <img
           src={HERO_IMG}
           alt="Conoce al equipo"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.45, display: 'block' }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.40, display: 'block' }}
         />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.60) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
           <h1 style={{ fontFamily: 'Montserrat,sans-serif', fontSize: 42, fontWeight: 200, letterSpacing: '10px', textTransform: 'uppercase', color: '#fff', marginBottom: 16 }}>
             CONOCE AL EQUIPO
@@ -102,7 +103,7 @@ export default function MeetTheTeam() {
             <h2 style={{ fontFamily: 'Montserrat,sans-serif', fontSize: 32, fontWeight: 200, letterSpacing: '4px', textTransform: 'uppercase', color: '#000', marginBottom: 24, lineHeight: 1.2 }}>
               Tomás Urzúa<br />Revillot
             </h2>
-            <div style={{ width: 30, height: 1, background: '#000', marginBottom: 28 }} />
+            <div style={{ width: 30, height: 1, background: 'rgba(0,0,0,0.2)', marginBottom: 28 }} />
 
             <Quote>
               "Cada vehículo que entra a Revillot Garage pasa por mis manos. No vendemos autos, entregamos confianza."
@@ -138,7 +139,7 @@ export default function MeetTheTeam() {
             <h3 style={{ fontFamily: 'Montserrat,sans-serif', fontSize: 22, fontWeight: 300, letterSpacing: '3px', textTransform: 'uppercase', color: '#000', marginBottom: 24 }}>
               Pasión que se nota
             </h3>
-            <div style={{ width: 30, height: 1, background: '#000', marginBottom: 28 }} />
+            <div style={{ width: 30, height: 1, background: 'rgba(0,0,0,0.2)', marginBottom: 28 }} />
 
             <p style={{ fontFamily: 'Roboto,sans-serif', fontSize: 15, fontWeight: 300, color: 'rgb(80,80,80)', lineHeight: 1.9, marginBottom: 16 }}>
               Para Tomás, conocer a fondo un vehículo es tan importante como saber presentarlo.

@@ -155,7 +155,7 @@ export default function Header() {
         <nav className="header-nav-desktop" style={{ display:'flex', alignItems:'center', flex:1 }}>
           <NavLink to="/"         end style={({ isActive }) => linkStyle(color, isActive)}>HOME</NavLink>
           <NavLink to="/inventory"    style={({ isActive }) => linkStyle(color, isActive)}>STOCK</NavLink>
-          <NavLink to="/sell"         style={({ isActive }) => linkStyle(color, isActive)}>VENDE TU VEHÍCULO</NavLink>
+          <NavLink to="/sell"         style={({ isActive }) => linkStyle(color, isActive)}>VENDE</NavLink>
           <NavLink to="/buy"          style={({ isActive }) => linkStyle(color, isActive)}>COMPRA</NavLink>
 
           <NavLink to="/inspeccion" style={({ isActive }) => linkStyle(color, isActive)}>INSPECCIÓN</NavLink>
@@ -204,7 +204,6 @@ export default function Header() {
               ['/why-choose',      '¿Por qué escogernos?'],
               ['/meet-the-team',   'Conoce al Equipo'],
               ['/previously-sold', 'Vendidos'],
-              ['/buy',             'Financiamiento'],
             ]}
           />
 
@@ -299,7 +298,6 @@ export default function Header() {
           ['/why-choose',      '¿Por qué escogernos?'],
           ['/meet-the-team',   'Conoce al Equipo'],
           ['/previously-sold', 'Vendidos'],
-          ['/buy',             'Financiamiento'],
         ].map(([to, label]) => (
           <NavLink key={to} to={to}
             style={({ isActive }) => ({ display:'block', padding:'14px 24px 14px 40px', fontFamily:"'Montserrat', sans-serif", fontSize:'11px', fontWeight:500, letterSpacing:'1px', textTransform:'uppercase', color: isActive ? '#000' : '#777', background: isActive ? '#f7f7f7' : '#fafafa', borderBottom:'1px solid #eee', textDecoration:'none' })}

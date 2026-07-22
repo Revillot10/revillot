@@ -28,11 +28,6 @@ const QUICK_LINKS = [
     img: 'https://images.67degreescdn.co.uk/CnxOnoKfze_pnsgDV5Liq5_0zbQ=/370x600/smart/137/6/16950737596508c5dfe1628_dsc02833-enhanced-nr.jpg',
   },
   {
-    title: 'FINANCIAMIENTO',
-    href: '/buy',
-    img: '/images/finance.jpg',
-  },
-  {
     title: 'VENDIDOS',
     href: '/previously-sold',
     img: 'https://images.67degreescdn.co.uk/eXYiCx4AFo1x6vhPajTk-P5_UFs=/370x600/smart/137/6/1680710816642d9ca0a8ba1_news-events.jpg',
@@ -218,7 +213,7 @@ export default function Home() {
         {/* Línea decorativa */}
         <div style={{
           width: 40, height: 1,
-          background: '#000',
+          background: 'rgba(0,0,0,0.2)',
           margin: '0 auto 36px',
         }} />
 

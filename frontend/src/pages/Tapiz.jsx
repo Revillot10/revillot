@@ -141,30 +141,26 @@ export default function Tapiz() {
 
       {/* ── HERO ── */}
       <div className="servicio-hero-outer" style={{
-        position: 'relative', width: '100%', height: 520,
+        position: 'relative', width: '100%', height: 560,
         overflow: 'hidden', background: '#080808',
+        display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'center',
       }}>
         <img
-          src="/images/home.webp"
+          src="/images/contactanos.jpg"
           alt="Restauración de tapiz Revillot Garage"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.3, display: 'block' }}
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.40 }}
         />
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 100%)',
+          background: 'linear-gradient(135deg, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.20) 100%)',
         }} />
         <div className="servicio-hero-content" style={{
-          position: 'absolute', inset: 0,
+          position: 'relative', zIndex: 1,
           display: 'flex', flexDirection: 'column',
-          alignItems: 'flex-start', justifyContent: 'center',
-          padding: '0 8%',
+          alignItems: 'center',
+          textAlign: 'center', padding: '0 10%', width: '100%',
         }}>
-          <div style={{
-            fontFamily: 'Montserrat,sans-serif', fontSize: 10, fontWeight: 500,
-            letterSpacing: '6px', textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.4)', marginBottom: 18,
-          }}>Estética Automotriz</div>
-
           <h1 className="servicio-hero-h1" style={{
             fontFamily: 'Montserrat,sans-serif', fontSize: 56, fontWeight: 200,
             letterSpacing: '8px', textTransform: 'uppercase', color: '#fff',
@@ -207,7 +203,7 @@ export default function Tapiz() {
       </div>
 
       {/* ── HEADER DEL SERVICIO ── */}
-      <div style={{ background: '#000', padding: '48px 25px' }}>
+      <div style={{ background: 'rgb(38,38,38)', padding: '48px 25px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div style={{
             fontFamily: 'Montserrat,sans-serif', fontSize: 9, fontWeight: 600,
@@ -351,7 +347,7 @@ export default function Tapiz() {
             fontFamily: 'Montserrat,sans-serif', fontSize: 30, fontWeight: 200,
             letterSpacing: '6px', textTransform: 'uppercase', color: '#000', marginBottom: 16,
           }}>AGENDA TU SERVICIO</h2>
-          <div style={{ width: 40, height: 1, background: '#000', margin: '0 auto 20px' }} />
+          <div style={{ width: 40, height: 1, background: 'rgba(0,0,0,0.2)', margin: '0 auto 20px' }} />
           <p style={{
             fontFamily: 'Roboto,sans-serif', fontSize: 15, fontWeight: 300,
             color: 'rgb(102,102,102)', lineHeight: 1.85, marginBottom: 36,

@@ -27,7 +27,7 @@ const sectionTitle = (text) => (
       letterSpacing: '8px', textTransform: 'uppercase',
       color: '#000', marginBottom: 12,
     }}>{text}</h2>
-    <div style={{ width: 40, height: 1, background: '#000' }} />
+    <div style={{ width: 40, height: 1, background: 'rgba(0,0,0,0.2)' }} />
   </div>
 );
 
@@ -118,13 +118,13 @@ export default function Contact() {
       <Header />
 
       {/* ── HERO ── */}
-      <div style={{ position:'relative', width:'100%', height:320, overflow:'hidden', background:'#111' }}>
+      <div style={{ position:'relative', width:'100%', height:320, overflow:'hidden', background:'rgb(38,38,38)' }}>
         <img
           src="/images/contactanos.jpg"  
           alt="Revillot Garage"
-          style={{ width:'100%', height:'100%', objectFit:'cover', opacity:1, display:'block' }}
+          style={{ width:'100%', height:'100%', objectFit:'cover', opacity:0.40, display:'block' }}
         />
-        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.72) 100%)' }} />
+        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.60) 100%)' }} />
         <div style={{ position:'absolute', inset:0, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', textAlign:'center' }}>
           <h1 style={{ fontFamily:'Montserrat, sans-serif', fontSize:36, fontWeight:200, letterSpacing:'10px', textTransform:'uppercase', color:'#fff', marginBottom:14, textShadow:'0 2px 20px rgba(0,0,0,0.4)' }}>CONTÁCTANOS</h1>
           <div style={{ width:50, height:1, background:'rgba(255,255,255,0.6)' }} />
@@ -268,7 +268,7 @@ export default function Contact() {
       </div>
 
       {/* ── REDES SOCIALES ── */}
-      <div style={{ background:'#111', padding:'44px 25px' }}>
+      <div style={{ background:'rgb(38,38,38)', padding:'44px 25px' }}>
         <div style={{ maxWidth:700, margin:'0 auto', textAlign:'center' }}>
           <div data-reveal style={{ textAlign:'center', marginBottom:32 }}>
             <h2 style={{ fontFamily:'Montserrat, sans-serif', fontSize:22, fontWeight:300, letterSpacing:'8px', textTransform:'uppercase', color:'#fff', marginBottom:12 }}>SÍGUENOS</h2>

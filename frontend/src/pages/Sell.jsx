@@ -5,7 +5,7 @@ import Footer from '../components/layout/Footer';
 import { leadsApi } from '../services/api';
 
 /* ── Imágenes ─────────────────────────────────────────────── */
-const HERO_IMG        = '/images/hero2.png';
+const HERO_IMG        = '/images/contactanos.jpg';
 const CTA_BG_IMG      = HERO_IMG; // usa la misma imagen del hero — cámbiala por cualquier ruta o URL
 const COMPRA_IMG      = '/images/img2.png';   
 const CONSIGN_IMG     =  '/images/consignacion.jpg'; 
@@ -112,7 +112,7 @@ function SectionHeading({ sup, title, subtitle }) {
     <div style={{ textAlign:'center', padding:'60px 25px 40px' }}>
       {sup && <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:10, fontWeight:500, letterSpacing:'5px', textTransform:'uppercase', color:'#999', marginBottom:16 }}>{sup}</div>}
       <h2 style={{ fontFamily:'Montserrat,sans-serif', fontSize:36, fontWeight:200, letterSpacing:'8px', textTransform:'uppercase', color:'#000', marginBottom:16 }}>{title}</h2>
-      <div style={{ width:50, height:1, background:'#000', margin:'0 auto 24px' }} />
+      <div style={{ width:50, height:1, background:'rgba(0,0,0,0.2)', margin:'0 auto 24px' }} />
       {subtitle && <p style={{ fontFamily:'Roboto,sans-serif', fontSize:15, fontWeight:300, color:'rgb(102,102,102)', lineHeight:1.8, maxWidth:680, margin:'0 auto' }}>{subtitle}</p>}
     </div>
   );
@@ -188,7 +188,7 @@ const formGroupTitle = { fontFamily:'Montserrat,sans-serif', fontSize:10, fontWe
 /* ── Página principal ─────────────────────────────────────── */
 export default function Sell() {
   useEffect(() => { document.title = 'Vende tu Vehículo — Revillot Garage'; }, []);
-  const [activeTab, setActiveTab] = useState('compra');
+  const [activeTab, setActiveTab] = useState('consign');
   const navigate = useNavigate();
   return (
     <>
@@ -199,12 +199,10 @@ export default function Sell() {
         <img
           src={HERO_IMG}
           alt="Vende tu vehículo con Revillot Garage"
-          style={{ width:'100%', height:'100%', objectFit:'cover', opacity:1, display:'block' }}
+          style={{ width:'100%', height:'100%', objectFit:'cover', opacity:0.40, display:'block' }}
         />
+        <div style={{ position:'absolute', inset:0, background:'linear-gradient(135deg, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.20) 100%)' }} />
         <div style={{ position:'absolute', inset:0, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', textAlign:'center', padding:'0 25px' }}>
-          <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:10, fontWeight:500, letterSpacing:'6px', textTransform:'uppercase', color:'rgba(255,255,255,0.6)', marginBottom:20 }}>
-            REVILLOT GARAGE
-          </div>
           <h1 style={{ fontFamily:'Montserrat,sans-serif', fontSize:52, fontWeight:200, letterSpacing:'10px', textTransform:'uppercase', color:'#fff', marginBottom:20, lineHeight:1.1 }}>
             VENDE TU<br />VEHÍCULO
           </h1>
@@ -232,7 +230,7 @@ export default function Sell() {
       </div>
 
       {/* ════ INTRO — 3 promesas clave ═══════════════════════ */}
-      <div style={{ background:'#000', padding:'50px 25px' }}>
+      <div style={{ background:'rgb(38,38,38)', padding:'50px 25px' }}>
         <div className="promises-grid" style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:0 }}>
           {[
             { n:'100%', label:'Transparencia', desc:'Sin letra pequeña. Precios justos y condiciones claras desde el primer contacto.' },
@@ -255,8 +253,8 @@ export default function Sell() {
         <div style={{ background:'#f9f9f9', borderBottom:'1px solid #e0e0e0' }}>
           <div style={{ maxWidth:900, margin:'0 auto', display:'flex' }}>
             {[
-              { id:'compra',  label:'COMPRA DIRECTA' },
               { id:'consign', label:'CONSIGNACIÓN' },
+              { id:'compra',  label:'COMPRA DIRECTA' },
             ].map(tab => (
               <button
                 key={tab.id}
@@ -327,7 +325,7 @@ export default function Sell() {
                 {COMPRA_STEPS.map((step, i) => (
                   <div key={i} style={{ borderRight: i < 3 ? '1px solid #e0e0e0' : 'none', padding:'0 30px' }}>
                     {/* Imagen */}
-                    <div style={{ aspectRatio:'16/9', overflow:'hidden', background:'#111', marginBottom:24, borderRadius:3, boxShadow:'0 8px 24px rgba(0,0,0,0.14)', position:'relative' }}>
+                    <div style={{ aspectRatio:'16/9', overflow:'hidden', background:'rgb(38,38,38)', marginBottom:24, borderRadius:3, boxShadow:'0 8px 24px rgba(0,0,0,0.14)', position:'relative' }}>
                       <img src={step.img} alt={step.title} style={{ width:'100%', height:'100%', objectFit:'cover', display:'block', transition:'transform 0.5s' }}
                         onMouseOver={e=>e.target.style.transform='scale(1.05)'}
                         onMouseOut={e=>e.target.style.transform='scale(1)'}
@@ -411,7 +409,7 @@ export default function Sell() {
                     onMouseOut={e=>e.currentTarget.style.boxShadow='none'}
                   >
                     {/* Imagen */}
-                    <div style={{ aspectRatio:'16/9', overflow:'hidden', background:'#111', position:'relative' }}>
+                    <div style={{ aspectRatio:'16/9', overflow:'hidden', background:'rgb(38,38,38)', position:'relative' }}>
                       <img src={step.img} alt={step.title} style={{ width:'100%', height:'100%', objectFit:'cover', display:'block', transition:'transform 0.5s' }}
                         onMouseOver={e=>e.target.style.transform='scale(1.05)'}
                         onMouseOut={e=>e.target.style.transform='scale(1)'}
@@ -481,10 +479,7 @@ export default function Sell() {
       {/* ════ CTA FINAL ════════════════════════════════════════ */}
       <div style={{
         height: 360,
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${CTA_BG_IMG})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center 70%',
-        backgroundRepeat: 'no-repeat',
+        background: 'rgb(38,38,38)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

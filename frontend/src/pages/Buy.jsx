@@ -5,7 +5,7 @@ import Footer from '../components/layout/Footer';
 import { leadsApi } from '../services/api';
 
 /* ── Imágenes ─────────────────────────────────────────────── */
-const HERO_IMG      = '/images/BMW.webp';
+const HERO_IMG      = '/images/contactanos.jpg';
 const CONTADO_IMG   =  '/images/financiamiento_1.avif';
 const CREDITO_IMG   =  '/images/financiamiento_3.webp';
 const PARTEPAGO_IMG =  '/images/financiamiento_2.jpg';
@@ -221,7 +221,7 @@ function SectionHeading({ sup, title, subtitle, light=false }) {
     <div style={{ textAlign:'center', padding:'70px 25px 44px' }}>
       {sup && <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:9, fontWeight:500, letterSpacing:'5px', textTransform:'uppercase', color: light ? 'rgba(255,255,255,0.45)' : '#aaa', marginBottom:18 }}>{sup}</div>}
       <h2 style={{ fontFamily:'Montserrat,sans-serif', fontSize:38, fontWeight:200, letterSpacing:'8px', textTransform:'uppercase', color: light ? '#fff' : '#000', marginBottom:18, lineHeight:1.1 }}>{title}</h2>
-      <div style={{ width:50, height:1, background: light ? 'rgba(255,255,255,0.4)' : '#000', margin:'0 auto 22px' }} />
+      <div style={{ width:50, height:1, background: light ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.2)', margin:'0 auto 22px' }} />
       {subtitle && <p style={{ fontFamily:'Roboto,sans-serif', fontSize:15, fontWeight:300, color: light ? 'rgba(255,255,255,0.6)' : 'rgb(102,102,102)', lineHeight:1.85, maxWidth:640, margin:'0 auto' }}>{subtitle}</p>}
     </div>
   );
@@ -246,13 +246,10 @@ export default function Buy() {
       {/* ══════ HERO ══════════════════════════════════════════ */}
       <div style={{ position:'relative', width:'100%', height:620, overflow:'hidden', background:'#050505' }}>
         <img src={HERO_IMG} alt="Compra y Financiamiento Revillot Garage"
-          style={{ width:'100%', height:'100%', objectFit:'cover', opacity:0.35, display:'block' }} />
-        <div style={{ position:'absolute', inset:0, background:'linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%)' }} />
+          style={{ width:'100%', height:'100%', objectFit:'cover', opacity:0.40, display:'block' }} />
+        <div style={{ position:'absolute', inset:0, background:'linear-gradient(135deg, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.20) 100%)' }} />
 
-        <div style={{ position:'absolute', inset:0, display:'flex', flexDirection:'column', alignItems:'flex-start', justifyContent:'center', padding:'0 8%', maxWidth:1600, margin:'0 auto' }}>
-          <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:10, fontWeight:500, letterSpacing:'6px', textTransform:'uppercase', color:'rgba(255,255,255,0.5)', marginBottom:22 }}>
-            REVILLOT GARAGE
-          </div>
+        <div style={{ position:'absolute', top:'50%', left:0, right:0, transform:'translateY(-50%)', display:'flex', flexDirection:'column', alignItems:'center', textAlign:'center', padding:'0 10%' }}>
           <h1 className="buy-hero-title" style={{ fontFamily:'Montserrat,sans-serif', fontSize:60, fontWeight:200, letterSpacing:'8px', textTransform:'uppercase', color:'#fff', marginBottom:0, lineHeight:1.05 }}>
             COMPRA<br /><span style={{ fontWeight:500 }}>& FINANCIAMIENTO</span>
           </h1>
@@ -287,7 +284,7 @@ export default function Buy() {
       </div>
 
       {/* ══════ BARRA DE VALOR ════════════════════════════════ */}
-      <div style={{ background:'#111', padding:'0 25px' }}>
+      <div style={{ background:'rgb(38,38,38)', padding:'0 25px' }}>
         <div className="value-bar-grid" style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(4,1fr)' }}>
           {[
             { icon:'🔒', label:'Compra segura',       desc:'Documentación verificada y proceso legal garantizado.' },
@@ -425,7 +422,7 @@ export default function Buy() {
         <div style={{ background:'#f9f9f9', padding:'60px 25px' }}>
           <div style={{ textAlign:'center', marginBottom:44 }}>
             <h3 style={{ fontFamily:'Montserrat,sans-serif', fontSize:13, fontWeight:600, letterSpacing:'4px', textTransform:'uppercase', color:'#000', marginBottom:14 }}>El proceso en 4 pasos</h3>
-            <div style={{ width:40, height:1, background:'#000', margin:'0 auto' }} />
+            <div style={{ width:40, height:1, background:'rgba(0,0,0,0.2)', margin:'0 auto' }} />
           </div>
           <div className="steps-grid-4-bordered" style={{ maxWidth:1200, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:0 }}>
             {CREDITO_STEPS.map((s, i) => (
@@ -588,10 +585,7 @@ export default function Buy() {
       {/* ══════ CTA FINAL ════════════════════════════════════ */}
       <div style={{
         height: 360,
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${HERO_IMG})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center 40%',
-        backgroundRepeat: 'no-repeat',
+        background: 'rgb(38,38,38)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

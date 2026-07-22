@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 
-const HERO_IMG = '/images/hero3.png';
+const HERO_IMG = 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920&q=90&fm=jpg';
 
 const REASONS = [
   {
@@ -87,8 +87,8 @@ export default function WhyChooseUs() {
       {/* ── HERO ── */}
       <div style={{ position:'relative', width:'100%', height:500, overflow:'hidden', background:'#111' }}>
         <img src={HERO_IMG} alt="Por qué escogernos"
-          style={{ width:'100%', height:'100%', objectFit:'cover', opacity:1, display:'block' }} />
-        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.72) 100%)' }} />
+          style={{ width:'100%', height:'100%', objectFit:'cover', opacity:0.40, display:'block' }} />
+        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.60) 100%)' }} />
         <div style={{ position:'absolute', inset:0, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', textAlign:'center', padding:'0 25px' }}>
           <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:11, fontWeight:500, letterSpacing:'6px', textTransform:'uppercase', color:'rgba(255,255,255,0.55)', marginBottom:18 }}>
             REVILLOT GARAGE
@@ -108,7 +108,7 @@ export default function WhyChooseUs() {
         <h2 style={{ fontFamily:'Montserrat,sans-serif', fontSize:34, fontWeight:200, letterSpacing:'6px', textTransform:'uppercase', color:'#000', marginBottom:24, lineHeight:1.2 }}>
           UN CONCESIONARIO DISTINTO
         </h2>
-        <div style={{ width:40, height:1, background:'#000', margin:'0 auto 32px' }} />
+        <div style={{ width:40, height:1, background:'rgba(0,0,0,0.2)', margin:'0 auto 32px' }} />
         <p style={{ fontFamily:'Roboto,sans-serif', fontSize:16, fontWeight:300, color:'rgb(60,60,60)', lineHeight:1.9 }}>
           Somos una empresa familiar independiente especializada en vehículos premium y semi-premium
           en Curicó. No somos una cadena ni un sitio web — somos personas reales que construyen
@@ -117,7 +117,7 @@ export default function WhyChooseUs() {
       </div>
 
       {/* ── STATS ── */}
-      <div style={{ background:'#000', padding:'0 25px' }}>
+      <div style={{ background:'rgb(38,38,38)', padding:'0 25px' }}>
         <div className="value-bar-grid" style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(4,1fr)' }}>
           {STATS.map((s, i) => (
             <div key={i} className="value-bar-grid__item" style={{
@@ -148,7 +148,7 @@ export default function WhyChooseUs() {
             <h2 style={{ fontFamily:'Montserrat,sans-serif', fontSize:32, fontWeight:200, letterSpacing:'7px', textTransform:'uppercase', color:'#000', marginBottom:18 }}>
               6 RAZONES
             </h2>
-            <div style={{ width:40, height:1, background:'#000', margin:'0 auto' }} />
+            <div style={{ width:40, height:1, background:'rgba(0,0,0,0.2)', margin:'0 auto' }} />
           </div>
 
           <div className="reasons-grid-3" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:1, background:'#e8e8e8' }}>
@@ -191,7 +191,7 @@ export default function WhyChooseUs() {
           <h2 style={{ fontFamily:'Montserrat,sans-serif', fontSize:32, fontWeight:200, letterSpacing:'7px', textTransform:'uppercase', color:'#000', marginBottom:18 }}>
             LO QUE DICEN
           </h2>
-          <div style={{ width:40, height:1, background:'#000', margin:'0 auto' }} />
+          <div style={{ width:40, height:1, background:'rgba(0,0,0,0.2)', margin:'0 auto' }} />
         </div>
 
         <div className="testimonials-grid-2" style={{ maxWidth:1200, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(2,1fr)', gap:24 }}>
@@ -234,9 +234,7 @@ export default function WhyChooseUs() {
       {/* ── CTA FINAL ── */}
       <div style={{
         height: 320,
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.62)), url(${HERO_IMG})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center 40%',
+        background: 'rgb(38,38,38)',
         display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
         textAlign: 'center', padding: '0 25px',

@@ -6,7 +6,7 @@ import VehicleCard from '../components/ui/VehicleCard';
 import { vehiclesApi, miscApi } from '../services/api';
 
 // Imagen hero del inventario (igual que el slider del sitio real)
-const HERO_IMG =  '/images/stock.png';
+const HERO_IMG =  '/images/contactanos.jpg';
 
 const BODY_STYLES = ['Coupe','Convertible','SUV','Saloon','Estate','Hatchback'];
 

@@ -162,9 +162,9 @@ export default function ArticleDetail() {
         <img
           src={HERO_IMG}
           alt="Revillot Insights"
-          style={{ width:'100%', height:'100%', objectFit:'cover', objectPosition:'center 40%', opacity:0.38, filter:'blur(2px)', transform:'scale(1.05)' }}
+          style={{ width:'100%', height:'100%', objectFit:'cover', objectPosition:'center 40%', opacity:0.40, filter:'blur(2px)', transform:'scale(1.05)' }}
         />
-        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.72) 100%)' }} />
+        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.60) 100%)' }} />
         <div style={{ position:'absolute', inset:0, display:'flex', alignItems:'center', justifyContent:'center', padding:'0 40px', textAlign:'center' }}>
           <p style={{ fontFamily:"'Roboto',sans-serif", fontSize:16, fontWeight:300, color:'rgba(255,255,255,0.85)', lineHeight:1.9, maxWidth:680, margin:0 }}>
             En Revillot Garage compartimos nuestra visión del mercado automotriz premium en Chile.

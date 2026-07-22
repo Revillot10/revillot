@@ -115,26 +115,21 @@ export default function InspeccionPreCompra() {
         overflow: 'hidden', background: '#080808',
       }}>
         <img
-          src="/images/home.webp"
+          src="/images/contactanos.jpg"
           alt="Inspección pre-compra Revillot Garage"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.22, display: 'block' }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.40, display: 'block' }}
         />
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(135deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.4) 100%)',
+          background: 'linear-gradient(135deg, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.20) 100%)',
         }} />
         <div className="servicio-hero-content" style={{
-          position: 'absolute', inset: 0,
+          position: 'absolute', top: '50%', left: 0, right: 0,
+          transform: 'translateY(-50%)',
           display: 'flex', flexDirection: 'column',
-          alignItems: 'flex-start', justifyContent: 'center',
-          padding: '0 8%', maxWidth: 1400,
+          alignItems: 'center',
+          textAlign: 'center', padding: '0 10%',
         }}>
-          <div style={{
-            fontFamily: 'Montserrat,sans-serif', fontSize: 10, fontWeight: 500,
-            letterSpacing: '6px', textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.4)', marginBottom: 18,
-          }}>Revillot Garage — Servicios</div>
-
           <h1 className="servicio-hero-h1" style={{
             fontFamily: 'Montserrat,sans-serif', fontSize: 52, fontWeight: 200,
             letterSpacing: '8px', textTransform: 'uppercase', color: '#fff',
@@ -196,7 +191,7 @@ export default function InspeccionPreCompra() {
             fontFamily: 'Montserrat,sans-serif', fontSize: 18, fontWeight: 500,
             letterSpacing: '4px', textTransform: 'uppercase', color: '#000', marginBottom: 16,
           }}>de los autos usados en venta tienen problemas ocultos</h2>
-          <div style={{ width: 40, height: 1, background: '#000', margin: '0 auto 20px' }} />
+          <div style={{ width: 40, height: 1, background: 'rgba(0,0,0,0.2)', margin: '0 auto 20px' }} />
           <p style={{
             fontFamily: 'Roboto,sans-serif', fontSize: 15, fontWeight: 300,
             color: 'rgb(102,102,102)', lineHeight: 1.85, marginBottom: 0,
@@ -364,7 +359,7 @@ export default function InspeccionPreCompra() {
             fontFamily: 'Montserrat,sans-serif', fontSize: 30, fontWeight: 200,
             letterSpacing: '6px', textTransform: 'uppercase', color: '#000', marginBottom: 16,
           }}>AGENDA TU INSPECCIÓN</h2>
-          <div style={{ width: 40, height: 1, background: '#000', margin: '0 auto 20px' }} />
+          <div style={{ width: 40, height: 1, background: 'rgba(0,0,0,0.2)', margin: '0 auto 20px' }} />
           <p style={{
             fontFamily: 'Roboto,sans-serif', fontSize: 15, fontWeight: 300,
             color: 'rgb(102,102,102)', lineHeight: 1.85, marginBottom: 36,

@@ -547,7 +547,7 @@ export default function VehicleDetail() {
                 fontWeight: 600, letterSpacing: '6px', textTransform: 'uppercase',
                 color: '#000', marginBottom: 16,
               }}>TAMBIÉN TE PUEDE INTERESAR</h2>
-              <div style={{ width:40, height:1, background:'#000', margin:'0 auto' }} />
+              <div style={{ width:40, height:1, background:'rgba(0,0,0,0.2)', margin:'0 auto' }} />
             </div>
             <div className="related-vehicles-grid" style={{ display:'grid', gap:30 }}>
               {related.map(v => <VehicleCard key={v.id} vehicle={v} />)}

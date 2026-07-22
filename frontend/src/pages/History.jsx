@@ -40,7 +40,8 @@ export default function History() {
 
       {/* Hero con imagen oscura y título centrado */}
       <div style={{ position:'relative', width:'100%', height:480, overflow:'hidden', background:'#111' }}>
-        <img src={HERO_IMG} alt="Historia de Revillot Garage" style={{ width:'100%', height:'100%', objectFit:'cover', opacity:0.45, display:'block' }} />
+        <img src={HERO_IMG} alt="Historia de Revillot Garage" style={{ width:'100%', height:'100%', objectFit:'cover', opacity:0.40, display:'block' }} />
+        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.60) 100%)' }} />
         <div style={{ position:'absolute', inset:0, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', textAlign:'center', padding:'0 25px' }}>
           <h1 style={{ fontFamily:'Montserrat,sans-serif', fontSize:42, fontWeight:200, letterSpacing:'10px', textTransform:'uppercase', color:'#fff', marginBottom:16 }}>
             NUESTRA HISTORIA

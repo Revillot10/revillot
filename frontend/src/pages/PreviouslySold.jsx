@@ -24,8 +24,8 @@ export default function PreviouslySold() {
 
       {/* Hero */}
       <div style={{ position:'relative', width:'100%', height:400, overflow:'hidden', background:'#111' }}>
-        <img src={HERO_IMG} alt="Vehículos Vendidos" style={{ width:'100%', height:'100%', objectFit:'cover', opacity:1, display:'block' }} />
-        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.72) 100%)' }} />
+        <img src={HERO_IMG} alt="Vehículos Vendidos" style={{ width:'100%', height:'100%', objectFit:'cover', opacity:0.40, display:'block' }} />
+        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.60) 100%)' }} />
         <div style={{ position:'absolute', inset:0, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', textAlign:'center' }}>
           <h1 style={{ fontFamily:'Montserrat,sans-serif', fontSize:42, fontWeight:200, letterSpacing:'10px', textTransform:'uppercase', color:'#fff', marginBottom:16, textShadow:'0 2px 20px rgba(0,0,0,0.4)' }}>VENDIDOS</h1>
           <div style={{ width:60, height:1, background:'rgba(255,255,255,0.6)', marginBottom:20 }} />
@@ -42,7 +42,7 @@ export default function PreviouslySold() {
           <h2 style={{ fontFamily:'Montserrat,sans-serif', fontSize:28, fontWeight:300, letterSpacing:'8px', textTransform:'uppercase', color:'#000', marginBottom:14 }}>
             GALERÍA DE VENDIDOS
           </h2>
-          <div style={{ width:40, height:1, background:'#000', margin:'0 auto' }} />
+          <div style={{ width:40, height:1, background:'rgba(0,0,0,0.2)', margin:'0 auto' }} />
         </div>
 
         {loading ? (
