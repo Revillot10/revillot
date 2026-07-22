@@ -209,11 +209,4 @@ export default function MeetTheTeam() {
           >
             Contáctanos
           </a>
-        </div>
-
-      </div>
-
-      <Footer />
-    </>
-  );
-}
+     

@@ -404,7 +404,7 @@ export default function Sell() {
             {/* Proceso de consignación — 6 tarjetas */}
             <div style={{ background:'#f9f9f9', padding:'60px 0' }}>
               <SectionHeading sup="El proceso" title="Cómo funciona" subtitle="Desde que nos entregas tu vehículo hasta que recibes el pago, nos encargamos de cada detalle." />
-              <div className="steps-grid-3" style={{ maxWidth:1300, margin:'0 auto', padding:'0 25px', display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:30 }}>
+              <div className="steps-grid-3 sell-consign-steps" style={{ maxWidth:1300, margin:'0 auto', padding:'0 25px', display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:30 }}>
                 {CONSIGN_STEPS.map((step, i) => (
                   <div key={i} style={{ background:'#fff', border:'1px solid #e0e0e0', overflow:'hidden', transition:'box-shadow 0.2s' }}
                     onMouseOver={e=>e.currentTarget.style.boxShadow='0 8px 30px rgba(0,0,0,0.08)'}
@@ -498,10 +498,4 @@ export default function Sell() {
         <button onClick={() => navigate('/contact')}
           style={{ fontFamily:'Montserrat,sans-serif', fontSize:11, fontWeight:500, letterSpacing:'3px', textTransform:'uppercase', background:'#fff', color:'#000', border:'none', padding:'16px 40px', cursor:'pointer', transition:'background 0.2s' }}
           onMouseOver={e=>e.currentTarget.style.background='#f0f0f0'}
-          onMouseOut={e=>e.currentTarget.style.background='#fff'}
-        >CONTÁCTANOS</button>
-      </div>
-      <Footer />
-    </>
-  );
-}
+          onMouseOut={e=>e.currentTarget.

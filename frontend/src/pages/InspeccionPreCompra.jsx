@@ -382,40 +382,4 @@ export default function InspeccionPreCompra() {
           <h2 style={{
             fontFamily: 'Montserrat,sans-serif', fontSize: 30, fontWeight: 200,
             letterSpacing: '6px', textTransform: 'uppercase', color: '#000', marginBottom: 16,
-          }}>AGENDA TU INSPECCIÓN</h2>
-          <div style={{ width: 40, height: 1, background: 'rgba(0,0,0,0.2)', margin: '0 auto 20px' }} />
-          <p style={{
-            fontFamily: 'Roboto,sans-serif', fontSize: 15, fontWeight: 300,
-            color: 'rgb(102,102,102)', lineHeight: 1.85, marginBottom: 36,
-          }}>
-            Cuéntanos el auto que estás evaluando y coordinamos todo. Vamos donde esté el vehículo.
-          </p>
-          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-              style={{
-                fontFamily: 'Montserrat,sans-serif', fontSize: 10, fontWeight: 600,
-                letterSpacing: '3px', textTransform: 'uppercase',
-                background: '#000', color: '#fff',
-                padding: '16px 32px', textDecoration: 'none', transition: 'background 0.2s',
-              }}
-              onMouseEnter={e => e.currentTarget.style.background = '#333'}
-              onMouseLeave={e => e.currentTarget.style.background = '#000'}
-            >Solicitar por WhatsApp</a>
-            <button onClick={() => navigate('/contact')}
-              style={{
-                fontFamily: 'Montserrat,sans-serif', fontSize: 10, fontWeight: 500,
-                letterSpacing: '3px', textTransform: 'uppercase',
-                background: 'none', color: '#000', border: '1px solid #000',
-                padding: '16px 32px', cursor: 'pointer', transition: 'all 0.2s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#000'; e.currentTarget.style.color = '#fff'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = '#000'; }}
-            >Formulario de contacto</button>
-          </div>
-        </div>
-      </div>
-
-      <Footer />
-    </>
-  );
-}
+          }}>AGENDA TU INSPECCI�

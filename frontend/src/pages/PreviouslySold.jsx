@@ -91,6 +91,3 @@ export default function PreviouslySold() {
       </div>
 
       <Footer />
-    </>
-  );
-}
