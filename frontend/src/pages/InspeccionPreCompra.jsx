@@ -153,7 +153,7 @@ export default function InspeccionPreCompra() {
             ))}
           </div>
 
-          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
               style={{
                 fontFamily: 'Montserrat,sans-serif', fontSize: 10, fontWeight: 600,

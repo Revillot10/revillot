@@ -249,7 +249,7 @@ export default function Buy() {
           style={{ width:'100%', height:'100%', objectFit:'cover', display:'block' }} />
         <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.82) 100%)' }} />
 
-        <div style={{ position:'absolute', top:'50%', left:0, right:0, transform:'translateY(-50%)', display:'flex', flexDirection:'column', alignItems:'center', textAlign:'center', padding:'0 10%' }}>
+        <div className="buy-hero-content" style={{ position:'absolute', top:'50%', left:0, right:0, transform:'translateY(-50%)', display:'flex', flexDirection:'column', alignItems:'center', textAlign:'center', padding:'0 10%' }}>
           <h1 className="buy-hero-title servicio-hero-h1" style={{ fontFamily:'Montserrat,sans-serif', fontSize:56, fontWeight:200, letterSpacing:'8px', textTransform:'uppercase', color:'#fff', marginBottom:0, lineHeight:1.05 }}>
             COMPRA<br /><span style={{ fontWeight:500 }}>& FINANCIAMIENTO</span>
           </h1>
@@ -260,7 +260,7 @@ export default function Buy() {
           </p>
 
           {/* Botones de navegación rápida */}
-          <div style={{ display:'flex', gap:12, flexWrap:'wrap' }}>
+          <div className="buy-nav-btns" style={{ display:'flex', gap:12, flexWrap:'wrap', justifyContent:'center' }}>
             {[
               { id:'contado',   label:'Pago al Contado' },
               { id:'credito',   label:'Crédito Automotriz' },

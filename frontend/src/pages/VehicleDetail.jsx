@@ -354,6 +354,29 @@ export default function VehicleDetail() {
           {/* Título + precio — debajo de galería en móvil, pero lo ponemos arriba en desktop */}
           <div style={{ marginTop: 40 }}>
 
+            {/* Descripción */}
+            {vehicle.description && (
+              <div style={{ marginBottom: 40 }}>
+                <h2 style={{
+                  fontFamily: 'Montserrat,sans-serif', fontSize: 13,
+                  fontWeight: 600, letterSpacing: '4px', textTransform: 'uppercase',
+                  color: '#000', marginBottom: 20, paddingBottom: 14,
+                  borderBottom: '1px solid #e8e8e8',
+                }}>
+                  DESCRIPCIÓN
+                </h2>
+                <div style={{
+                  fontFamily: 'Roboto,sans-serif', fontSize: 15,
+                  fontWeight: 300, color: 'rgb(90,90,90)', lineHeight: 1.9,
+                  wordBreak: 'break-word', overflowWrap: 'break-word',
+                }}>
+                  {vehicle.description.split('\n\n').map((p, i) => (
+                    <p key={i} style={{ marginBottom: 16 }}>{p}</p>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* KEY INFORMATION */}
             <div style={{ marginBottom: 40 }}>
               <h2 style={{
@@ -364,7 +387,7 @@ export default function VehicleDetail() {
               }}>
                 INFORMACIÓN CLAVE
               </h2>
-              <div className="specs-grid-detail" style={{ display: 'grid', gap: 0 }}>
+              <div className="specs-grid-detail" style={{ display: 'grid', rowGap: 0, columnGap: 40 }}>
                 {specs.map(([label, val], i) => (
                   <div key={label} className={i % 2 === 0 ? 'spec-row spec-row--left' : 'spec-row spec-row--right'} style={{
                     display: 'flex',
@@ -389,29 +412,6 @@ export default function VehicleDetail() {
                 ))}
               </div>
             </div>
-
-            {/* Descripción */}
-            {vehicle.description && (
-              <div>
-                <h2 style={{
-                  fontFamily: 'Montserrat,sans-serif', fontSize: 13,
-                  fontWeight: 600, letterSpacing: '4px', textTransform: 'uppercase',
-                  color: '#000', marginBottom: 20, paddingBottom: 14,
-                  borderBottom: '1px solid #e8e8e8',
-                }}>
-                  DESCRIPCIÓN
-                </h2>
-                <div style={{
-                  fontFamily: 'Roboto,sans-serif', fontSize: 15,
-                  fontWeight: 300, color: 'rgb(90,90,90)', lineHeight: 1.9,
-                  wordBreak: 'break-word', overflowWrap: 'break-word',
-                }}>
-                  {vehicle.description.split('\n\n').map((p, i) => (
-                    <p key={i} style={{ marginBottom: 16 }}>{p}</p>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         </div>
 
@@ -456,25 +456,6 @@ export default function VehicleDetail() {
             }}>
               {fmtPrice(vehicle.price)}
             </div>
-          </div>
-
-          {/* Specs rápidas */}
-          <div style={{ marginBottom: 28 }}>
-            {[
-              ['Año',         vehicle.year],
-              ['Color',       vehicle.colour],
-              ['Kilómetros',  vehicle.mileage ? `${Number(vehicle.mileage).toLocaleString('es-CL')} km` : null],
-              ['Combustible', vehicle.fuel_type],
-              ['Transmisión', vehicle.transmission],
-            ].filter(([,v])=>v).map(([label, val]) => (
-              <div key={label} style={{
-                display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
-                gap: 12, padding: '10px 0', borderBottom: '1px solid #f2f2f2', minWidth: 0,
-              }}>
-                <span style={{ fontFamily:'Montserrat,sans-serif', fontSize:11, fontWeight:600, letterSpacing:'2px', textTransform:'uppercase', color:'#000', flexShrink:0 }}>{label}</span>
-                <span style={{ fontFamily:'Montserrat,sans-serif', fontSize:15, fontWeight:400, color:'#000', textAlign:'right', wordBreak:'break-word' }}>{val}</span>
-              </div>
-            ))}
           </div>
 
           {/* CTA Consultar */}
