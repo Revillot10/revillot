@@ -1557,6 +1557,17 @@ textarea.form-input { height: 100px; resize: vertical; }
   .header-logo-text { font-size: 20px !important; }
 }
 
+/* ── HEADER ALTURA REDUCIDA EN MÓVIL ── */
+@media (max-width: 768px) {
+  .header-root      { height: 70px !important; }
+  .header-inner     { height: 70px !important; }
+  .header-logo-center { height: 70px !important; }
+  .header-spacer    { height: 70px !important; }
+  .header-mobile-overlay { top: 70px !important; }
+  .header-mobile-panel   { top: 70px !important; }
+  .header-logo-text { font-size: 21px !important; letter-spacing: 3px !important; }
+}
+
 /* Fix header width en páginas internas en móvil */
 @media (max-width: 1024px) {
   header {
@@ -1981,7 +1992,7 @@ img { max-width: 100%; height: auto; }
   }
   /* Hero content: centrado verticalmente, padding simétrico */
   .servicio-hero-content {
-    padding: 80px 24px 40px !important;
+    padding: 70px 24px 36px !important;
     justify-content: center !important;
     align-items: flex-start !important;
   }

@@ -135,15 +135,16 @@ export default function Header() {
   const color = transparent ? 'rgba(255,255,255,0.9)' : '#000';
 
   return (
-    <header style={{
-      position: isHome ? 'fixed' : 'sticky',
+    <>
+    <header className="header-root" style={{
+      position: 'fixed',
       top: 0, left: 0, right: 0,
       zIndex: 9998, height: '113px', width: '100%',
       background: transparent ? 'transparent' : '#fff',
       boxShadow: transparent ? 'none' : '0 1px 8px rgba(0,0,0,0.06)',
       transition: 'background 0.35s ease, box-shadow 0.35s ease',
     }}>
-      <div style={{
+      <div className="header-inner" style={{
         display: 'flex', flexDirection: 'row',
         alignItems: 'center', height: '113px',
         maxWidth: '1600px', width: '100%',
@@ -174,7 +175,7 @@ export default function Header() {
         </nav>
 
         {/* ── LOGO CENTRADO ── */}
-        <div style={{ position:'absolute', left:'50%', transform:'translateX(-50%)', top:0, height:'113px', display:'flex', alignItems:'center', zIndex:1 }}>
+        <div className="header-logo-center" style={{ position:'absolute', left:'50%', transform:'translateX(-50%)', top:0, height:'113px', display:'flex', alignItems:'center', zIndex:1 }}>
           <NavLink to="/" style={{ display:'block', textDecoration:'none', textAlign:'center' }}>
             <div className="header-logo-text" style={{ fontFamily:"'Playfair Display', serif", fontSize:28, fontWeight:400, letterSpacing:'4px', textTransform:'uppercase', color: transparent ? '#fff' : '#000', lineHeight:1, marginBottom:7, transition:'color 0.35s ease', whiteSpace:'nowrap' }}>
               REVILLOT
@@ -239,6 +240,8 @@ export default function Header() {
           </a>
         </nav>
       </div>
+      {/* Espaciador para que el contenido no quede bajo el header fijo */}
+      {!isHome && <div className="header-spacer" style={{ height: '113px' }} />}
 
       {/* ── BOTÓN HAMBURGUESA (solo móvil) ── */}
       <button className="header-burger" aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={mobileOpen}
@@ -321,5 +324,6 @@ export default function Header() {
         ><PhoneIcon /> +56 9 3458 0647</a>
       </nav>
     </header>
+    </>
   );
 }
