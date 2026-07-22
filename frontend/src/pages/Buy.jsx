@@ -219,7 +219,7 @@ const simValueSt = { fontFamily:'Montserrat,sans-serif', fontSize:13, fontWeight
 function SectionHeading({ sup, title, subtitle, light=false }) {
   return (
     <div style={{ textAlign:'center', padding:'70px 25px 44px' }}>
-      {sup && <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:9, fontWeight:500, letterSpacing:'5px', textTransform:'uppercase', color: light ? 'rgba(255,255,255,0.45)' : '#aaa', marginBottom:18 }}>{sup}</div>}
+      {sup && <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:9, fontWeight:500, letterSpacing:'5px', textTransform:'uppercase', color: light ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.45)', marginBottom:18 }}>{sup}</div>}
       <h2 style={{ fontFamily:'Montserrat,sans-serif', fontSize:38, fontWeight:200, letterSpacing:'8px', textTransform:'uppercase', color: light ? '#fff' : '#000', marginBottom:18, lineHeight:1.1 }}>{title}</h2>
       <div style={{ width:50, height:1, background: light ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.2)', margin:'0 auto 22px' }} />
       {subtitle && <p style={{ fontFamily:'Roboto,sans-serif', fontSize:15, fontWeight:300, color: light ? 'rgba(255,255,255,0.6)' : 'rgb(102,102,102)', lineHeight:1.85, maxWidth:640, margin:'0 auto' }}>{subtitle}</p>}
@@ -284,7 +284,7 @@ export default function Buy() {
       </div>
 
       {/* ══════ BARRA DE VALOR ════════════════════════════════ */}
-      <div style={{ background:'rgb(38,38,38)', padding:'0 25px' }}>
+      <div style={{ background:'#fff', padding:'0 25px', borderBottom:'1px solid #e8e8e8' }}>
         <div className="value-bar-grid" style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(4,1fr)' }}>
           {[
             { icon:'🔒', label:'Compra segura',       desc:'Documentación verificada y proceso legal garantizado.' },
@@ -292,11 +292,11 @@ export default function Buy() {
             { icon:'💳', label:'Múltiples formas de pago', desc:'Contado, crédito o parte de pago. Tú decides.' },
             { icon:'🤝', label:'Asesoría personalizada', desc:'Te acompañamos en cada etapa de la compra.' },
           ].map((item, i) => (
-            <div key={i} className="value-bar-grid__item" style={{ padding:'32px 28px', borderRight: i<3 ? '1px solid rgba(255,255,255,0.07)' : 'none', display:'flex', gap:16, alignItems:'flex-start' }}>
+            <div key={i} className="value-bar-grid__item" style={{ padding:'32px 28px', borderRight: i<3 ? '1px solid #e8e8e8' : 'none', display:'flex', gap:16, alignItems:'flex-start' }}>
               <span style={{ fontSize:20, flexShrink:0, marginTop:2 }}>{item.icon}</span>
               <div>
-                <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:10, fontWeight:600, letterSpacing:'2px', textTransform:'uppercase', color:'rgba(255,255,255,0.85)', marginBottom:8 }}>{item.label}</div>
-                <div style={{ fontFamily:'Roboto,sans-serif', fontSize:12, fontWeight:300, color:'rgba(255,255,255,0.4)', lineHeight:1.6 }}>{item.desc}</div>
+                <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:10, fontWeight:600, letterSpacing:'2px', textTransform:'uppercase', color:'#000', marginBottom:8 }}>{item.label}</div>
+                <div style={{ fontFamily:'Roboto,sans-serif', fontSize:12, fontWeight:300, color:'rgb(102,102,102)', lineHeight:1.6 }}>{item.desc}</div>
               </div>
             </div>
           ))}
@@ -308,11 +308,17 @@ export default function Buy() {
           SECCIÓN 1: PAGO AL CONTADO
       ══════════════════════════════════════════════════════ */}
       <div id="contado" data-reveal style={{ scrollMarginTop:113 }}>
-        <SectionHeading sup="Modalidad 01" title="Pago al Contado"
-          subtitle="La forma más rápida y directa de comprar tu vehículo. Sin intereses, sin trámites bancarios, sin esperas." />
+        <div style={{ position:'relative', overflow:'hidden' }}>
+          <img src={BG_DARK_IMG} alt="" style={{ width:'100%', height:420, objectFit:'cover', display:'block', opacity:0.3 }} />
+          <div style={{ position:'absolute', inset:0, background:'rgba(0,0,0,0.85)' }} />
+          <div style={{ position:'absolute', inset:0, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', padding:'0 25px' }}>
+            <SectionHeading sup="Modalidad 01" title="Pago al Contado" light
+              subtitle="La forma más rápida y directa de comprar tu vehículo. Sin intereses, sin trámites bancarios, sin esperas." />
+          </div>
+        </div>
 
         {/* Imagen + texto */}
-        <div className="split-feature-grid" style={{ maxWidth:1200, margin:'0 auto', padding:'0 25px 50px', display:'grid', gridTemplateColumns:'55% 1fr', gap:70, alignItems:'center' }}>
+        <div className="split-feature-grid" style={{ maxWidth:1200, margin:'0 auto', padding:'60px 25px 50px', display:'grid', gridTemplateColumns:'55% 1fr', gap:70, alignItems:'center' }}>
           <div style={{ position:'relative', overflow:'hidden', aspectRatio:'16/9', borderRadius:4, boxShadow:'0 12px 40px rgba(0,0,0,0.18)' }}>
             <img src={CONTADO_IMG} alt="Pago al contado"
               style={{ width:'100%', height:'100%', objectFit:'cover', display:'block', transition:'transform 0.6s ease' }}
@@ -371,11 +377,17 @@ export default function Buy() {
           SECCIÓN 2: CRÉDITO AUTOMOTRIZ
       ══════════════════════════════════════════════════════ */}
       <div id="credito" data-reveal style={{ scrollMarginTop:113, background:'#fff' }}>
-        <SectionHeading sup="Modalidad 02" title="Crédito Automotriz"
-          subtitle="Accede al vehículo que quieres hoy, con cuotas cómodas adaptadas a tu presupuesto. Trabajamos con las principales instituciones financieras de Chile." />
+        <div style={{ position:'relative', overflow:'hidden' }}>
+          <img src={BG_DARK_IMG} alt="" style={{ width:'100%', height:420, objectFit:'cover', display:'block', opacity:0.3 }} />
+          <div style={{ position:'absolute', inset:0, background:'rgba(0,0,0,0.85)' }} />
+          <div style={{ position:'absolute', inset:0, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', padding:'0 25px' }}>
+            <SectionHeading sup="Modalidad 02" title="Crédito Automotriz" light
+              subtitle="Accede al vehículo que quieres hoy, con cuotas cómodas adaptadas a tu presupuesto. Trabajamos con las principales instituciones financieras de Chile." />
+          </div>
+        </div>
 
         {/* Imagen + texto */}
-        <div className="split-feature-grid" style={{ maxWidth:1200, margin:'0 auto', padding:'0 25px 50px', display:'grid', gridTemplateColumns:'1fr 55%', gap:70, alignItems:'center' }}>
+        <div className="split-feature-grid" style={{ maxWidth:1200, margin:'0 auto', padding:'60px 25px 50px', display:'grid', gridTemplateColumns:'1fr 55%', gap:70, alignItems:'center' }}>
           <div>
             <h3 style={{ fontFamily:'Montserrat,sans-serif', fontSize:13, fontWeight:600, letterSpacing:'3px', textTransform:'uppercase', color:'#000', marginBottom:24 }}>Financiamiento flexible para cada situación</h3>
             <p style={{ fontFamily:'Roboto,sans-serif', fontSize:15, fontWeight:300, color:'rgb(102,102,102)', lineHeight:1.9, marginBottom:28 }}>
@@ -601,19 +613,4 @@ export default function Buy() {
         </p>
         <div style={{ display:'flex', gap:14 }}>
           <button onClick={() => navigate('/contact')}
-            style={{ fontFamily:'Montserrat,sans-serif', fontSize:11, fontWeight:500, letterSpacing:'3px', textTransform:'uppercase', background:'#fff', color:'#000', border:'none', padding:'16px 36px', cursor:'pointer', transition:'background 0.2s' }}
-            onMouseOver={e=>e.currentTarget.style.background='#f0f0f0'}
-            onMouseOut={e=>e.currentTarget.style.background='#fff'}
-          >CONTÁCTANOS</button>
-          <button onClick={() => navigate('/inventory')}
-            style={{ fontFamily:'Montserrat,sans-serif', fontSize:11, fontWeight:500, letterSpacing:'3px', textTransform:'uppercase', background:'none', color:'rgba(255,255,255,0.8)', border:'1px solid rgba(255,255,255,0.35)', padding:'16px 36px', cursor:'pointer', transition:'all 0.2s' }}
-            onMouseOver={e=>{ e.currentTarget.style.borderColor='rgba(255,255,255,0.7)'; e.currentTarget.style.color='#fff'; }}
-            onMouseOut={e=>{ e.currentTarget.style.borderColor='rgba(255,255,255,0.35)'; e.currentTarget.style.color='rgba(255,255,255,0.8)'; }}
-          >VER STOCK</button>
-        </div>
-      </div>
-
-      <Footer />
-    </>
-  );
-}
+            style={{ fontFamily:'Montser

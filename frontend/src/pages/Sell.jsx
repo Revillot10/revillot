@@ -214,33 +214,35 @@ export default function Sell() {
           {/* Botones de acción */}
           <div style={{ display:'flex', gap:16, marginTop:40 }}>
             <button
-              onClick={() => { setActiveTab('compra'); document.getElementById('opciones')?.scrollIntoView({ behavior:'smooth' }); }}
+              onClick={() => { setActiveTab('consign'); document.getElementById('opciones')?.scrollIntoView({ behavior:'smooth' }); }}
               style={{ fontFamily:'Montserrat,sans-serif', fontSize:11, fontWeight:500, letterSpacing:'3px', textTransform:'uppercase', background:'#fff', color:'#000', border:'none', padding:'16px 36px', cursor:'pointer', transition:'all 0.2s' }}
               onMouseOver={e=>e.currentTarget.style.background='#f0f0f0'}
               onMouseOut={e=>e.currentTarget.style.background='#fff'}
-            >COMPRA DIRECTA</button>
+            >CONSIGNACIÓN</button>
             <button
-              onClick={() => { setActiveTab('consign'); document.getElementById('opciones')?.scrollIntoView({ behavior:'smooth' }); }}
+              onClick={() => { setActiveTab('compra'); document.getElementById('opciones')?.scrollIntoView({ behavior:'smooth' }); }}
               style={{ fontFamily:'Montserrat,sans-serif', fontSize:11, fontWeight:500, letterSpacing:'3px', textTransform:'uppercase', background:'none', color:'#fff', border:'1px solid rgba(255,255,255,0.6)', padding:'16px 36px', cursor:'pointer', transition:'all 0.2s' }}
               onMouseOver={e=>e.currentTarget.style.borderColor='#fff'}
               onMouseOut={e=>e.currentTarget.style.borderColor='rgba(255,255,255,0.6)'}
-            >CONSIGNACIÓN</button>
+            >COMPRA DIRECTA</button>
           </div>
         </div>
       </div>
 
       {/* ════ INTRO — 3 promesas clave ═══════════════════════ */}
-      <div style={{ background:'rgb(38,38,38)', padding:'50px 25px' }}>
+      <div style={{ background:'#fff', padding:'0 25px', borderBottom:'1px solid #e8e8e8' }}>
         <div className="promises-grid" style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:0 }}>
           {[
-            { n:'100%', label:'Transparencia', desc:'Sin letra pequeña. Precios justos y condiciones claras desde el primer contacto.' },
-            { n:'24h',  label:'Respuesta rápida', desc:'Oferta de compra en 24 horas hábiles. Sabemos que tu tiempo tiene valor.' },
-            { n:'0$',   label:'Sin costo para ti', desc:'Inspección técnica, publicación y gestión de ventas completamente gratuitas.' },
+            { icon:'🤝', label:'100% Transparencia', desc:'Sin letra pequeña. Precios justos y condiciones claras desde el primer contacto.' },
+            { icon:'⚡', label:'24h En marcha', desc:'En menos de 24 horas inspeccionamos, fotografiamos y publicamos tu vehículo. Sin demoras.' },
+            { icon:'💸', label:'0$ Sin costo para ti', desc:'Inspección técnica, fotografías y publicación multiplataforma completamente gratuitas.' },
           ].map((item, i) => (
-            <div key={i} className="promises-grid__item" style={{ textAlign:'center', padding:'30px 40px', borderRight: i < 2 ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
-              <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:42, fontWeight:200, letterSpacing:'4px', color:'#fff', marginBottom:8 }}>{item.n}</div>
-              <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:10, fontWeight:600, letterSpacing:'4px', textTransform:'uppercase', color:'rgba(255,255,255,0.5)', marginBottom:14 }}>{item.label}</div>
-              <p style={{ fontFamily:'Roboto,sans-serif', fontSize:13, fontWeight:300, color:'rgba(255,255,255,0.45)', lineHeight:1.7 }}>{item.desc}</p>
+            <div key={i} className="promises-grid__item" style={{ display:'flex', gap:16, alignItems:'flex-start', padding:'32px 28px', borderRight: i < 2 ? '1px solid #e8e8e8' : 'none' }}>
+              <span style={{ fontSize:20, flexShrink:0, marginTop:2 }}>{item.icon}</span>
+              <div>
+                <div style={{ fontFamily:'Montserrat,sans-serif', fontSize:10, fontWeight:600, letterSpacing:'2px', textTransform:'uppercase', color:'#000', marginBottom:8 }}>{item.label}</div>
+                <div style={{ fontFamily:'Roboto,sans-serif', fontSize:12, fontWeight:300, color:'rgb(102,102,102)', lineHeight:1.6 }}>{item.desc}</div>
+              </div>
             </div>
           ))}
         </div>
@@ -250,7 +252,7 @@ export default function Sell() {
       <div id="opciones">
 
         {/* Tab selector */}
-        <div style={{ background:'#f9f9f9', borderBottom:'1px solid #e0e0e0' }}>
+        <div style={{ background:'rgb(38,38,38)', borderBottom:'1px solid rgba(255,255,255,0.08)' }}>
           <div style={{ maxWidth:900, margin:'0 auto', display:'flex' }}>
             {[
               { id:'consign', label:'CONSIGNACIÓN' },
@@ -263,10 +265,10 @@ export default function Sell() {
                   flex:1, padding:'22px 0',
                   fontFamily:'Montserrat,sans-serif', fontSize:11, fontWeight:500,
                   letterSpacing:'4px', textTransform:'uppercase',
-                  background: activeTab===tab.id ? '#fff' : 'transparent',
-                  color:      activeTab===tab.id ? '#000' : '#999',
+                  background: 'transparent',
+                  color:      activeTab===tab.id ? '#fff' : 'rgba(255,255,255,0.35)',
                   border:'none',
-                  borderBottom: activeTab===tab.id ? '2px solid #000' : '2px solid transparent',
+                  borderBottom: activeTab===tab.id ? '2px solid #fff' : '2px solid transparent',
                   cursor:'pointer', transition:'all 0.2s',
                 }}
               >{tab.label}</button>
@@ -278,7 +280,7 @@ export default function Sell() {
         {activeTab === 'compra' && (
           <div>
             <SectionHeading
-              sup="Opción 1"
+              sup="Opción 2"
               title="Compra Directa"
               subtitle="Te compramos tu vehículo de forma inmediata. Sin esperas, sin intermediarios. Tú defines cuándo y nosotros hacemos el resto."
             />
@@ -358,7 +360,7 @@ export default function Sell() {
         {activeTab === 'consign' && (
           <div>
             <SectionHeading
-              sup="Opción 2"
+              sup="Opción 1"
               title="Consignación"
               subtitle="Ponemos tu vehículo en venta con todo el respaldo de Revillot Garage. Tú sigues usando tu auto mientras nosotros lo vendemos al mejor precio."
             />
@@ -496,10 +498,4 @@ export default function Sell() {
         <button onClick={() => navigate('/contact')}
           style={{ fontFamily:'Montserrat,sans-serif', fontSize:11, fontWeight:500, letterSpacing:'3px', textTransform:'uppercase', background:'#fff', color:'#000', border:'none', padding:'16px 40px', cursor:'pointer', transition:'background 0.2s' }}
           onMouseOver={e=>e.currentTarget.style.background='#f0f0f0'}
-          onMouseOut={e=>e.currentTarget.style.background='#fff'}
-        >CONTÁCTANOS</button>
-      </div>
-      <Footer />
-    </>
-  );
-}
+          onMouseOut={e=>e.currentTarget.style.background='#

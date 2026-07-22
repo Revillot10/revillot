@@ -93,11 +93,4 @@ export default function History() {
               </p>
             </div>
           ))}
-        </div>
-
-      </div>
-
-      <Footer />
-    </>
-  );
-}
+     

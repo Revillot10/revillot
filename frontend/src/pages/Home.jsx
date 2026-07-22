@@ -102,7 +102,7 @@ export default function Home() {
         }} />
 
         {/* Slogan centrado con más impacto */}
-        <div style={{
+        <div className="home-hero-content" style={{
           position: 'absolute', bottom: 0, left: 0, right: 0,
           zIndex: 2,
           display: 'flex', flexDirection: 'column',
@@ -403,8 +403,3 @@ export default function Home() {
 
         </div>
       </div>
-
-      <Footer />
-    </>
-  );
-}

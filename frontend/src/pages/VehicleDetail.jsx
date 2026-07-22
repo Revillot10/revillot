@@ -348,6 +348,37 @@ export default function VehicleDetail() {
         {/* ════ COLUMNA IZQUIERDA ════════════════════════════ */}
         <div style={{ minWidth: 0, overflow: 'hidden' }}>
 
+          {/* Nombre + precio — solo visible en móvil (encima de galería) */}
+          <div className="vd-mobile-header">
+            {vehicle.status && vehicle.status !== 'available' && (
+              <div style={{
+                display: 'inline-block', marginBottom: 8,
+                fontFamily: 'Montserrat,sans-serif', fontSize: 9,
+                fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase',
+                padding: '4px 10px',
+                background: vehicle.status === 'sold' ? '#000' : '#f5f0e8',
+                color:      vehicle.status === 'sold' ? '#fff' : '#8a6d2f',
+              }}>
+                {vehicle.status === 'under_offer' ? 'BAJO OFERTA' :
+                 vehicle.status === 'reserved'    ? 'RESERVADO'   :
+                 vehicle.status === 'sold'        ? 'VENDIDO'     : ''}
+              </div>
+            )}
+            <h1 style={{
+              fontFamily: 'Montserrat,sans-serif', fontSize: 20,
+              fontWeight: 300, letterSpacing: '3px', textTransform: 'uppercase',
+              color: '#000', lineHeight: 1.2, marginBottom: 6,
+            }}>
+              {vehicle.brand_name} {vehicle.model}{vehicle.variant ? ` ${vehicle.variant}` : ''}
+            </h1>
+            <div style={{
+              fontFamily: 'Montserrat,sans-serif', fontSize: 22,
+              fontWeight: 300, letterSpacing: '2px', color: '#000', marginBottom: 16,
+            }}>
+              {fmtPrice(vehicle.price)}
+            </div>
+          </div>
+
           {/* Galería */}
           <Gallery images={images} />
 
@@ -418,8 +449,8 @@ export default function VehicleDetail() {
         {/* ════ COLUMNA DERECHA — sticky ═════════════════════ */}
         <div className="vd-right-col" style={{ position: 'sticky', top: 130, minWidth: 0 }}>
 
-          {/* Nombre + precio */}
-          <div style={{ marginBottom: 28, paddingBottom: 24, borderBottom: '1px solid #e8e8e8' }}>
+          {/* Nombre + precio — oculto en móvil (se muestra en vd-mobile-header) */}
+          <div className="vd-desktop-title" style={{ marginBottom: 28, paddingBottom: 24, borderBottom: '1px solid #e8e8e8' }}>
             {vehicle.status && vehicle.status !== 'available' && (
               <div style={{
                 display: 'inline-block', marginBottom: 12,
@@ -525,21 +556,4 @@ export default function VehicleDetail() {
             <div style={{ textAlign:'center', marginBottom:40 }}>
               <h2 style={{
                 fontFamily: 'Montserrat,sans-serif', fontSize: 13,
-                fontWeight: 600, letterSpacing: '6px', textTransform: 'uppercase',
-                color: '#000', marginBottom: 16,
-              }}>TAMBIÉN TE PUEDE INTERESAR</h2>
-              <div style={{ width:40, height:1, background:'rgba(0,0,0,0.2)', margin:'0 auto' }} />
-            </div>
-            <div className="related-vehicles-grid" style={{ display:'grid', gap:30 }}>
-              {related.map(v => <VehicleCard key={v.id} vehicle={v} />)}
-            </div>
-          </div>
-        </div>
-      )}
-
-      </div>{/* end overflow wrapper */}
-
-      <Footer />
-    </>
-  );
-}
+                fontWeight: 600, letterSpacing: '6
